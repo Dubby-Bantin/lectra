@@ -1,20 +1,45 @@
 "use server";
 
-import { log } from "console";
+import { logIn, signUp } from "./firebase";
 
-const signUp = async (formData: FormData) => {
-  const user = {
-    name: formData.get("name") as string,
-    email: formData.get("email") as string,
-    password: formData.get("password") as string,
-  };
-  log(user);
+const createUser = async (formData: FormData) => {
+  const name = formData.get("name") as string;
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+  const role = formData.get("role") as string;
+
+  try {
+    const { e } = await signUp(name, email, password, role);
+    if (e) {
+      return { error: e };
+    } else {
+      return { error: null };
+    }
+  } catch (e: unknown) {
+    const errorMessage =
+      e instanceof Error
+        ? e.message
+        : "Error creating an account, please try again.";
+    return { error: errorMessage };
+  }
 };
-const login = async (formData: FormData) => {
-  const user = {
-    email: formData.get("email") as string,
-    password: formData.get("password") as string,
-  };
-  log(user);
+
+const loginUser = async (formData: FormData) => {
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+
+  try {
+    const { e } = await logIn(email, password);
+    if (e) {
+      return { error: e };
+    } else {
+      return { error: null };
+    }
+  } catch (e: unknown) {
+    const errorMessage =
+      e instanceof Error ? e.message : "An error occurred, please try again.";
+    return { error: errorMessage };
+  }
 };
-export { signUp, login };
+
+export { createUser, loginUser };

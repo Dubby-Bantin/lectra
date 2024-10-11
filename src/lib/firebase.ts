@@ -1,58 +1,109 @@
-import { getApp, getApps, initializeApp } from "firebase/app";
+import { FirebaseError, initializeApp } from "firebase/app";
 import {
-  Auth,
+  createUserWithEmailAndPassword,
   getAuth,
   GithubAuthProvider,
   GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
   signInWithRedirect,
   signOut,
 } from "firebase/auth";
-import { signInWithCredential } from "firebase/auth";
-// import { toast } from "react-toastify";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
-import { toast } from "sonner";
+import { handleAdd } from "./utils";
 
+// Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyACXLXasfLknupT9MU9iXGAWMtlWs5r-iw",
-  authDomain: "portfolio-ce445.firebaseapp.com",
-  projectId: "portfolio-ce445",
-  storageBucket: "portfolio-ce445.appspot.com",
-  messagingSenderId: "721160426334",
-  appId: "1:721160426334:web:cd6b1c962c32103199f5cf",
+  apiKey: "AIzaSyC9A6d67trGm9pRB6QWWSXPQtQvMUq2CRE",
+  authDomain: "fir-tutorial-4d232.firebaseapp.com",
+  projectId: "fir-tutorial-4d232",
+  storageBucket: "fir-tutorial-4d232.appspot.com",
+  messagingSenderId: "42402119655",
+  appId: "1:42402119655:web:f96bd408f9c63a76660742",
 };
 
-const app = getApps.length === 0 ? initializeApp(firebaseConfig) : getApp();
-const auth: Auth = getAuth(app);
-const firestore = getFirestore(app);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
 auth.useDeviceLanguage();
+
+// Corrected signUp function
+const signUp = async (
+  name: string,
+  email: string,
+  password: string,
+  role: string
+) => {
+  try {
+    const response = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const data = {
+      name,
+      email,
+      password,
+      role,
+    };
+    handleAdd("users", data);
+    return { response, error: null };
+  } catch (e: unknown) {
+    const errorMessage =
+      e instanceof FirebaseError
+        ? e?.code.split("/")[1].split("-").join(" ")
+        : "An error occurred";
+    return { e: errorMessage };
+  }
+};
+
+const logIn = async (email: string, password: string) => {
+  try {
+    const response = await signInWithEmailAndPassword(auth, email, password);
+    return { response, error: null };
+  } catch (e: unknown) {
+    const errorMessage =
+      e instanceof FirebaseError
+        ? e?.code.split("/")[1].split("-").join(" ")
+        : "An error occurred";
+    return { e: errorMessage };
+  }
+};
 
 const signInWithGoogle = async () => {
   try {
-    await signInWithRedirect(auth, new GoogleAuthProvider());
-  } catch (e: any) {
-    toast.error(e?.message);
+    await signInWithPopup(auth, new GoogleAuthProvider());
+  } catch (e: unknown) {
+    const errorMessage =
+      e instanceof FirebaseError ? e.message : "An error occurred";
+    console.log(errorMessage);
   }
 };
 
 const signInWithGitHub = async () => {
   try {
     await signInWithRedirect(auth, new GithubAuthProvider());
-  } catch (e: any) {
-    toast.error(e?.message);
+  } catch (e: unknown) {
+    const errorMessage =
+      e instanceof FirebaseError
+        ? e?.code.split("/")[1].split("-").join(" ")
+        : "An error occurred";
+    console.log(errorMessage);
   }
 };
 
 const logOut = async () => signOut(auth);
 
-const storage = getStorage();
-
 export {
   auth,
   storage,
-  signInWithCredential,
   signInWithGoogle,
   signInWithGitHub,
   logOut,
-  firestore,
+  signUp,
+  logIn,
+  db,
 };

@@ -94,7 +94,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="flex flex-col">
         <header className="flex h-14 items-center md:justify-end justify-between gap-4 border-b px-4 lg:h-[60px] lg:px-6">
           <Sheet>
-            <SheetTrigger asChild>
+            <SheetTrigger asChild className="bg-transparent">
               <Button
                 variant="outline"
                 size="icon"

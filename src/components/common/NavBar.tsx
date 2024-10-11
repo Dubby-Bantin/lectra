@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
+import { ModeToggle } from "@/context/ThemeSwitcher";
 
 // Dummy function to simulate auth status
 const useAuthStatus = () => {
@@ -66,7 +67,7 @@ const NavBar = () => {
           <Link
             key={id}
             href={`#${id}`}
-            className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-primary"
+            className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 dark:text-muted-foreground hover:text-primary"
           >
             {/* <Icon className="h-5 w-5" /> */}
             {title}
@@ -75,31 +76,31 @@ const NavBar = () => {
         {isAuthenticated && (
           <div className="sm:flex items-center gap-5">
             <Link
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-primary"
+              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 dark:text-muted-foreground hover:text-primary"
               href="#lectures"
             >
               Lectures
             </Link>
             <Link
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-primary"
+              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 dark:text-muted-foreground hover:text-primary"
               href="#assignments"
             >
               Assignments
             </Link>
             <Link
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-primary"
+              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 dark:text-muted-foreground hover:text-primary"
               href="#students"
             >
               Students
             </Link>
             <Link
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-primary"
+              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 dark:text-muted-foreground hover:text-primary"
               href="#analytics"
             >
               Analytics
             </Link>
             <Link
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-primary"
+              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 dark:text-muted-foreground hover:text-primary"
               href="#notifications"
             >
               <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
@@ -107,6 +108,7 @@ const NavBar = () => {
                 <span className="sr-only">Toggle notifications</span>
               </Button>
             </Link>
+            <ModeToggle />
           </div>
         )}
       </nav>
@@ -138,7 +140,7 @@ const NavBar = () => {
               <Link
                 key={id}
                 href={`#${id}`}
-                className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-primary"
+                className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 dark:text-muted-foreground hover:text-primary"
               >
                 <Icon className="h-5 w-5" />
                 {title}
@@ -148,14 +150,14 @@ const NavBar = () => {
               <div className="flex flex-col gap-5">
                 <Link
                   href="#dashboard"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-primary"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 dark:text-muted-foreground hover:text-primary"
                 >
                   <Home className="h-5 w-5" />
                   Dashboard
                 </Link>
                 <Link
                   href="#orders"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-primary"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 dark:text-muted-foreground hover:text-primary"
                 >
                   <ShoppingCart className="h-5 w-5" />
                   Orders
@@ -165,21 +167,21 @@ const NavBar = () => {
                 </Link>
                 <Link
                   href="#products"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-primary"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 dark:text-muted-foreground hover:text-primary"
                 >
                   <Package className="h-5 w-5" />
                   Products
                 </Link>
                 <Link
                   href="#customers"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-primary"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 dark:text-muted-foreground hover:text-primary"
                 >
                   <Users className="h-5 w-5" />
                   Customers
                 </Link>
                 <Link
                   href="#analytics"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-primary"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 dark:text-muted-foreground hover:text-primary"
                 >
                   <LineChart className="h-5 w-5" />
                   Analytics

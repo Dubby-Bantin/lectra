@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeProvider";
-import { ModeToggle } from "@/context/ThemeSwitcher";
 import NavbarWrapper from "@/components/common/NavBarWrapper";
-import { Toaster } from "@/components/ui/sonner";
-
+import { Toaster } from "sonner";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -39,11 +38,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <NavbarWrapper />
-          <Toaster />
+          <Toaster position="top-center" richColors />
           {children}
-          <div className="fixed bottom-10 right-10">
-            <ModeToggle />
-          </div>
         </ThemeProvider>
       </body>
     </html>
