@@ -42,7 +42,7 @@ const LoginForm = () => {
           type="email"
           autoComplete="email"
           required
-          className="block w-full px-4 py-[.3rem] dark:text-white text-black bg-transparent placeholder-gray-500 border rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-white"
+          className="input-box"
           placeholder="m@example.com"
         />
       </div>
@@ -60,7 +60,7 @@ const LoginForm = () => {
           type={showPassword ? "text" : "password"}
           autoComplete="current-password"
           required
-          className="block w-full px-4 py-[.3rem] dark:text-white text-black placeholder-gray-500 bg-transparent border rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-white"
+          className="input-box"
           placeholder="********"
         />
         <div

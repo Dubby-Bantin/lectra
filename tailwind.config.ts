@@ -33,8 +33,8 @@ const config: Config = {
       },
     },
     fontFamily: {
-      text: ["Roboto Condensed, sans-serif"],
-      heading: ["Poppins, sans-serif"],
+      lato: ["Lato", "sans-serif"],
+      poppins: ["Poppins, sans-serif"],
     },
     extend: {
       colors: {

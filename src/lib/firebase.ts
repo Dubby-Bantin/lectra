@@ -38,7 +38,7 @@ const signUp = async (
   role: string
 ) => {
   try {
-    const response = await createUserWithEmailAndPassword(
+    const { user } = await createUserWithEmailAndPassword(
       auth,
       email,
       password
@@ -50,7 +50,7 @@ const signUp = async (
       role,
     };
     handleAdd("users", data);
-    return { response, error: null };
+    return { user, error: null };
   } catch (e: unknown) {
     const errorMessage =
       e instanceof FirebaseError

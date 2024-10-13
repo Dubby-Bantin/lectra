@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -77,6 +77,43 @@ body {
   }
 }
 
+.input-box {
+  @apply block w-full px-4 py-[.3rem] dark:text-white text-black bg-transparent placeholder-gray-500 border rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-white placeholder:text-sm;
+}
+
+.phone-input input {
+  font-size: 1rem;
+  background-color: transparent;
+  border-radius: 0.375rem;
+  outline: none;
+}
+
 .color {
   color: #050113;
+  color: #1e293b;
+  color: #1e293b;
+}
+
+.darkTheme {
+  --control-bg: hsl(254, 89%, 4%);
+  --normal-border: #1e293b;
+  --focus-border: #1e293b;
+  --hover-border: #1e293b;
+  --menu-bg: hsl(254, 89%, 4%);
+  --text-color: #fff;
+  --hover-bg: #1e293b;
+  --focus-bg: #1e293b;
+  --placeholder-color: #aaa;
+}
+
+.lightTheme {
+  --control-bg: #fff;
+  --normal-border: #d1d5db;
+  --focus-border: #1e293b;
+  --hover-border: #1e293b;
+  --menu-bg: #fff;
+  --text-color: #000;
+  --hover-bg: #e5e7eb;
+  --focus-bg: #e5e7eb;
+  --placeholder-color: #6b7280;
 }

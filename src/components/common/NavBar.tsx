@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
-// import { usePathname } from "next/navigation";
 import logo from "@/public/images/logo (2).png"; // Ensure this path is correct
 import { navLinks } from "@/utils/constants";
 import {
@@ -53,11 +52,18 @@ const NavBar = () => {
   return (
     <header
       className={`top-0 z-[9999] sticky px-5 flex justify-between items-center p-2 ${
-        isScrolled ? "backdrop-blur-lg" : "bg-black-100"
+        isScrolled
+          ? "bg-white dark:bg-transparent backdrop-blur-lg"
+          : "bg-white dark:bg-transparent"
       }`}
     >
       <Link href="/" className="flex items-center">
-        <Image src={logo} alt="logo" height={50} className="rounded-full" />
+        <Image
+          src={logo}
+          alt="logo"
+          height={50}
+          className="bg-dark rounded-sm mx-2"
+        />
         Lectra
       </Link>
 

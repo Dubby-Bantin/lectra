@@ -9,11 +9,12 @@ const createUser = async (formData: FormData) => {
   const role = formData.get("role") as string;
 
   try {
-    const { e } = await signUp(name, email, password, role);
+    const { e, user } = await signUp(name, email, password, role);
+
     if (e) {
       return { error: e };
     } else {
-      return { error: null };
+      return { error: null, userId: user?.uid };
     }
   } catch (e: unknown) {
     const errorMessage =
@@ -42,4 +43,33 @@ const loginUser = async (formData: FormData) => {
   }
 };
 
-export { createUser, loginUser };
+const updateInstructorRef = async (
+  formData: FormData,
+  phoneNumber: string | undefined,
+  selectedDate: Date | undefined,
+  comboValue: string
+) => {
+  const address = formData.get("address") as string;
+  const degree = formData.get("degree") as string;
+  const major = formData.get("major") as string;
+  const gender = formData.get("gender") as string;
+  const profileImage = formData.get("profile_photo") as File;
+  const teaching_certificate = formData.get(
+    "teaching_certificate_photo"
+  ) as File;
+  const id_verification = formData.get("id_verification_photo") as File;
+  console.log({
+    address,
+    degree,
+    major,
+    gender,
+    phoneNumber,
+    selectedDate,
+    comboValue,
+    profileImage,
+    teaching_certificate,
+    id_verification,
+  });
+};
+
+export { createUser, loginUser, updateInstructorRef };

@@ -12,20 +12,27 @@ import { useRef, useState } from "react";
 import { toast } from "sonner";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { IoEyeOutline } from "react-icons/io5";
+import { useRouter } from "next/navigation";
 const SignUpForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const router = useRouter();
   return (
     <form
       ref={formRef}
       className="mt-8 space-y-6"
       action={async (formData) => {
-        const { error } = await createUser(formData);
+        const { error, userId } = await createUser(formData);
         if (error) {
           toast.error(`${error}, please try again`);
         } else {
           formRef.current?.reset();
           toast.info("Account created successfully!");
+          if (formData.get("role") === "instructor") {
+            router.push(`/instructor_profile_setup/${userId}`);
+          } else {
+            router.push(`/user_profile_setup/${userId}`);
+          }
         }
       }}
     >
@@ -42,7 +49,7 @@ const SignUpForm = () => {
           type="text"
           autoComplete="name"
           required
-          className="block w-full px-4 py-[.3rem] dark:text-white text-black bg-transparent placeholder-gray-500 border rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-white"
+          className="input-box"
           placeholder="JohnDoe"
         />
       </div>
@@ -59,7 +66,7 @@ const SignUpForm = () => {
           type="email"
           autoComplete="email"
           required
-          className="block w-full px-4 py-[.3rem] dark:text-white text-black bg-transparent placeholder-gray-500 border rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-white"
+          className="input-box"
           placeholder="johndoe@email.com"
         />
       </div>
@@ -78,7 +85,7 @@ const SignUpForm = () => {
             type={showPassword ? "text" : "password"}
             autoComplete="current-password"
             required
-            className="block w-full px-4 py-[.3rem] dark:text-white text-black placeholder-gray-500 bg-transparent border rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-white"
+            className="input-box"
             placeholder="********"
           />
           <div
