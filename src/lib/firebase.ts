@@ -49,8 +49,14 @@ const signUp = async (
       password,
       role,
     };
-    handleAdd("users", data);
-    return { user, error: null };
+    if (role === "instructor") {
+      const { id } = await handleAdd("instructors", data);
+      return { user, error: null, id };
+    } else {
+      handleAdd("students", data);
+      const { id } = await handleAdd("students", data);
+      return { user, error: null, id };
+    }
   } catch (e: unknown) {
     const errorMessage =
       e instanceof FirebaseError

@@ -117,3 +117,83 @@ body {
   --focus-bg: #e5e7eb;
   --placeholder-color: #6b7280;
 }
+
+.gtranslate_wrapper {
+  background-color: #050113;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  color: white;
+}
+
+/* Hover effect for interaction */
+.gtranslate_wrapper:hover {
+  background-color: #19193e !important;
+}
+
+.gt_white_content {
+  background-color: #1a1a2e !important;
+  color: #f5f5f5 !important;
+  border-radius: 8px;
+  padding: 8px 10px;
+  border: none !important; /* No hard borders */
+}
+
+/* Styling for links inside the content */
+.gt_white_content a {
+  color: #33bbcf !important; /* Bright cyan links to pop */
+  text-decoration: none !important; /* Remove underlines */
+  font-weight: 500;
+  transition: color 0.3s ease; /* Smooth transition for hover */
+}
+
+/* Hover effect for links */
+.gt_white_content a:hover {
+  color: #74c8dc !important; /* Slightly brighter on hover */
+}
+
+/* Optional: More shadow on hover */
+.gtranslate_wrapper:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Deeper shadow */
+}
+
+/* Dark mode */
+.dark .react-tagsinput {
+  background-color: #050113 !important;
+  border: 1px solid hsl(217.2 32.6% 17.5%) !important;
+}
+
+.dark .react-tagsinput--focused {
+  border-color: #fff !important;
+}
+
+.react-tagsinput {
+  font-family: "Lato", serif !important;
+  background-color: #050113;
+  color: #fff;
+  border: 1px solid var(--input) !important;
+  width: 100%;
+  padding: 5px !important;
+  border-radius: 5px !important;
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.react-tagsinput-input {
+  width: 100% !important;
+}
+
+.react-tagsinput-tag {
+  background-color: #070244 !important;
+  color: #fff;
+  border: 0 !important;
+  font-family: "Lato";
+}
+
+.react-tagsinput-remove {
+  color: #f7f7f7;
+}

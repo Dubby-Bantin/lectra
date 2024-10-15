@@ -3,8 +3,8 @@ import { log } from "console";
 import Image from "next/image";
 import logo from "@/public/images/logo (2).png";
 
-const ProfileSetUp = () => {
-  log("me");
+const ProfileSetUp = ({ params: { id } }: { params: { id: string } }) => {
+  log(id);
   return (
     <div className="relative w-full h-screen overflow-x-hidden p-5 font-lato">
       <div className="max-w-4xl space-y-4 bg-white dark:bg-background p-6 rounded-lg shadow-lg flex flex-col flex-wrap items-center justify-center mx-auto border">
@@ -23,7 +23,7 @@ const ProfileSetUp = () => {
             You&apos;re just a few steps away from hosting your first lecture.
           </span>
         </h1>
-        <InstructorProfileSetUp />
+        <InstructorProfileSetUp id={id} />
       </div>
     </div>
   );

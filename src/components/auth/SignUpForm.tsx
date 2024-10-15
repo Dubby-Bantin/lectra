@@ -22,16 +22,16 @@ const SignUpForm = () => {
       ref={formRef}
       className="mt-8 space-y-6"
       action={async (formData) => {
-        const { error, userId } = await createUser(formData);
+        const { error, id } = await createUser(formData);
         if (error) {
           toast.error(`${error}, please try again`);
         } else {
           formRef.current?.reset();
           toast.info("Account created successfully!");
           if (formData.get("role") === "instructor") {
-            router.push(`/instructor_profile_setup/${userId}`);
+            router.push(`/instructor_profile_setup/${id}`);
           } else {
-            router.push(`/user_profile_setup/${userId}`);
+            router.push(`/user_profile_setup/${id}`);
           }
         }
       }}

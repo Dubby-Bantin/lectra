@@ -1,4 +1,5 @@
 import { clsx, type ClassValue } from "clsx";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { twMerge } from "tailwind-merge";
 
 import {
@@ -10,7 +11,7 @@ import {
   doc,
   FirestoreError,
 } from "firebase/firestore";
-import { db } from "./firebase";
+import { db, storage } from "./firebase";
 
 // Utility function to merge Tailwind and clsx classes
 export function cn(...inputs: ClassValue[]) {
@@ -41,7 +42,7 @@ const deleteData = async (document: string, id: string): Promise<void> => {
 const handleAdd = async (
   collectionName: string,
   data: FirestoreData
-): Promise<string> => {
+): Promise<{ id: string }> => {
   try {
     // Add document to Firestore
     const docRef = await addDoc(collection(db, collectionName), {
@@ -49,7 +50,7 @@ const handleAdd = async (
       createdAt: serverTimestamp(),
     });
 
-    return docRef.id;
+    return { id: docRef.id };
   } catch (e) {
     const error = e as FirestoreError;
     alert(
@@ -86,9 +87,31 @@ const handleUpdate = async (
 
 // Utility function to convert Firestore timestamp to a readable date
 const convertTimestampToDate = (timestamp: { seconds: number }): string => {
-  if (!timestamp || !timestamp.seconds) return "Invalid Date";
+  if (!timestamp || !timestamp.seconds) {
+    return "Invalid Date";
+  }
   return new Date(timestamp.seconds * 1000).toDateString();
 };
 
-// Exporting the Firestore functions
-export { deleteData, handleAdd, handleUpdate, convertTimestampToDate };
+// firebaseUtils.ts
+
+const uploadImages = async (images: File[], id: string): Promise<string[]> => {
+  const uploadPromises: Promise<string>[] = [];
+
+  images.forEach((image, index) => {
+    const imageRef = ref(storage, `instructors/${id}/image_${index}`); // Naming convention can be changed
+    uploadPromises.push(
+      uploadBytes(imageRef, image).then(() => getDownloadURL(imageRef))
+    );
+  });
+
+  return await Promise.all(uploadPromises);
+};
+
+export {
+  deleteData,
+  handleAdd,
+  handleUpdate,
+  convertTimestampToDate,
+  uploadImages,
+};

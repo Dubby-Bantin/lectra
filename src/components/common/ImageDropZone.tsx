@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
@@ -41,7 +39,13 @@ const ImageDropZone = ({ name }: { name: string }) => {
             isDragReject ? "border-red-500" : ""
           } ${isDragAccept ? "border-blue-500" : ""}`}
     >
-      <input {...getInputProps()} name={name} id={name} required  style={{ position: "absolute", left: "-9999px" }} />
+      <input
+        {...getInputProps()}
+        name={name}
+        id={name}
+        required
+        style={{ position: "absolute", left: "-9999px" }}
+      />
       {preview ? (
         <Image
           src={preview}

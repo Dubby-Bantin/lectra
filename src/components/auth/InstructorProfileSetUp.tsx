@@ -14,18 +14,20 @@ import CalendarComponent from "../common/CalendarComponent";
 import { Checkbox } from "../ui/checkbox";
 import Combo from "../common/Combo";
 import { universities } from "@/utils/constants";
-import { useDropzone } from "react-dropzone";
 import ImageDropZone from "../common/ImageDropZone";
 import { useRouter } from "next/navigation";
 import { updateInstructorRef } from "@/lib/auth";
 import PreferredLectureDays from "./PreferredLectureDays";
+import CourseInput from "./ReactTags";
 
-const InstructorProfileSetUp = () => {
+const InstructorProfileSetUp = ({ id }: { id: string }) => {
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>();
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>();
+  const [birthDate, setBirthDate] = useState<Date | undefined>();
   const [open, setOpen] = useState(false);
-  const [comboValue, setComboValue] = useState("");
+  const [university, setUniversity] = useState("");
+  const [courses, setCourses] = useState<string[]>([]);
   const formRef = useRef<HTMLFormElement>(null);
+  const [selectedDays, setSelectedDays] = useState([]);
   const router = useRouter();
   return (
     <form
@@ -33,11 +35,15 @@ const InstructorProfileSetUp = () => {
         await updateInstructorRef(
           formData,
           phoneNumber,
-          selectedDate,
-          comboValue
+          birthDate,
+          university,
+          courses,
+          selectedDays,
+          id
         );
 
         formRef.current?.reset();
+        router.push(`/instructor/dashboard?id=${id}`);
       }}
       ref={formRef}
       className="p-6 w-full flex flex-col items-center gap-5"
@@ -108,17 +114,25 @@ const InstructorProfileSetUp = () => {
               <label className="block text-sm font-medium mb-3">
                 Preferred Lecture Days
               </label>
-              <PreferredLectureDays />
+              <PreferredLectureDays
+                selectedDays={selectedDays}
+                setSelectedDays={setSelectedDays}
+              />
             </div>
             {/* Date of Birth */}
-            <div className="w-full">
-              <label className="block text-sm font-medium mb-3">
-                Date of Birth
-              </label>
-              <CalendarComponent
-                selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
-              />
+            <div className="w-full flex justify-center">
+              <div>
+                <label
+                  htmlFor="date_of_birth"
+                  className="block text-sm font-medium mb-3"
+                >
+                  Date of Birth
+                </label>
+                <CalendarComponent
+                  birthDate={birthDate}
+                  setBirthDate={setBirthDate}
+                />
+              </div>
             </div>
 
             <div className="flex justify-center flex-col items-end w-full">
@@ -187,8 +201,8 @@ const InstructorProfileSetUp = () => {
                   data={universities}
                   open={open}
                   setOpen={setOpen}
-                  value={comboValue}
-                  setValue={setComboValue}
+                  value={university}
+                  setValue={setUniversity}
                   search="universities"
                 />
               </div>
@@ -200,7 +214,7 @@ const InstructorProfileSetUp = () => {
           <h1 className="text-2xl font-bold mb-5">
             Verification & Documentation
           </h1>
-          <div className="flex flex-wrap gap-10 w-full justify-center">
+          <div className="flex flex-wrap gap-10 w-full justify-center mb-5">
             {/* ID Verification Upload */}
 
             <div className="w-full">
@@ -223,11 +237,14 @@ const InstructorProfileSetUp = () => {
               <ImageDropZone name="id_verification_photo" />
             </div>
           </div>
+
+          <CourseInput courses={courses} setCourses={setCourses} />
         </section>
         {/* Employment History */}
         <section className="mb-10">
           <h1 className="text-2xl font-bold mb-5">Employment History</h1>
           <textarea
+            name="employment_history"
             className="input-box"
             placeholder="List of previous teaching jobs with references"
           />

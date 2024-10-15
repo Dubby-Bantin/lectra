@@ -18,6 +18,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
 import { ModeToggle } from "@/context/ThemeSwitcher";
+import GTranslate from "./GTranslate";
 
 // Dummy function to simulate auth status
 const useAuthStatus = () => {
@@ -68,19 +69,19 @@ const NavBar = () => {
       </Link>
 
       {/* Desktop Navigation */}
-      <nav className="hidden sm:flex items-center gap-5 dark:text-white text-sm">
+      <nav className="hidden sm:flex items-center gap-5 dark:text-white  relative">
         {navLinks.map(({ id, title }) => (
           <Link
             key={id}
             href={`#${id}`}
-            className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 dark:text-muted-foreground hover:text-primary"
+            className="mx-[-0.65rem] text-sm flex items-center gap-4 rounded-xl px-3 py-2 dark:text-muted-foreground hover:text-primary"
           >
             {/* <Icon className="h-5 w-5" /> */}
             {title}
           </Link>
         ))}
         {isAuthenticated && (
-          <div className="sm:flex items-center gap-5">
+          <div className="sm:flex items-center gap-5 relative text-sm">
             <Link
               className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 dark:text-muted-foreground hover:text-primary"
               href="#lectures"
@@ -114,9 +115,10 @@ const NavBar = () => {
                 <span className="sr-only">Toggle notifications</span>
               </Button>
             </Link>
-            <ModeToggle />
           </div>
         )}
+        <ModeToggle />
+        <GTranslate />
       </nav>
 
       {/* Mobile Navigation */}

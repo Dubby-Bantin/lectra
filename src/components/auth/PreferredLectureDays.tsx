@@ -1,7 +1,14 @@
-import Select, { StylesConfig } from "react-select";
+import Select, { StylesConfig, MultiValue } from "react-select";
 import { useTheme } from "next-themes";
+import { useEffect } from "react";
 
-const customStyles: StylesConfig = {
+// Define type for options
+interface Option {
+  value: string;
+  label: string;
+}
+
+const customStyles: StylesConfig<Option> = {
   control: (provided, state) => ({
     ...provided,
     backgroundColor: "var(--control-bg)", // Use CSS variable for dynamic background
@@ -37,8 +44,28 @@ const customStyles: StylesConfig = {
   }),
 };
 
-const PreferredLectureDays = () => {
+interface PreferredLectureDaysProps {
+  selectedDays: string[];
+  setSelectedDays: (days: string[]) => void;
+}
+
+const PreferredLectureDays: React.FC<PreferredLectureDaysProps> = ({
+  selectedDays,
+  setSelectedDays,
+}) => {
   const { theme } = useTheme(); // Use theme context to detect light or dark mode
+
+  // Handle change when user selects options
+  const handleChange = (selectedOptions: MultiValue<Option>) => {
+    setSelectedDays(
+      selectedOptions ? selectedOptions.map((option) => option.value) : []
+    );
+  };
+
+  // Log selected days when they change
+  useEffect(() => {
+    console.log(selectedDays); // Log the newly selected options
+  }, [selectedDays]);
 
   return (
     <div className={theme === "dark" ? "darkTheme" : "lightTheme"}>
@@ -55,7 +82,8 @@ const PreferredLectureDays = () => {
           { value: "everyday", label: "Everyday" },
         ]}
         styles={customStyles} // Apply custom styles
-        placeholder="Select preferred days"
+        placeholder="Select preferred lecture days"
+        onChange={handleChange} // Capture selected options
       />
     </div>
   );
