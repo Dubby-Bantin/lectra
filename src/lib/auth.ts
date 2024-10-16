@@ -3,6 +3,7 @@
 import { log } from "console";
 import { logIn, signUp } from "./firebase";
 import { handleUpdate, uploadImages } from "./utils";
+import { InstructorData } from "./types";
 
 const createUser = async (formData: FormData) => {
   const name = formData.get("name") as string;
@@ -56,7 +57,7 @@ const updateInstructorRef = async (
   selectedDays: string[],
   id: string
 ) => {
-  const address = formData.get("address") as string;
+  const preferred_language = formData.get("preferred_language") as string;
   const degree = formData.get("degree") as string;
   const major = formData.get("major") as string;
   const gender = formData.get("gender") as string;
@@ -80,8 +81,8 @@ const updateInstructorRef = async (
   }
 
   // Prepare the data object to store in Firestore
-  const instructorData = {
-    address,
+  const instructorData: InstructorData = {
+    preferred_language,
     degree,
     major,
     gender,
@@ -93,13 +94,9 @@ const updateInstructorRef = async (
     employment_history,
   };
 
-  // log(instructorData, profileImage);
-
-  // Upload images and get their URLs
   try {
     const imageUrls = await uploadImages(images, id); // Use the utility function
 
-    // Add image URLs to the instructorData object
     if (imageUrls[0]) {
       instructorData.profileImageUrl = imageUrls[0];
     }
@@ -110,7 +107,6 @@ const updateInstructorRef = async (
       instructorData.idVerificationUrl = imageUrls[2];
     }
     log(instructorData);
-    // Update the instructor document in Firestore
     await handleUpdate("instructors", id, instructorData);
   } catch (error) {
     console.error("Error uploading images:", error);

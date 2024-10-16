@@ -43,7 +43,7 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
         );
 
         formRef.current?.reset();
-        router.push(`/instructor/dashboard?id=${id}`);
+        router.push(`/instructor/dashboard?instructorId=${id}`);
       }}
       ref={formRef}
       className="p-6 w-full flex flex-col items-center gap-5"
@@ -56,19 +56,19 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
             {/* Address */}
             <div className="w-full">
               <label
-                htmlFor="address"
+                htmlFor="Preferred Language"
                 className="block text-sm font-medium mb-3"
               >
-                Address
+                Preferred Language
               </label>
               <input
-                id="address"
-                name="address"
+                id="preferred_language"
+                name="preferred_language"
                 type="text"
-                autoComplete="address"
+                autoComplete="preferred_language"
                 required
                 className="input-box"
-                placeholder="lakeville"
+                placeholder="English"
               />
             </div>
 
@@ -203,7 +203,7 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
                   setOpen={setOpen}
                   value={university}
                   setValue={setUniversity}
-                  search="universities"
+                  search="university"
                 />
               </div>
             </div>
