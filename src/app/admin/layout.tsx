@@ -6,8 +6,6 @@ import {
   LineChart,
   Menu,
   Package,
-  // Package2,
-  // Search,
   ShoppingCart,
   Users,
 } from "lucide-react";
@@ -23,7 +21,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-// import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logo from "@/public/images/logo.jpeg";
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {

@@ -1,52 +1,13 @@
-import Select, { StylesConfig, MultiValue } from "react-select";
+import Select, { MultiValue } from "react-select";
 import { useTheme } from "next-themes";
-import { useEffect } from "react";
+import React, { Dispatch, SetStateAction, useEffect } from "react";
+import { Option } from "@/lib/types";
+import { customStyles } from "@/lib/utils";
 
 // Define type for options
-interface Option {
-  value: string;
-  label: string;
-}
-
-const customStyles: StylesConfig<Option> = {
-  control: (provided, state) => ({
-    ...provided,
-    backgroundColor: "var(--control-bg)", // Use CSS variable for dynamic background
-    borderColor: state.isFocused
-      ? "var(--focus-border)"
-      : "var(--normal-border)", // Use CSS variables
-    color: "var(--text-color)", // Text color from variable
-    boxShadow: state.isFocused ? "0 0 0 1px var(--focus-border)" : undefined, // Ensure boxShadow is valid or undefined
-    "&:hover": {
-      borderColor: "var(--hover-border)", // Use hover variable
-    },
-  }),
-  menu: (provided) => ({
-    ...provided,
-    backgroundColor: "var(--menu-bg)", // Menu background color
-    color: "var(--text-color)", // Menu text color
-  }),
-  option: (provided, state) => ({
-    ...provided,
-    backgroundColor: state.isFocused ? "var(--focus-bg)" : "transparent", // Focused option background
-    color: "var(--text-color)", // Text color
-    "&:hover": {
-      backgroundColor: "var(--hover-bg)", // Hover background
-    },
-  }),
-  singleValue: (provided) => ({
-    ...provided,
-    color: "var(--text-color)", // Text color for selected value
-  }),
-  placeholder: (provided) => ({
-    ...provided,
-    color: "var(--placeholder-color)", // Placeholder text color
-  }),
-};
-
 interface PreferredLectureDaysProps {
   selectedDays: string[];
-  setSelectedDays: (days: string[]) => void;
+  setSelectedDays: Dispatch<SetStateAction<string[]>>;
 }
 
 const PreferredLectureDays: React.FC<PreferredLectureDaysProps> = ({

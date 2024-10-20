@@ -3,6 +3,7 @@ import Link from "next/link";
 import OAuthProviders from "@/components/auth/OAuthProviders";
 import logo from "@/public/images/logo (2).png";
 import SignUpForm from "@/components/auth/SignUpForm";
+
 const AuthForm = () => {
   return (
     <div className="flex items-center justify-center min-h-screen">

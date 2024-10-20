@@ -1,7 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { twMerge } from "tailwind-merge";
-
+import { StylesConfig } from "react-select";
 import {
   addDoc,
   collection,
@@ -10,8 +10,12 @@ import {
   deleteDoc,
   doc,
   FirestoreError,
+  getDoc,
+  Timestamp,
 } from "firebase/firestore";
 import { db, storage } from "./firebase";
+import { InstructorData, Option } from "./types";
+import { redirect } from "next/navigation";
 
 // Utility function to merge Tailwind and clsx classes
 export function cn(...inputs: ClassValue[]) {
@@ -86,7 +90,7 @@ const handleUpdate = async (
 };
 
 // Utility function to convert Firestore timestamp to a readable date
-const convertTimestampToDate = (timestamp: { seconds: number }): string => {
+const convertTimestampToDate = (timestamp: Timestamp): string => {
   if (!timestamp || !timestamp.seconds) {
     return "Invalid Date";
   }
@@ -108,10 +112,64 @@ const uploadImages = async (images: File[], id: string): Promise<string[]> => {
   return await Promise.all(uploadPromises);
 };
 
+const getFireStoreRefData = async (
+  id: string,
+  colRef: string
+): Promise<InstructorData> => {
+  const collectionReference = doc(db, colRef, id);
+
+  const collectionDocument = await getDoc(collectionReference);
+  return collectionDocument.exists()
+    ? { id: collectionDocument.id, ...collectionDocument.data() }
+    : redirect("/signup");
+};
+
+const capitalizeFirstLetter = (word: string) =>
+  word.charAt(0).toUpperCase() + word.slice(1);
+
+const customStyles: StylesConfig<Option> = {
+  control: (provided, state) => ({
+    ...provided,
+    backgroundColor: "var(--control-bg)",
+    borderColor: state.isFocused
+      ? "var(--focus-border)"
+      : "var(--normal-border)",
+    color: "var(--text-color)",
+    boxShadow: state.isFocused ? "0 0 0 1px var(--focus-border)" : undefined,
+    "&:hover": {
+      borderColor: "var(--hover-border)",
+    },
+  }),
+  menu: (provided) => ({
+    ...provided,
+    backgroundColor: "var(--menu-bg)",
+    color: "var(--text-color)",
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    backgroundColor: state.isFocused ? "var(--focus-bg)" : "transparent",
+    color: "var(--text-color)",
+    "&:hover": {
+      backgroundColor: "var(--hover-bg)",
+    },
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    color: "var(--text-color)",
+  }),
+  placeholder: (provided) => ({
+    ...provided,
+    color: "var(--placeholder-color)",
+  }),
+};
+
 export {
   deleteData,
   handleAdd,
   handleUpdate,
   convertTimestampToDate,
   uploadImages,
+  customStyles,
+  getFireStoreRefData,
+  capitalizeFirstLetter,
 };

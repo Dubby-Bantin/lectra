@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeProvider";
 import NavbarWrapper from "@/components/common/NavBarWrapper";
 import { Toaster } from "sonner";
+import GTranslate from "@/components/common/GTranslate";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -33,11 +34,12 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
           <NavbarWrapper />
+          <GTranslate />
           <Toaster position="top-center" richColors />
           {children}
         </ThemeProvider>

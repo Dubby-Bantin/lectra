@@ -1,9 +1,11 @@
 import { FirebaseError, initializeApp } from "firebase/app";
 import {
+  browserSessionPersistence,
   createUserWithEmailAndPassword,
   getAuth,
   GithubAuthProvider,
   GoogleAuthProvider,
+  setPersistence,
   signInWithEmailAndPassword,
   signInWithPopup,
   signInWithRedirect,
@@ -38,31 +40,26 @@ const signUp = async (
   role: string
 ) => {
   try {
-    const { user } = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const data = {
-      name,
-      email,
-      password,
-      role,
-    };
+    await setPersistence(auth, browserSessionPersistence);
+    const { user } = await createUserWithEmailAndPassword(auth, email,password);
+
+    const data = { name, email, role };
+
     if (role === "instructor") {
       const { id } = await handleAdd("instructors", data);
       return { user, error: null, id };
     } else {
-      handleAdd("students", data);
       const { id } = await handleAdd("students", data);
       return { user, error: null, id };
     }
   } catch (e: unknown) {
+    // Handle errors from Firebase Auth
     const errorMessage =
       e instanceof FirebaseError
-        ? e?.code.split("/")[1].split("-").join(" ")
+        ? e.code.split("/")[1].replace(/-/g, " ") // Parse and format error message
         : "An error occurred";
-    return { e: errorMessage };
+
+    return { user: null, e: errorMessage };
   }
 };
 
@@ -101,7 +98,11 @@ const signInWithGitHub = async () => {
   }
 };
 
-const logOut = async () => signOut(auth);
+const logOut = async () => {
+  console.log("logging out...");
+  signOut(auth);
+  console.log("logged out...");
+};
 
 export {
   auth,

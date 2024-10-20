@@ -27,7 +27,7 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
   const [university, setUniversity] = useState("");
   const [courses, setCourses] = useState<string[]>([]);
   const formRef = useRef<HTMLFormElement>(null);
-  const [selectedDays, setSelectedDays] = useState([]);
+  const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const router = useRouter();
   return (
     <form
@@ -43,7 +43,7 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
         );
 
         formRef.current?.reset();
-        router.push(`/instructor/dashboard?instructorId=${id}`);
+        router.push(`/instructor/dashboard/${id}`);
       }}
       ref={formRef}
       className="p-6 w-full flex flex-col items-center gap-5"

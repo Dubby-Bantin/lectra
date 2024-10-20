@@ -14,15 +14,6 @@ import {
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-
-  // Ensure that the component is mounted before accessing the theme
-  React.useEffect(() => setMounted(true), []);
-
-  if (!mounted) {
-    // Avoid rendering the icons until the theme is loaded on the client
-    return null;
-  }
 
   return (
     <DropdownMenu>

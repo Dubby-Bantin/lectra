@@ -9,7 +9,6 @@ declare global {
       detect_browser_language: boolean;
       wrapper_selector: string;
       switcher_horizontal_position: string;
-      switcher_open_direction: string;
       flag_size: number;
       flag_style: string;
     };
@@ -30,7 +29,6 @@ const GTranslate = () => {
       detect_browser_language: true,
       wrapper_selector: ".gtranslate_wrapper",
       switcher_horizontal_position: "inline",
-      switcher_open_direction: "top",
       flag_size: 24,
       flag_style: "3d",
     };

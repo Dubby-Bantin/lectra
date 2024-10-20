@@ -118,7 +118,7 @@ const NavBar = () => {
           </div>
         )}
         <ModeToggle />
-        <GTranslate />
+        {/* <GTranslate /> */}
       </nav>
 
       {/* Mobile Navigation */}

@@ -25,7 +25,7 @@ const LoginForm = () => {
         } else {
           formRef.current?.reset();
           toast.info("Login successfull!");
-          router.push("/");
+          router.push("/instructor/dashboard?id=1");
         }
       }}
     >

@@ -126,6 +126,13 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   transition: background-color 0.3s ease, transform 0.3s ease;
   color: white;
+  width: fit-content;
+  height: 2.5rem;
+  overflow: clip;
+  position: fixed;
+  bottom: 1rem;
+  left: 3rem;
+  z-index: 999;
 }
 
 /* Hover effect for interaction */
