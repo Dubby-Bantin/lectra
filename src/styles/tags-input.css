@@ -1,0 +1,36 @@
+.dark .react-tagsinput {
+  background-color: #050113 !important;
+  border: 1px solid hsl(217.2 32.6% 17.5%) !important;
+}
+
+.dark .react-tagsinput--focused {
+  border-color: #fff !important;
+}
+
+.react-tagsinput {
+  font-family: "Lato", serif !important;
+  color: #fff;
+  border: 1px solid var(--input) !important;
+  width: 100%;
+  padding: 5px !important;
+  border-radius: 5px !important;
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.dark .react-tagsinput {
+  background-color: #050113;
+}
+
+.react-tagsinput-tag {
+  background-color: #3e3e41 !important;
+  color: white;
+  border: 0 !important;
+  font-family: "Lato";
+}
+
+.react-tagsinput-remove {
+  color: #f7f7f7;
+}

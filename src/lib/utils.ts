@@ -1,0 +1,253 @@
+import { clsx, type ClassValue } from "clsx";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { twMerge } from "tailwind-merge";
+import {
+  addDoc,
+  collection,
+  serverTimestamp,
+  updateDoc,
+  deleteDoc,
+  doc,
+  FirestoreError,
+  getDoc,
+  Timestamp,
+} from "firebase/firestore";
+import { db, storage } from "./firebase";
+// import { redirect } from "next/navigation";
+import { NextResponse } from "next/server";
+import { InstructorData, UserType } from "@/types";
+import { redirect } from "next/navigation";
+
+// Utility function to merge Tailwind and clsx classes
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+// Firestore Data Interfaces
+interface FirestoreData {
+  [key: string]: string | number | boolean | object | null | undefined;
+}
+// Function to delete a document by its document ID
+const deleteData = async (document: string, id: string): Promise<void> => {
+  try {
+    const DocRef = doc(db, document, id); // Reference the document by ID
+    await deleteDoc(DocRef); // Delete the document
+  } catch (e) {
+    const error = e as FirestoreError;
+    alert(
+      `Error deleting ${document + " document"}: ${
+        error?.message || error?.name || error?.cause
+      }`
+    );
+  }
+};
+
+// Function to add a new document to Firestore
+const handleAdd = async (
+  collectionName: string,
+  data: FirestoreData
+): Promise<{ id: string }> => {
+  try {
+    // Adding document to Firestore
+    const docRef = await addDoc(collection(db, collectionName), {
+      ...data,
+      createdAt: serverTimestamp(),
+    });
+
+    const response = NextResponse.next();
+    response.cookies.set("userId", docRef.id);
+    return { id: docRef.id };
+  } catch (e) {
+    const error = e as FirestoreError;
+    alert(
+      `Error Adding ${document + " document"}: ${
+        error?.message || error?.name || error?.cause
+      }`
+    );
+    throw new Error("Error adding document");
+  }
+};
+
+// Function to update an existing document in Firestore
+const handleUpdate = async (
+  collectionName: string,
+  id: string,
+  data: FirestoreData
+): Promise<string> => {
+  try {
+    // Updatind document in Firestore
+    const docRef = doc(db, collectionName, id);
+    await updateDoc(docRef, data);
+
+    return docRef.id;
+  } catch (e) {
+    const error = e as FirestoreError;
+    alert(
+      `Error Updating ${document + " document"}: ${
+        error?.message || error?.name || error?.cause
+      }`
+    );
+    throw new Error("Error Updating document");
+  }
+};
+
+// Utility function to convert Firestore timestamp to a readable date
+const convertTimestampToDate = (timestamp: Timestamp): string => {
+  if (!timestamp || !timestamp.seconds) {
+    return "Invalid Date";
+  }
+  return new Date(timestamp.seconds * 1000).toDateString();
+};
+
+// firebaseUtils.ts
+
+const uploadImages = async (images: File[], id: string): Promise<string[]> => {
+  const uploadPromises: Promise<string>[] = [];
+
+  images.forEach((image, index) => {
+    const imageRef = ref(storage, `instructors/${id}/image_${index}`); // Naming convention can be changed
+    uploadPromises.push(
+      uploadBytes(imageRef, image).then(() => getDownloadURL(imageRef))
+    );
+  });
+
+  return await Promise.all(uploadPromises);
+};
+
+const getFireStoreRefData = async (
+  id: string | undefined,
+  colRef: string
+): Promise<InstructorData | null> => {
+  if (!id) {
+    console.error("ID is undefined");
+    return null;
+  }
+  const collectionReference = doc(db, colRef, id);
+
+  const collectionDocument = await getDoc(collectionReference);
+  return collectionDocument.exists()
+    ? ({
+        id: collectionDocument.id,
+        ...collectionDocument.data(),
+      } as InstructorData)
+    : redirect("/signup");
+};
+
+const capitalizeFirstLetter = (word: string) =>
+  word.charAt(0).toUpperCase() + word.slice(1);
+
+export const parseStringify = (value: unknown) =>
+  JSON.parse(JSON.stringify(value));
+
+export const getAccessType = (userType: UserType) => {
+  switch (userType) {
+    case "creator":
+      return ["room:write"];
+    case "editor":
+      return ["room:write"];
+    case "viewer":
+      return ["room:read", "room:presence:write"];
+    default:
+      return ["room:read", "room:presence:write"];
+  }
+};
+
+export const dateConverter = (timestamp: string): string => {
+  const timestampNum = Math.round(new Date(timestamp).getTime() / 1000);
+  const date: Date = new Date(timestampNum * 1000);
+  const now: Date = new Date();
+
+  const diff: number = now.getTime() - date.getTime();
+  const diffInSeconds: number = diff / 1000;
+  const diffInMinutes: number = diffInSeconds / 60;
+  const diffInHours: number = diffInMinutes / 60;
+  const diffInDays: number = diffInHours / 24;
+
+  switch (true) {
+    case diffInDays > 7:
+      return `${Math.floor(diffInDays / 7)} weeks ago`;
+    case diffInDays >= 1 && diffInDays <= 7:
+      return `${Math.floor(diffInDays)} days ago`;
+    case diffInHours >= 1:
+      return `${Math.floor(diffInHours)} hours ago`;
+    case diffInMinutes >= 1:
+      return `${Math.floor(diffInMinutes)} minutes ago`;
+    default:
+      return "Just now";
+  }
+};
+
+// Function to generate a random color in hex format, excluding specified colors
+export function getRandomColor() {
+  const avoidColors = ["#000000", "#FFFFFF", "#8B4513"]; // Black, White, Brown in hex format
+
+  let randomColor;
+  do {
+    // Generate random RGB values
+    const r = Math.floor(Math.random() * 256); // Random number between 0-255
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+
+    // Convert RGB to hex format
+    randomColor = `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
+  } while (avoidColors.includes(randomColor));
+
+  return randomColor;
+}
+
+export const brightColors = [
+  "#2E8B57", // Darker Neon Green
+  "#FF6EB4", // Darker Neon Pink
+  "#00CDCD", // Darker Cyan
+  "#FF00FF", // Darker Neon Magenta
+  "#FF007F", // Darker Bright Pink
+  "#FFD700", // Darker Neon Yellow
+  "#00CED1", // Darker Neon Mint Green
+  "#FF1493", // Darker Neon Red
+  "#00CED1", // Darker Bright Aqua
+  "#FF7F50", // Darker Neon Coral
+  "#9ACD32", // Darker Neon Lime
+  "#FFA500", // Darker Neon Orange
+  "#32CD32", // Darker Neon Chartreuse
+  "#ADFF2F", // Darker Neon Yellow Green
+  "#DB7093", // Darker Neon Fuchsia
+  "#00FF7F", // Darker Spring Green
+  "#FFD700", // Darker Electric Lime
+  "#FF007F", // Darker Bright Magenta
+  "#FF6347", // Darker Neon Vermilion
+];
+
+export function getUserColor(userId?: string) {
+  let sum = 0;
+  if (!userId) {
+    return;
+  }
+  for (let i = 0; i < userId.length; i++) {
+    sum += userId.charCodeAt(i);
+  }
+
+  const colorIndex = sum % brightColors.length;
+  return brightColors[colorIndex];
+}
+
+const heroSlides = [
+  "https://media.istockphoto.com/id/1868588778/photo/e-learning-technology-concept-online-education-webinar-online-courses-ai-and-machine-learning.jpg?s=612x612&w=0&k=20&c=GtCOhuwN7iRPg9AtXvIHT1-zKyBnAbSciBzs0cJ9CD8=",
+  "https://images.pexels.com/photos/4491461/pexels-photo-4491461.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://media.istockphoto.com/id/1352742022/photo/education-on-internet-technology-e-learning-education-and-internet-lessons-person-who-attends.jpg?s=612x612&w=0&k=20&c=Yp6EuEcHlL9cXJ1-OqJvBJjldL8E_GUm8NnRX4qMyAA=",
+  "https://images.pexels.com/photos/4063590/pexels-photo-4063590.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://media.istockphoto.com/id/1158175009/photo/e-learning-for-student-and-university-concept.jpg?s=612x612&w=0&k=20&c=aZh1LvTCNXCJJ8JONFCatZMsxY0ofLHSp7nIaGhH338=",
+  "https://media.istockphoto.com/id/1360520508/photo/businessman-using-a-computer-to-webinar-online-education-on-internet-online-courses-e.jpg?s=612x612&w=0&k=20&c=aJ1_9F4nJP8NdhI-Qfp6tQuZyaefcttn9_c5ldDZFNo=",
+  "https://images.pexels.com/photos/4827576/pexels-photo-4827576.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://media.istockphoto.com/id/2177353072/photo/digital-recruitment-process-on-a-tablet-selecting-a-candidate-profile-for-hiring-great-for-hr.jpg?s=612x612&w=0&k=20&c=N1nqxHNbmjvfHxFNWc7Fv7pBhGjLHykgAtPpY2uIruo=",
+];
+
+export {
+  deleteData,
+  handleAdd,
+  handleUpdate,
+  convertTimestampToDate,
+  uploadImages,
+  getFireStoreRefData,
+  capitalizeFirstLetter,
+  heroSlides,
+};
