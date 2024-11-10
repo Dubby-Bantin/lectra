@@ -32,6 +32,8 @@ import TipLink from "@/components/common/TipLink";
 import BreadCrumbLink from "@/components/common/BreadCrumbLink";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 import { getFireStoreRefData } from "@/lib/utils";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 const layout = async ({
   children,
   params: { id },
@@ -40,7 +42,18 @@ const layout = async ({
   params: { id: string };
 }) => {
   const data = await getFireStoreRefData(id, "instructors");
-  if (!data) return;
+  if (!data) {
+    return;
+  }
+  const cookieStore = cookies();
+  const userId = cookieStore.get("userId")?.value;
+  if (!userId) {
+    redirect("/signup");
+  }
+
+  if (userId !== id) {
+    redirect("/signup");
+  }
   const { name } = data;
   return (
     <div className="flex min-h-screen w-full flex-col bg-background">
