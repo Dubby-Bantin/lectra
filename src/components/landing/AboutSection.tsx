@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
 import liveSession from "@/public/images/1ac4b1_de2f47ad5b2940f3b5b2aaf0597ff6ed~mv2.webp";
+import Link from "next/link";
 
 const AboutSection = () => (
   <section className="text-gray-800 dark:text-gray-200 font-lato py-16 sm:py-24 md:py-40">
@@ -32,9 +33,12 @@ const AboutSection = () => (
             and monitor student progress with intuitive, data-driven
             insights—all within a secure, user-friendly interface.
           </p>
-          <Button variant="outline" className="w-[12rem] mx-auto md:mx-0">
-            Learn More
-          </Button>
+
+          <Link href="/about">
+            <Button variant="outline" className="w-[12rem] mx-auto md:mx-0">
+              Learn More
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

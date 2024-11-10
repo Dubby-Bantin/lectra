@@ -17,7 +17,7 @@ const TipLink = ({
   pathName: string;
   children: React.ReactNode;
 }) => {
-  const path = usePathname() ;
+  const path = usePathname();
   return (
     <TooltipProvider>
       <Tooltip>

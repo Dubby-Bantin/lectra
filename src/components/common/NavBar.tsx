@@ -9,6 +9,8 @@ import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
 import { ModeToggle } from "@/context/ThemeSwitcher";
+import AuthNavLink from "./AuthNavLink";
+import { MdOutlineDashboard } from "react-icons/md";
 
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,7 +53,7 @@ const NavBar = () => {
             {title}
           </Link>
         ))}
-
+        <AuthNavLink className="text-sm flex items-center gap-4 rounded-xl px-3 py-2 transition-colors duration-200" />
         <ModeToggle />
       </nav>
 
@@ -67,7 +69,7 @@ const NavBar = () => {
           <nav className="grid gap-2 text-lg font-medium z-50">
             <Link
               href="#"
-              className="flex items-center gap-2 text-lg font-semibold"
+              className="flex items-center gap-2 text-lg font-semibold w-[3rem] h-[3rem] bg-dark rounded-md"
             >
               <Image
                 alt="Lectra Logo"
@@ -88,16 +90,11 @@ const NavBar = () => {
                 {title}
               </Link>
             ))}
-            {/* {isAuthenticated && (
-              <div className="flex flex-col gap-5">
-                <Link
-                  href="#dashboard"
-                  className="flex items-center gap-4 rounded-xl px-3 py-2 transition-colors duration-200 hover:bg-gray-200 dark:hover:bg-gray-700"
-                >
-                  <span>Dashboard</span>
-                </Link>
-              </div>
-            )} */}
+
+            <div className="flex items-center gap-4 rounded-xl px-3 py-2 transition-colors duration-200 hover:bg-gray-200 dark:hover:bg-gray-700">
+              <MdOutlineDashboard />
+              <AuthNavLink className="" />
+            </div>
           </nav>
         </SheetContent>
       </Sheet>

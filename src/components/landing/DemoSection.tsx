@@ -4,7 +4,7 @@ import liveSession from "@/public/images/pexels-karolina-grabowska-4491461.jpg";
 
 const DemoSection = () => {
   return (
-    <section className="demo-section px-4 py-8">
+    <section id="features" className="demo-section px-4 py-8">
       {/* Section Heading */}
       <h2 className="text-3xl font-bold text-center mb-10">
         Discover Lectra&apos;s Features

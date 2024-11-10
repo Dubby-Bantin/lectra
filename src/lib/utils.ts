@@ -16,7 +16,7 @@ import { db, storage } from "./firebase";
 // import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
 import { InstructorData, UserType } from "@/types";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 
 // Utility function to merge Tailwind and clsx classes
 export function cn(...inputs: ClassValue[]) {
@@ -130,7 +130,7 @@ const getFireStoreRefData = async (
         id: collectionDocument.id,
         ...collectionDocument.data(),
       } as InstructorData)
-    : redirect("/signup");
+    : null;
 };
 
 const capitalizeFirstLetter = (word: string) =>
@@ -196,25 +196,25 @@ export function getRandomColor() {
 }
 
 export const brightColors = [
-  "#2E8B57", // Darker Neon Green
-  "#FF6EB4", // Darker Neon Pink
-  "#00CDCD", // Darker Cyan
-  "#FF00FF", // Darker Neon Magenta
-  "#FF007F", // Darker Bright Pink
-  "#FFD700", // Darker Neon Yellow
-  "#00CED1", // Darker Neon Mint Green
-  "#FF1493", // Darker Neon Red
-  "#00CED1", // Darker Bright Aqua
-  "#FF7F50", // Darker Neon Coral
-  "#9ACD32", // Darker Neon Lime
-  "#FFA500", // Darker Neon Orange
-  "#32CD32", // Darker Neon Chartreuse
-  "#ADFF2F", // Darker Neon Yellow Green
-  "#DB7093", // Darker Neon Fuchsia
-  "#00FF7F", // Darker Spring Green
-  "#FFD700", // Darker Electric Lime
-  "#FF007F", // Darker Bright Magenta
-  "#FF6347", // Darker Neon Vermilion
+  "#2E8B57",
+  "#FF6EB4",
+  "#00CDCD",
+  "#FF00FF",
+  "#FF007F",
+  "#FFD700",
+  "#00CED1",
+  "#FF1493",
+  "#00CED1",
+  "#FF7F50",
+  "#9ACD32",
+  "#FFA500",
+  "#32CD32",
+  "#ADFF2F",
+  "#DB7093",
+  "#00FF7F",
+  "#FFD700",
+  "#FF007F",
+  "#FF6347",
 ];
 
 export function getUserColor(userId?: string) {

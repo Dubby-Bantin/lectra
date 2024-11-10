@@ -8,7 +8,8 @@ import FAQSection from "@/components/landing/Faqs";
 import { FaAward, FaChartLine, FaHandsHelping, FaUsers } from "react-icons/fa";
 import partner1Image from "@/public/images/1ac4b1_de2f47ad5b2940f3b5b2aaf0597ff6ed~mv2.webp";
 import partner2Image from "@/public/images/pexels-karolina-grabowska-4491461.jpg";
-import partner3Image from "@/public/images/1ac4b1_de2f47ad5b2940f3b5b2aaf0597ff6ed~mv2.webp";
+import partner3Image from "@/public/images/pexels-zen-chung-5538322.jpg";
+// import partner3Image from "@/public/images/1ac4b1_de2f47ad5b2940f3b5b2aaf0597ff6ed~mv2.webp";
 import partner4Image from "@/public/images/1ac4b1_de2f47ad5b2940f3b5b2aaf0597ff6ed~mv2.webp";
 import Footer from "@/components/landing/Footer";
 
@@ -47,55 +48,55 @@ const AboutPage = () => {
   ];
 
   return (
-    <section className="py-5 px-6 space-y-20">
-      <section className="py-5 px-6 space-y-20">
-        <section className="py-5 px-6 space-y-20">
-          <section className="relative flex flex-col md:flex-row items-center gap-8 md:gap-16">
-            <div className="flex-1 space-y-4 text-center md:text-left z-10">
-              <h1 className="text-4xl font-bold">About Us</h1>
-              <p className="text-lg text-gray-600 max-w-3xl">
-                At Lectra, we’re transforming learning through technology. Our
-                mission is to create a personalized, engaging, and accessible
-                learning environment for everyone.
-              </p>
-              <Button variant={"outline"}>Learn More</Button>
-            </div>
+    <section className="py-8 px-4 lg:px-6 space-y-20 w-full">
+      <section className="py-8 space-y-20">
+        <section className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-16 w-full lg:px-32 px-10">
+          <div className="lg:w-2/3 w-full space-y-4 text-center lg:text-left z-10">
+            <h1 className="text-4xl font-bold">About Us</h1>
+            <p className="text-lg text-gray-600 lg:max-w-xl w-full">
+              At Lectra, we’re transforming learning through technology. Our
+              mission is to create a personalized, engaging, and accessible
+              learning environment for everyone.
+            </p>
+            <Button variant="outline">Learn More</Button>
+          </div>
 
-            {/* Refined Image Grid */}
-            <div className="relative grid grid-cols-2 gap-4 flex-1 md:max-w-lg">
-              <div className="relative overflow-hidden rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
-                <Image
-                  src={partner1Image}
-                  alt="Partner 1"
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <div className="relative overflow-hidden rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
-                <Image
-                  src={partner2Image}
-                  alt="Partner 2"
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <div className="relative overflow-hidden rounded-lg shadow-lg transform hover:scale-105 transition duration-300 col-span-2">
-                <Image
-                  src={partner3Image}
-                  alt="Team Member"
-                  className="object-cover w-full h-[15rem]"
-                />
-              </div>
+          <div className="relative lg:w-1/3 lg:grid grid-cols-2 flex gap-4 items-center justify-center flex-1 max-w-xs sm:max-w-md md:max-w-lg lg:max-w-none mx-auto lg:mx-0">
+            <div className="heptagon relative overflow-hidden rounded-lg shadow-lg lg:left-20 w-full">
+              <Image
+                src={partner1Image}
+                alt="Partner 1"
+                className="object-cover w-full h-full"
+                priority
+              />
             </div>
-          </section>
+            <div className="heptagon relative overflow-hidden rounded-lg shadow-lg lg:top-[7.5rem] lg:left-5 w-full">
+              <Image
+                src={partner2Image}
+                alt="Partner 2"
+                className="object-cover w-full h-full"
+                priority
+              />
+            </div>
+            <div className="md:block hidden heptagon relative overflow-hidden rounded-lg shadow-lg lg:-left-[4.5rem] -top-[3.2rem] w-full">
+              <Image
+                src={partner3Image}
+                alt="Partner 3"
+                className="object-cover w-full h-full"
+                priority
+              />
+            </div>
+          </div>
         </section>
 
         <Separator className="my-8" />
 
         {/* Core Values Section */}
         <section>
-          <h2 className="text-3xl font-semibold mb-8 text-center">
+          <h2 className="text-2xl lg:text-3xl font-semibold mb-8 text-center">
             Our Core Values
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
             <CoreValueCard
               icon={<FaHandsHelping className="text-blue-500" />}
               title="Empathy"
@@ -123,7 +124,9 @@ const AboutPage = () => {
 
         {/* Our Story Timeline */}
         <section>
-          <h2 className="text-3xl font-semibold text-center mb-8">Our Story</h2>
+          <h2 className="text-2xl lg:text-3xl font-semibold text-center mb-8">
+            Our Story
+          </h2>
           <Timeline data={data} />
         </section>
 
@@ -131,18 +134,20 @@ const AboutPage = () => {
 
         {/* Meet Our Team Section */}
         <section className="my-16">
-          <h2 className="text-3xl font-semibold text-center mb-8">
+          <h2 className="text-2xl lg:text-3xl font-semibold text-center mb-8">
             Meet Our Team
           </h2>
-          <div className="flex flex-wrap justify-center gap-10">
+          <div className="flex flex-wrap justify-center gap-10 px-4">
             {teamMembers.map((member, index) => (
               <div key={index} className="flex flex-col items-center">
                 <Image
                   src={member.image}
                   alt={member.name}
-                  className="rounded-full h-40 w-40 object-cover mb-4"
+                  className="rounded-full h-32 w-32 md:h-40 md:w-40 object-cover mb-4"
                 />
-                <h3 className="text-xl font-semibold">{member.name}</h3>
+                <h3 className="text-lg md:text-xl font-semibold">
+                  {member.name}
+                </h3>
                 <p className="text-gray-600">{member.role}</p>
               </div>
             ))}
@@ -153,14 +158,14 @@ const AboutPage = () => {
 
         {/* Call-to-Action Section */}
         <section className="text-center my-16">
-          <h2 className="text-3xl font-semibold mb-4">
+          <h2 className="text-2xl lg:text-3xl font-semibold mb-4">
             Join Us on Our Mission!
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+          <p className="text-base lg:text-lg text-gray-600 max-w-2xl mx-auto mb-8">
             We’re always looking for passionate educators, students, and
             partners to join us in reshaping the future of learning.
           </p>
-          <Button variant={"outline"}>Get Involved</Button>
+          <Button variant="outline">Get Involved</Button>
         </section>
 
         {/* FAQ Section */}
@@ -170,12 +175,14 @@ const AboutPage = () => {
 
         {/* Join Us Section */}
         <section className="text-center">
-          <h2 className="text-3xl font-semibold mb-4">Join Us Today</h2>
-          <p className="text-lg max-w-2xl mx-auto mb-3">
+          <h2 className="text-2xl lg:text-3xl font-semibold mb-4">
+            Join Us Today
+          </h2>
+          <p className="text-base lg:text-lg max-w-2xl mx-auto mb-4">
             Become part of Lectra’s growing community. Whether you’re an
             instructor or student, there’s a place for you!
           </p>
-          <Button variant={"outline"}>Get Started</Button>
+          <Button variant="outline">Get Started</Button>
         </section>
       </section>
       <Footer />
@@ -183,7 +190,6 @@ const AboutPage = () => {
   );
 };
 
-// Helper component for Core Values
 const CoreValueCard = ({
   icon,
   title,
@@ -195,8 +201,8 @@ const CoreValueCard = ({
 }) => (
   <Card className="p-6 shadow-md flex items-center flex-col text-center">
     <div className="text-4xl mb-4">{icon}</div>
-    <h3 className="text-xl font-semibold">{title}</h3>
-    <p className="text-gray-600">{description}</p>
+    <h3 className="text-lg font-semibold mb-2">{title}</h3>
+    <p className="text-sm text-gray-600">{description}</p>
   </Card>
 );
 
