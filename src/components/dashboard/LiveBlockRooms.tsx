@@ -26,7 +26,7 @@ const LiveBlockRooms = async ({
 }: LiveBlockRoomsProps) => {
   return (
     <section className="px-4 py-6 rounded-lg">
-      {roomDocuments.data.length > 0 ? (
+      {roomDocuments?.data?.length > 0 ? (
         <div>
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">

@@ -12,7 +12,7 @@ const Lectures = async ({ params }: { params: { id: string } }) => {
 
   const { id, email } = data;
 
-  const roomDocuments = await getDocuments(email, 50);
+  const roomDocuments = await getDocuments(email,100);
 
   return (
     <section className="p-6">

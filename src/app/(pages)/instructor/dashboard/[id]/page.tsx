@@ -58,7 +58,7 @@ const InstructorProfileSetUp = async ({
     idVerificationUrl,
   } = data;
 
-  const roomDocuments = await getDocuments(email, 5);
+  const roomDocuments = await getDocuments(email, 10);
   const instructorsOverview = [
     {
       title: "Total Students",
@@ -74,7 +74,7 @@ const InstructorProfileSetUp = async ({
     },
     {
       title: "Total Lectures",
-      total: roomDocuments.data.length,
+      total: roomDocuments?.data?.length,
       Icon: PiChalkboardTeacherLight,
       border: "F49D49",
     },
