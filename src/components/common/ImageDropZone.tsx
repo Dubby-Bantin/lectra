@@ -61,7 +61,7 @@ const ImageDropZone = ({ name }: { name: string }) => {
             <Image src={uploadIcon} alt="Upload" width={30} height={30} />
           </div>
           <p className="md:tracking-wider mb-4 font-bold text-center bg-opacity-60">
-            Click to upload or drag and drop
+            Click to upload
           </p>
           <p className="text-xs ">PNG, JPG, JPEG (max. 10MB)</p>
         </div>

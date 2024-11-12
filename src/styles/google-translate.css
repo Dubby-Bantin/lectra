@@ -16,6 +16,9 @@
 .dark .gtranslate_wrapper {
   background-color: #050113;
 }
+.gtranslate_wrapper {
+  background-color: #fff;
+}
 
 .dark .gtranslate_wrapper:hover {
   background-color: #19193e !important;

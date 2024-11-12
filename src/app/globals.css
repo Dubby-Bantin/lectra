@@ -41,6 +41,24 @@ body::-webkit-scrollbar-thumb:hover {
   background: #7878a3;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  border-radius: 50px;
+}
+
+.no-scrollbar::-webkit-scrollbar-track {
+  background: #09090a;
+}
+
+.no-scrollbar::-webkit-scrollbar-thumb {
+  background: #2e3d5b;
+  border-radius: 50px;
+}
+
+.no-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #7878a3;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;

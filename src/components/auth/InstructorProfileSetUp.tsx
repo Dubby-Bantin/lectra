@@ -10,7 +10,6 @@ import {
   SelectValue,
 } from "../ui/select";
 import "react-phone-number-input/style.css";
-// import CalendarComponent from "../common/CalendarComponent";
 import { Checkbox } from "../ui/checkbox";
 import Combo from "../common/Combo";
 import { universities } from "@/utils/constants";
@@ -35,7 +34,6 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
         await updateInstructorRef(
           formData,
           phoneNumber,
-          // birthDate,
           university,
           courses,
           selectedDays,

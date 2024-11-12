@@ -1,27 +1,42 @@
 "use client";
-import { Editor } from "@/components/editor/Editor";
-import LectureHeader from "@/components/lectures/LectureHeader";
-import { CollaborativeRoomProps } from "@/types";
-import Loader from "@/utils/Loader";
+import React, { useEffect, useRef, useState } from "react";
 import { RoomProvider, ClientSideSuspense } from "@liveblocks/react/suspense";
-import { useEffect, useRef, useState } from "react";
 import { Input } from "../ui/input";
 import { toast } from "sonner";
 import { updateDocumentTitle } from "@/lib/actions/room.actions";
+import { getFireStoreRefData } from "@/lib/utils";
+import { CollaborativeRoomProps } from "@/types";
+import LectureHeader from "@/components/lectures/LectureHeader";
 import ActiveCollaborators from "./ActiveCollaborators";
+import EndLectureBtn from "./EndLectureBtn";
+import Loader from "@/utils/Loader";
+import { Editor } from "@/components/editor/Editor";
 import Image from "next/image";
 import logo from "@/public/images/logo (2).png";
 
 const CollaborativeRoom = ({
   roomId,
   roomMetadata,
+  userId,
 }: CollaborativeRoomProps) => {
   const [documentTitle, setDocumentTitle] = useState(roomMetadata.title);
   const [editing, setEditing] = useState(false);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
+  const [instructorId, setInstructorId] = useState<string | null>(null);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const currentUserType = "editor";
+
+  useEffect(() => {
+    const fetchInstructor = async () => {
+      const data = await getFireStoreRefData(userId, "instructors");
+      if (data && data.id) {
+        setInstructorId(data.id);
+      }
+    };
+    fetchInstructor();
+  }, [userId]);
 
   const updateTitleHandler = async (
     e: React.KeyboardEvent<HTMLInputElement>
@@ -32,8 +47,8 @@ const CollaborativeRoom = ({
       try {
         if (documentTitle !== roomMetadata.title) {
           const updatedRoom = await updateDocumentTitle({
-            roomId: roomId,
-            title: inputRef.current?.value,
+            roomId,
+            title: documentTitle,
             creatorId: roomMetadata.creatorId,
           });
 
@@ -42,19 +57,18 @@ const CollaborativeRoom = ({
           }
         }
       } catch (error) {
-        const e =
-          error instanceof Error
-            ? error.message
-            : "Something went wrong while trying to update title";
-        toast.error(e);
+        const errorMessage =
+          error instanceof Error ? error.message : "Error updating title";
+        toast.error(errorMessage);
       }
 
       setLoading(false);
     }
   };
 
+  // Close title editing on outside click
   useEffect(() => {
-    const handleClickOutSide = (e: MouseEvent) => {
+    const handleClickOutside = (e: MouseEvent) => {
       if (
         containerRef.current &&
         !containerRef.current.contains(e.target as Node)
@@ -63,13 +77,13 @@ const CollaborativeRoom = ({
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutSide);
-
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutSide);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
+  // Auto-focus title input when editing is enabled
   useEffect(() => {
     if (editing && inputRef.current) {
       inputRef.current.focus();
@@ -79,14 +93,12 @@ const CollaborativeRoom = ({
   return (
     <RoomProvider id={roomId}>
       <ClientSideSuspense fallback={<Loader />}>
-        <div className="collaborative-room w-full">
+        <div className="collaborative-room w-full p-5">
           <div className="relative w-full">
-            {/* Flex container for logo, title, and collaborators */}
             <div
               ref={containerRef}
-              className="flex items-center justify-between w-full px-4"
+              className="flex flex-wrap items-center justify-between w-full px-4 py-5"
             >
-              {/* Left: Logo */}
               <Image
                 src={logo}
                 alt="logo"
@@ -95,7 +107,7 @@ const CollaborativeRoom = ({
                 className="bg-dark rounded-sm"
               />
 
-              {/* Center: Title or Input */}
+              {/* Title/Input Centered */}
               <div className="flex-grow flex justify-center max-w-80">
                 {editing && !loading ? (
                   <Input
@@ -119,9 +131,10 @@ const CollaborativeRoom = ({
                 )}
               </div>
 
-              {/* Right: Active Collaborators */}
-              <div className="flex-shrink-0">
+              {/* Right Section */}
+              <div className="flex-shrink-0 flex gap-5 items-center">
                 <ActiveCollaborators />
+                {instructorId && <EndLectureBtn userId={instructorId} />}
               </div>
             </div>
 

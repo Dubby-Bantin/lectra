@@ -1,5 +1,5 @@
 import Image from "next/image";
-import e_learn from "@/public/images/istockphoto-1352727172-1024x1024.jpg";
+// import e_learn from "@/public/images/istockphoto-1352727172-1024x1024.jpg";
 import Link from "next/link";
 
 const WelcomeComponent = () => {
@@ -8,7 +8,9 @@ const WelcomeComponent = () => {
       {/* Left Section: Image/Logo */}
       <div className="md:w-1/3 relative h-[30rem]">
         <Image
-          src={e_learn}
+          src={
+            "https://media.istockphoto.com/id/1352727172/photo/portrait-of-happy-arab-freelancer-man-sitting-at-desk-with-laptop-computer-at-home-office.jpg?s=612x612&w=0&k=20&c=R7nSqjYnrPpozXeiQ9cXO4xtSpF4UOSP6gHqV8u_9s0="
+          }
           alt="e-learning image"
           layout="fill"
           objectFit="cover" // Makes sure the image covers the whole container

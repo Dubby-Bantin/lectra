@@ -19,9 +19,6 @@ import {
 import FloatingToolbarPlugin from "./plugins/FloatingToolBarPlugin";
 import { useThreads } from "@liveblocks/react/suspense";
 import Comments from "../lectures/Comments";
-// Catch any errors that occur during Lexical updates and log them
-// or throw them as needed. If you don't throw them, Lexical will
-// try to recover gracefully without losing user data.
 
 function Placeholder() {
   return <div className="editor-placeholder">Enter some rich text...</div>;
@@ -42,13 +39,13 @@ export function Editor() {
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
-      <div className="editor-container size-full">
+      <div className="editor-container w-full mx-auto p-4">
         <ToolbarPlugin />
-        <div className="flex justify-center w-full gap-24 py-5 h-full">
-          <div className="editor-inner min-h-fit mb-5 h-fit w-full max-w-[800px]">
+        <div className="flex flex-col lg:flex-row lg:flex-wrap justify-center w-full gap-6 py-5">
+          <div className="editor-inner w-full lg:w-[65%] mb-5 h-fit max-w-full lg:max-w-[800px]">
             <RichTextPlugin
               contentEditable={
-                <ContentEditable className="editor-input h-full" />
+                <ContentEditable className="editor-input h-full p-2" />
               }
               placeholder={<Placeholder />}
               ErrorBoundary={LexicalErrorBoundary}
@@ -57,9 +54,10 @@ export function Editor() {
             <HistoryPlugin />
             <AutoFocusPlugin />
           </div>
-          <div className="">
+
+          <div className="w-full lg:w-[35%] max-w-full lg:max-w-[800px]">
             <LiveblocksPlugin>
-              <FloatingComposer className="w-[350px]" />
+              <FloatingComposer className="w-full lg:w-[350px]" />
               <FloatingThreads threads={threads} />
               <Comments />
             </LiveblocksPlugin>

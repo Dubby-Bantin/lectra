@@ -28,7 +28,7 @@ const NavBar = () => {
 
   return (
     <header
-      className={`top-0 z-[9999] sticky px-5 flex justify-between items-center p-2 transition-all duration-300 ${
+      className={`top-0 z-[999999] sticky px-5 flex justify-between items-center p-2 transition-all duration-300 ${
         isScrolled ? "backdrop-blur-lg shadow-md" : "bg-transparent"
       }`}
     >

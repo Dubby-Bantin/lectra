@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import { liveblocks } from "../liveblocks";
 import { parseStringify } from "../utils";
 import { CreateDocumentParams, RoomAccesses } from "@/types";
+
 const createDocument = async ({ userId, email }: CreateDocumentParams) => {
   const roomId = nanoid();
 
@@ -49,6 +50,14 @@ const getDocument = async ({
     );
   }
 };
+const getDocuments = async (email: string, limit: number) => {
+  try {
+    const rooms = await liveblocks.getRooms({ userId: email, limit: limit });
+    return parseStringify(rooms);
+  } catch (error) {
+    console.log(`An error occurred while trying to get rooms ${error}`);
+  }
+};
 
 const updateDocumentTitle = async ({
   roomId,
@@ -59,7 +68,9 @@ const updateDocumentTitle = async ({
   creatorId: string;
 }) => {
   try {
-    if (!title) return;
+    if (!title) {
+      return;
+    }
     const updatedRoom = await liveblocks.updateRoom(roomId, {
       metadata: {
         title,
@@ -72,4 +83,4 @@ const updateDocumentTitle = async ({
   }
 };
 
-export { createDocument, getDocument, updateDocumentTitle };
+export { createDocument, getDocument, updateDocumentTitle, getDocuments };

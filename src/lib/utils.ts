@@ -13,10 +13,8 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import { db, storage } from "./firebase";
-// import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
 import { InstructorData, UserType } from "@/types";
-// import { redirect } from "next/navigation";
 
 // Utility function to merge Tailwind and clsx classes
 export function cn(...inputs: ClassValue[]) {
@@ -152,7 +150,7 @@ export const getAccessType = (userType: UserType) => {
   }
 };
 
-export const dateConverter = (timestamp: string): string => {
+const dateConverter = (timestamp: string): string => {
   const timestampNum = Math.round(new Date(timestamp).getTime() / 1000);
   const date: Date = new Date(timestampNum * 1000);
   const now: Date = new Date();
@@ -165,13 +163,17 @@ export const dateConverter = (timestamp: string): string => {
 
   switch (true) {
     case diffInDays > 7:
-      return `${Math.floor(diffInDays / 7)} weeks ago`;
+      const weeks = Math.floor(diffInDays / 7);
+      return weeks === 1 ? "1 week ago" : `${weeks} weeks ago`;
     case diffInDays >= 1 && diffInDays <= 7:
-      return `${Math.floor(diffInDays)} days ago`;
+      const days = Math.floor(diffInDays);
+      return days === 1 ? "1 day ago" : `${days} days ago`;
     case diffInHours >= 1:
-      return `${Math.floor(diffInHours)} hours ago`;
+      const hours = Math.floor(diffInHours);
+      return hours === 1 ? "1 hour ago" : `${hours} hours ago`;
     case diffInMinutes >= 1:
-      return `${Math.floor(diffInMinutes)} minutes ago`;
+      const minutes = Math.floor(diffInMinutes);
+      return minutes === 1 ? "1 minute ago" : `${minutes} minutes ago`;
     default:
       return "Just now";
   }
@@ -250,4 +252,5 @@ export {
   getFireStoreRefData,
   capitalizeFirstLetter,
   heroSlides,
+  dateConverter,
 };
