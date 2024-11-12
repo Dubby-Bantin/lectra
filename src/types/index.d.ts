@@ -11,9 +11,8 @@ declare type InstructorData = {
   preferred_language: string;
   degree: string;
   major: string;
-  gender: string;
+  gender?: string;
   phoneNumber: string | undefined;
-  birthDate: Date | undefined;
   university: string;
   courses: string[];
   selectedDays: string[];
