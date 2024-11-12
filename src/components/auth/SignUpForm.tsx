@@ -31,7 +31,7 @@ const SignUpForm = () => {
           if (formData.get("role") === "instructor") {
             router.push(`/instructor_profile_setup/${id}`);
           } else {
-            router.push(`/user_profile_setup/${id}`);
+            router.push(`/user_profile_set_up/${id}`);
           }
         }
       }}

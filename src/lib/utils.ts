@@ -53,6 +53,7 @@ const handleAdd = async (
     });
 
     const response = NextResponse.next();
+
     response.cookies.set("userId", docRef.id);
     return { id: docRef.id };
   } catch (e) {
