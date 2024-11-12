@@ -82,7 +82,7 @@ const InstructorProfileSetUp = async ({
 
   return (
     <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
-      <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
+      <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2 ">
         <h1 className="text-lg font-bold">
           Hello {name}
           <p className="text-sm">Here’s an overview of your dashboard.</p>
@@ -92,7 +92,7 @@ const InstructorProfileSetUp = async ({
             <div
               key={i}
               className={`h-[100px] border-b sm:border-b-0 w-full flex items-center pl-5 gap-3 ${
-                i === 0 ? "" : "sm:border-l"
+                i !== 0 && "sm:border-l"
               }`}
             >
               <div
@@ -119,7 +119,7 @@ const InstructorProfileSetUp = async ({
         />
       </div>
 
-      <div className="overflow-y-auto h-[50rem] no-scrollbar">
+      <div className="sm:overflow-y-auto sm:h-[47.2rem] no-scrollbar">
         <Card className="overflow-hidden" x-chunk="dashboard-05-chunk-4">
           <CardHeader className="flex flex-row items-start bg-muted/50">
             <div className="grid gap-0.5">
