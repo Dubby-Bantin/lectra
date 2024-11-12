@@ -50,10 +50,9 @@ const getDocument = async ({
     );
   }
 };
-const getDocuments = async (email: string, limit: number) => {
+const getDocuments = async (email: string) => {
   try {
-    const rooms = await liveblocks.getRooms({ userId: email, limit: limit });
-    console.log(rooms);
+    const rooms = await liveblocks.getRooms({ userId: email, limit: 100 });
     return parseStringify(rooms);
   } catch (error) {
     console.log(`An error occurred while trying to get rooms ${error}`);

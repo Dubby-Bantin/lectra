@@ -58,7 +58,7 @@ const InstructorProfileSetUp = async ({
     idVerificationUrl,
   } = data;
 
-  const roomDocuments = await getDocuments(email, 10);
+  const roomDocuments = await getDocuments(email);
   const instructorsOverview = [
     {
       title: "Total Students",
