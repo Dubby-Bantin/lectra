@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-const page = ({ id }: { id: string }) => {
+const StudentDashBoard = ({ id }: { id: string }) => {
   const cookieStore = cookies();
   if (!cookieStore.get("userId")) {
     cookieStore.set("userId", id);
@@ -7,4 +7,4 @@ const page = ({ id }: { id: string }) => {
   return <div>Welcome to Your Dashboard</div>;
 };
 
-export default page;
+export default StudentDashBoard;
