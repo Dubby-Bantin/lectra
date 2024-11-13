@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getFireStoreRefData } from "@/lib/utils";
+import { MdOutlineDashboard } from "react-icons/md";
 
-const AuthNavLink = ({ className }: { className: string }) => {
+const AuthNavLink = () => {
   const [userId, setUserId] = useState<string | null>(null);
   const [rolePath, setRolePath] = useState<string | null>(null);
 
@@ -51,7 +52,13 @@ const AuthNavLink = ({ className }: { className: string }) => {
   }
 
   return (
-    <Link className={className} href={`/${rolePath}/dashboard/${userId}`}>
+    <Link
+      className={
+        "flex items-center gap-4 rounded-sm px-4 py-2 border sm:text-sm"
+      }
+      href={`/${rolePath}/dashboard/${userId}`}
+    >
+      <MdOutlineDashboard className="sm:hidden" />
       Dashboard
     </Link>
   );

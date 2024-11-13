@@ -10,7 +10,6 @@ import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
 import { ModeToggle } from "@/context/ThemeSwitcher";
 import AuthNavLink from "./AuthNavLink";
-import { MdOutlineDashboard } from "react-icons/md";
 
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -53,7 +52,7 @@ const NavBar = () => {
             {title}
           </Link>
         ))}
-        <AuthNavLink className="text-sm flex items-center gap-4 rounded-xl px-3 py-2 transition-colors duration-200" />
+        <AuthNavLink />
         <ModeToggle />
       </nav>
 
@@ -90,11 +89,7 @@ const NavBar = () => {
                 {title}
               </Link>
             ))}
-
-            <div className="flex items-center gap-4 rounded-xl px-3 py-2 transition-colors duration-200 hover:bg-gray-200 dark:hover:bg-gray-700">
-              <MdOutlineDashboard />
-              <AuthNavLink className="" />
-            </div>
+            <AuthNavLink />
           </nav>
         </SheetContent>
       </Sheet>
