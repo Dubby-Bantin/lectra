@@ -51,7 +51,6 @@ const handleAdd = async (
       createdAt: serverTimestamp(),
     });
 
-    document.cookie = `userId=${docRef.id}; path=/`;
     return { id: docRef.id };
   } catch (e) {
     const error = e as FirestoreError;

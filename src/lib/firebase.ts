@@ -56,7 +56,6 @@ const signUp = async (
       return { user, error: null, id };
     }
   } catch (e: unknown) {
-    // Handle errors from Firebase Auth
     const errorMessage =
       e instanceof FirebaseError
         ? e.code.split("/")[1].replace(/-/g, " ")

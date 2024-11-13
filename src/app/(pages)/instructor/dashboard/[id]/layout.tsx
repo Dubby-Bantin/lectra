@@ -46,9 +46,6 @@ const layout = async ({
     return;
   }
   const cookieStore = cookies();
-  if (!cookieStore.get("userId")) {
-    cookieStore.set("userId", id);
-  }
   const userId = cookieStore.get("userId")?.value;
   if (!userId) {
     redirect("/signup");

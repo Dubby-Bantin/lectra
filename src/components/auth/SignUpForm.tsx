@@ -27,7 +27,7 @@ const SignUpForm = () => {
           toast.error(`${error}, please try again`);
         } else {
           formRef.current?.reset();
-          toast.info("Account created successfully!");
+          toast.success("Account created successfully!");
           if (formData.get("role") === "instructor") {
             router.push(`/instructor_profile_setup/${id}`);
           } else {
