@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-const StudentDashBoard = ({ id }: { id: string }) => {
+const StudentDashBoard = ({ params: { id } }: { params: { id: string } }) => {
   const cookieStore = cookies();
   if (!cookieStore.get("userId")) {
     cookieStore.set("userId", id);
