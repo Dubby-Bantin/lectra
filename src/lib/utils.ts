@@ -13,7 +13,6 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import { db, storage } from "./firebase";
-import { NextResponse } from "next/server";
 import { InstructorData, UserType } from "@/types";
 
 // Utility function to merge Tailwind and clsx classes
@@ -28,8 +27,8 @@ interface FirestoreData {
 // Function to delete a document by its document ID
 const deleteData = async (document: string, id: string): Promise<void> => {
   try {
-    const DocRef = doc(db, document, id); // Reference the document by ID
-    await deleteDoc(DocRef); // Delete the document
+    const DocRef = doc(db, document, id);
+    await deleteDoc(DocRef);
   } catch (e) {
     const error = e as FirestoreError;
     alert(
@@ -52,8 +51,7 @@ const handleAdd = async (
       createdAt: serverTimestamp(),
     });
 
-    const response = NextResponse.next();
-    response.cookies.set("userId", docRef.id);
+    document.cookie = `userId=${docRef.id}; path=/`;
     return { id: docRef.id };
   } catch (e) {
     const error = e as FirestoreError;
@@ -78,14 +76,8 @@ const handleUpdate = async (
     await updateDoc(docRef, data);
 
     return docRef.id;
-  } catch (e) {
-    const error = e as FirestoreError;
-    alert(
-      `Error Updating ${document + " document"}: ${
-        error?.message || error?.name || error?.cause
-      }`
-    );
-    throw new Error("Error Updating document");
+  } catch (e: unknown) {
+    throw new Error("Error Updating user details: " + e);
   }
 };
 
@@ -110,6 +102,16 @@ const uploadImages = async (images: File[], id: string): Promise<string[]> => {
   });
 
   return await Promise.all(uploadPromises);
+};
+const uploadImage = async (
+  docRef: string,
+  image: File,
+  id: string
+): Promise<string> => {
+  const imageRef = ref(storage, `${docRef}/${id}/profile_image`);
+
+  await uploadBytes(imageRef, image);
+  return await getDownloadURL(imageRef);
 };
 
 const getFireStoreRefData = async (
@@ -253,4 +255,5 @@ export {
   capitalizeFirstLetter,
   heroSlides,
   dateConverter,
+  uploadImage,
 };

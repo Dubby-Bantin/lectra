@@ -1,11 +1,11 @@
 import { liveblocks } from "@/lib/liveblocks";
 import { getFireStoreRefData, getUserColor } from "@/lib/utils";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { NextResponse } from "next/server";
+
 type UserInfo = {
   id?: string;
-
   info: {
     id?: string;
     name?: string;
@@ -14,23 +14,27 @@ type UserInfo = {
     color?: string;
   };
 };
+
 export async function POST() {
   const cookieStore = cookies();
   const fireStoreUserId = cookieStore.get("userId")?.value;
+
+  if (!fireStoreUserId) {
+    return NextResponse.redirect("/sign-in");
+  }
+
   const instructorData = await getFireStoreRefData(
     fireStoreUserId,
     "instructors"
   );
+  const studentData = await getFireStoreRefData(fireStoreUserId, "students");
 
-  if (!instructorData) {
-    return redirect("/signup"); // Redirect if no instructor data found
+  const userRoleData = instructorData || studentData;
+  if (!userRoleData) {
+    return NextResponse.redirect("/signup");
   }
+  const { id, name, email, profileImageUrl } = userRoleData;
 
-  const { id, name, email, profileImageUrl } = instructorData;
-
-  if (!fireStoreUserId) {
-    redirect("/sign-in");
-  }
   const user: UserInfo = {
     id,
     info: {
@@ -42,6 +46,7 @@ export async function POST() {
     },
   };
 
+  // Identify the user in Liveblocks
   const { status, body } = await liveblocks.identifyUser(
     {
       userId: user.info.email ?? "",
@@ -57,5 +62,6 @@ export async function POST() {
       },
     }
   );
+
   return new Response(body, { status });
 }

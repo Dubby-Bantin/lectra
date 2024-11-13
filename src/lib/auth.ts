@@ -2,9 +2,8 @@
 
 import { log } from "console";
 import { logIn, signUp } from "./firebase";
-import { handleUpdate, uploadImages } from "./utils";
+import { handleUpdate, uploadImage, uploadImages } from "./utils";
 import { InstructorProfileSetUpFireStoreData } from "@/types";
-import { FirebaseError } from "firebase/app";
 const createUser = async (formData: FormData) => {
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
@@ -116,21 +115,22 @@ const updateStudentRef = async (
   phoneNumber: string | undefined,
   id: string
 ) => {
-  const student_profile_photo = formData.get("student_profile_photo");
-  const data = {
-    phoneNumber,
-    student_profile_photo,
-  };
   try {
-    await handleUpdate("students", id, data);
+    const student_profile_photo = formData.get("student_profile_photo") as File;
 
-    return { e: null };
+    const profileImageUrl = await uploadImage(
+      "students",
+      student_profile_photo,
+      id
+    );
+    const studentData = {
+      phoneNumber,
+      profileImageUrl,
+    };
+
+    await handleUpdate("students", id, studentData);
   } catch (e: unknown) {
-    const errorMessage =
-      e instanceof FirebaseError
-        ? e?.code.split("/")[1].split("-").join(" ")
-        : "An error occurred while trying to setup your profile please try again.";
-    return { e: errorMessage };
+    console.error("Error uploading images:", e);
   }
 };
 

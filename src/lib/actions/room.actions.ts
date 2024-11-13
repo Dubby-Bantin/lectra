@@ -41,7 +41,7 @@ const getDocument = async ({
     const room = await liveblocks.getRoom(roomId);
     const hasAccess = Object.keys(room.usersAccesses).includes(userId);
     if (!hasAccess) {
-      throw new Error("You do not have access to this lecture room.");
+      console.log("Welcome Student");
     }
     return parseStringify(room);
   } catch (error) {

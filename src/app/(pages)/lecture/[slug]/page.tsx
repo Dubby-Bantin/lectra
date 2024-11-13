@@ -7,25 +7,37 @@ import { redirect } from "next/navigation";
 const Lecture = async ({ params: { slug } }: { params: { slug: string } }) => {
   const cookieStore = cookies();
   const userId = cookieStore.get("userId")?.value;
-  const data = await getFireStoreRefData(userId, "instructors");
-  if (!data) {
-    return;
-  }
-  const { id, email } = data;
-  const room = await getDocument({ roomId: slug, userId: email });
-  if (!room) {
+
+  // Fetch instructor and student data
+  const instructorData = await getFireStoreRefData(userId, "instructors");
+  const studentData = await getFireStoreRefData(userId, "students");
+
+  let id;
+  let email;
+
+  // Check if the user is an instructor or student
+  if (instructorData) {
+    ({ id, email } = instructorData);
+  } else if (studentData) {
+    ({ id, email } = studentData);
+  } else {
+    // Redirect if the user data is not found
     redirect("/signup");
+    return null;
   }
 
-  //TODO: Access the permissions of the user to access the document
+  // Retrieve the room document based on the user's email
+  const room = await getDocument({ roomId: slug, userId: email });
+
+  // Redirect if the room does not exist
+  if (!room) {
+    redirect("/signup");
+    return null;
+  }
+
+  // Render the CollaborativeRoom component
   return (
-    <>
-      <CollaborativeRoom
-        roomId={slug}
-        roomMetadata={room.metadata}
-        userId={id}
-      />
-    </>
+    <CollaborativeRoom roomId={slug} roomMetadata={room.metadata} userId={id} />
   );
 };
 

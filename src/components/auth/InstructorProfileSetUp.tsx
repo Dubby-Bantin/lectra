@@ -20,7 +20,6 @@ import PreferredLectureDays from "./PreferredLectureDays";
 import CourseInput from "./ReactTags";
 const InstructorProfileSetUp = ({ id }: { id: string }) => {
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>();
-  // const [birthDate, setBirthDate] = useState<Date | undefined>();
   const [open, setOpen] = useState(false);
   const [university, setUniversity] = useState("");
   const [courses, setCourses] = useState<string[]>([]);

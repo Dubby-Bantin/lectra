@@ -127,6 +127,7 @@ const CollaborativeRoom = ({
                     editing={editing}
                     setEditing={setEditing}
                     loading={loading}
+                    instructorId={instructorId}
                   />
                 )}
               </div>

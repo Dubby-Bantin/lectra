@@ -8,20 +8,24 @@ import { useRef, useState } from "react";
 import { updateStudentRef } from "@/lib/auth";
 import { toast } from "sonner";
 const StudentProfileSetup = ({ id }: { id: string }) => {
-  const router = useRouter();
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>();
+  const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
 
   return (
     <form
       action={async (formData) => {
-        const { e } = await updateStudentRef(formData, phoneNumber, id);
-        if (e) {
-          toast.error(e);
-        } else {
-          toast.success("Your Profile setup was successfull!");
+        try {
+          await updateStudentRef(formData, phoneNumber, id);
           formRef.current?.reset();
           router.push(`/student/dashboard/${id}`);
+          toast.success("Your Profile setup was successfull!");
+        } catch (error: unknown) {
+          if (error instanceof Error) {
+            toast.error(error.message);
+          } else {
+            toast.error("An unknown error occurred");
+          }
         }
       }}
       className="p-6 w-full flex flex-col items-center gap-5"
