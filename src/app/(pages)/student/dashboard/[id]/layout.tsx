@@ -1,4 +1,7 @@
-import { Home, Users2 } from "lucide-react";
+import { getFireStoreRefData } from "@/lib/utils";
+import { redirect } from "next/navigation";
+import { ReactNode } from "react";
+import { Home } from "lucide-react";
 import Link from "next/link";
 import {
   Tooltip,
@@ -30,27 +33,15 @@ import { PiChalkboardTeacherLight } from "react-icons/pi";
 import TipLink from "@/components/common/TipLink";
 import BreadCrumbLink from "@/components/common/BreadCrumbLink";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
-import { getFireStoreRefData } from "@/lib/utils";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-const layout = async ({
-  children,
+const StudentDashBoardLayout = async ({
   params: { id },
+  children,
 }: {
-  children: React.ReactNode;
   params: { id: string };
+  children: ReactNode;
 }) => {
-  const data = await getFireStoreRefData(id, "instructors");
+  const data = await getFireStoreRefData(id, "students");
   if (!data) {
-    return;
-  }
-  const cookieStore = cookies();
-  const userId = cookieStore.get("userId")?.value;
-  if (!userId) {
-    redirect("/signup");
-  }
-
-  if (userId !== id) {
     redirect("/signup");
   }
   const { name } = data;
@@ -87,13 +78,6 @@ const layout = async ({
                   <PiChalkboardTeacherLight className="h-5 w-5" />
                   Lectures
                 </Link>
-                <Link
-                  href="#"
-                  className="flex items-center gap-4 px-2.5 text-foreground"
-                >
-                  <Users2 className="h-5 w-5" />
-                  Students
-                </Link>
               </nav>
             </SheetContent>
           </Sheet>
@@ -102,16 +86,12 @@ const layout = async ({
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbPage>
-                  <Link href={`/instructor/dashboard/${id}`}>Dashboard</Link>
+                  <Link href={`/student/dashboard/${id}`}>Dashboard</Link>
                 </BreadcrumbPage>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
                 <BreadCrumbLink id={id} pathName={"lectures"} />
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadCrumbLink id={id} pathName={"students"} />
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
@@ -129,9 +109,6 @@ const layout = async ({
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Settings</DropdownMenuItem>
-                <DropdownMenuItem>Support</DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Logout</DropdownMenuItem>
               </DropdownMenuContent>
@@ -164,9 +141,6 @@ const layout = async ({
               <TipLink id={id} pathName="lectures">
                 <PiChalkboardTeacherLight className="h-5 w-5" />
               </TipLink>
-              <TipLink id={id} pathName="students">
-                <Users2 className="h-5 w-5" />
-              </TipLink>
             </TooltipProvider>
           </nav>
           <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-4">
@@ -179,4 +153,4 @@ const layout = async ({
   );
 };
 
-export default layout;
+export default StudentDashBoardLayout;

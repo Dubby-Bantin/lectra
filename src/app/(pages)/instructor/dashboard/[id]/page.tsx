@@ -9,7 +9,7 @@ import LiveBlockRooms from "@/components/dashboard/LiveBlockRooms";
 import { getDocuments } from "@/lib/actions/room.actions";
 import InstructorProfileCard from "@/components/dashboard/InstructorProfileCard";
 
-const InstructorProfileSetUp = async ({
+const InstructorProfilePage = async ({
   params: { id },
 }: {
   params: { id: string };
@@ -88,7 +88,17 @@ const InstructorProfileSetUp = async ({
             </div>
           ))}
         </div>
-        <WelcomeComponent />
+        <WelcomeComponent
+          h2="Instructor"
+          p1="  We’re excited to have you onboard as a certified instructor. This
+            dashboard is designed to simplify your experience in managing your
+            profile, lectures, and student interactions."
+          p2="  Our goal is to provide the tools you need to deliver impactful
+            lessons and foster a positive learning environment. Whether you’re
+            updating your course preferences or tracking your teaching progress,
+            we’ve got you covered."
+          image={profileImageUrl}
+        />
         <LiveBlockRooms
           userId={id}
           email={email}
@@ -119,4 +129,4 @@ const InstructorProfileSetUp = async ({
   );
 };
 
-export default InstructorProfileSetUp;
+export default InstructorProfilePage;

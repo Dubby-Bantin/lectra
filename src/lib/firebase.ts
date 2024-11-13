@@ -14,6 +14,7 @@ import {
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 import { handleAdd } from "./utils";
+import { setUserIdCookie } from "./actions/cookies.actions";
 
 // Firebase config
 const firebaseConfig = {
@@ -53,6 +54,7 @@ const signUp = async (
       return { user, error: null, id };
     } else {
       const { id } = await handleAdd("students", data);
+      await setUserIdCookie(id);
       return { user, error: null, id };
     }
   } catch (e: unknown) {
