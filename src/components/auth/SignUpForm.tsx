@@ -116,11 +116,11 @@ const SignUpForm = () => {
       </div>
 
       <SubmitBtn text="Sign up" loader="Creating account..." />
-      <div className="flex items-center justify-center mt-4 text-gray-500">
+      {/* <div className="flex items-center justify-center mt-4 text-gray-500">
         <span className="w-1/5 border-b border-gray-600"></span>
         <span className="px-2 text-sm">OR CONTINUE WITH</span>
         <span className="w-1/5 border-b border-gray-600"></span>
-      </div>
+      </div> */}
     </form>
   );
 };

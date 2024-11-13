@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import OAuthProvider from "@/components/auth/OAuthProvider";
+// import OAuthProvider from "@/components/auth/OAuthProvider";
 import logo from "@/public/images/logo (2).png";
 import SignUpForm from "@/components/auth/SignUpForm";
 
 const AuthForm = () => {
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <div className="w-full max-w-md p-8 py-10 space-y-6 text-white rounded-lg dark:shadow-lg border relative">
+      <div className="w-full max-w-md p-8 py-10 space-y-6 text-white rounded-lg dark:shadow-lg sm:border relative">
         <div className="flex flex-col items-center justify-center w-full">
           <Image
             src={logo}
@@ -20,7 +20,7 @@ const AuthForm = () => {
           <p className="text-center text-gray-400">Welcome</p>
         </div>
         <SignUpForm />
-        <OAuthProvider />
+        {/* <OAuthProvider /> */}
         <p className="text-right text-gray-400 text-sm">
           Already have an account?{" "}
           <Link

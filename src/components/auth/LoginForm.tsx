@@ -1,7 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
 import SubmitBtn from "../common/SubmitBtn";
-import OAuthProvider from "./OAuthProvider";
 import { LuLoader2 } from "react-icons/lu";
 import { loginUser } from "@/lib/auth";
 import { toast } from "sonner";
@@ -73,12 +72,6 @@ const LoginForm = () => {
         text="Sign In"
         loader={<LuLoader2 className="text-[1.4rem] animate-spin" />}
       />
-      <div className="flex items-center justify-center mt-4 text-gray-500">
-        <span className="w-1/5 border-b border-gray-600"></span>
-        <span className="px-2 text-sm">OR CONTINUE WITH</span>
-        <span className="w-1/5 border-b border-gray-600"></span>
-      </div>
-      <OAuthProvider />
     </form>
   );
 };

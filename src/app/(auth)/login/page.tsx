@@ -6,7 +6,7 @@ import LoginForm from "@/components/auth/LoginForm";
 const AuthForm: FC = () => {
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <div className="w-full max-w-md p-8 py-10 space-y-6 text-white rounded-lg dark:shadow-lg border relative">
+      <div className="w-full max-w-md p-8 py-10 space-y-6 text-white rounded-lg dark:shadow-lg sm:border relative">
         <div className="flex flex-col items-center justify-center w-full">
           <Image
             src={logo}
