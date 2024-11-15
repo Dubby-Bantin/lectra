@@ -15,7 +15,6 @@ import {
 import { db, storage } from "./firebase";
 import { InstructorData, UserType } from "@/types";
 
-// Utility function to merge Tailwind and clsx classes
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }

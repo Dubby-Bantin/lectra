@@ -27,6 +27,9 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const router = useRouter();
 
+  // don't forget to add expertise and remove subjects
+  // and then add bio as well
+
   return (
     <form
       action={async (formData) => {

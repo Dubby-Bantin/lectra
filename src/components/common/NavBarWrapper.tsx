@@ -1,13 +1,16 @@
-"use client"; // Mark this component as a client component
+"use client";
 
 import { usePathname } from "next/navigation";
 import NavBar from "./NavBar";
 
 const NavbarWrapper = () => {
   const pathname = usePathname();
-
-  // Adjust this list of paths as needed
-  if (pathname !== "/" && pathname !== "/about" && pathname !== "/contact") {
+  if (
+    pathname !== "/" &&
+    pathname !== "/about" &&
+    pathname !== "/contact" &&
+    pathname !== "/instructors"
+  ) {
     return null;
   }
   return <NavBar />;

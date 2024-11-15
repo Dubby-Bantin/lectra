@@ -1,6 +1,7 @@
 import CollaborativeRoom from "@/components/lectures/CollaborativeRoom";
 import { getDocument } from "@/lib/actions/room.actions";
 import { getFireStoreRefData } from "@/lib/utils";
+// import { sendEmail } from "@/services/emailService";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -28,7 +29,14 @@ const Lecture = async ({ params: { slug } }: { params: { slug: string } }) => {
 
   // Retrieve the room document based on the user's email
   const room = await getDocument({ roomId: slug, userId: email });
-
+  // const e = await sendEmail(
+  //   studentData?.email,
+  //   "A lecture has begun!",
+  //   instructorData?.email
+  // );
+  // if (e) {
+  //   console.log(e?.error);
+  // }
   // Redirect if the room does not exist
   if (!room) {
     redirect("/signup");

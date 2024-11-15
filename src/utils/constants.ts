@@ -1,15 +1,21 @@
 import { Info, Mail } from "lucide-react"; // Example icons
+import { PiChalkboardTeacherLight } from "react-icons/pi";
 
 const navLinks = [
   {
     id: "about",
     title: "About",
-    Icon: Info, // Icon for About
+    Icon: Info,
   },
   {
     id: "contact",
     title: "Contact",
-    Icon: Mail, // Icon for Contact
+    Icon: Mail,
+  },
+  {
+    id: "instructors",
+    title: "Instructors",
+    Icon: PiChalkboardTeacherLight,
   },
 ];
 

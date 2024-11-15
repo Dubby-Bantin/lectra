@@ -1,6 +1,7 @@
 import Link from "next/link";
 import BannerGrid from "./BannerGrid";
 import MobileBannerGrid from "./MobileBannerGrid";
+// import { Spotlight } from "../ui/SpotLight";
 
 const Banner = () => (
   <div className="relative w-full font-lato flex flex-col lg:flex-row items-center justify-between px-6 sm:px-10 md:px-20 lg:px-28 xl:px-32  md:gap-10 gap-5   min-h-screen md:pt-0 pt-20">
@@ -31,6 +32,8 @@ const Banner = () => (
       </div>
     </div>
 
+    <div className="dark:block hidden blue__gradient top-28 w-[50%] h-[50%] absolute right-20" />
+    {/* <Spotlight className="-top-40 right-0 md:-top-20" fill="white" /> */}
     {/* Right Section - Grid for large screens */}
     <div className="hidden md:block w-full">
       <BannerGrid />
