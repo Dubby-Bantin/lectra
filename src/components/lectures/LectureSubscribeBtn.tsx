@@ -9,7 +9,7 @@ const LectureSubscribeBtn = ({
   instructorId,
 }: {
   userId?: string;
-  instructorId: string;
+  instructorId?: string;
 }) => {
   const [subscribedUsersState, setSubscribedUsersState] = useState<string[]>(
     []
@@ -46,11 +46,13 @@ const LectureSubscribeBtn = ({
 
     try {
       const updatedUsers = [...subscribedUsersState, userId];
-      await handleUpdate("instructors", instructorId, {
-        subscribedUsers: updatedUsers,
-      });
-      setSubscribedUsersState(updatedUsers);
-      toast.success("Successfully subscribed!");
+      if (instructorId) {
+        await handleUpdate("instructors", instructorId, {
+          subscribedUsers: updatedUsers,
+        });
+        setSubscribedUsersState(updatedUsers);
+        toast.success("Successfully subscribed!");
+      }
     } catch (error) {
       console.error("Error subscribing user:", error);
       toast.error("Failed to subscribe. Please try again.");

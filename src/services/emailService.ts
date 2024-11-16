@@ -12,7 +12,7 @@ const sendEmail = async (
   studentName: string[],
   lectureTitle: string,
   lectureCategory: string,
-  lectureTime: string,
+  lectureTime: Date | null,
   lectureId?: string,
   duration?: string
 ) => {
@@ -45,8 +45,10 @@ const sendEmail = async (
     });
     return { success: true, error: null };
   } catch (e) {
-    console.error("Error sending email:", e);
-    return { error: e.message };
+    if (e instanceof Error) {
+      return { error: e.message };
+    }
+    console.error("Error sending email:");
   }
 };
 

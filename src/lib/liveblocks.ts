@@ -1,6 +1,13 @@
 import { Liveblocks } from "@liveblocks/node";
 
+const liveblocksSecretKey = process.env.LIVEBLOCKS_SECRET_KEY;
+
+if (!liveblocksSecretKey) {
+  throw new Error(
+    "LIVEBLOCKS_SECRET_KEY is not set in the environment variables."
+  );
+}
+
 export const liveblocks = new Liveblocks({
-  secret:
-    "sk_prod_ioSrJzFozLu3sx8JYIdbYn0rANnlpovbCZerMPlyT_0nX4mty6Kg_D9JFHzz0nG8",
+  secret: liveblocksSecretKey,
 });

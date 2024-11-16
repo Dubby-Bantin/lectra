@@ -136,12 +136,10 @@ const getFirestoreDocs = async (
   try {
     const collectionRef = collection(db, colRef);
     const collectionDocs = getDocs(collectionRef);
-    const docsData = (await collectionDocs).docs.map((doc) => ({
+    return (await collectionDocs).docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
-
-    return docsData;
   } catch (error) {
     console.error("Error fetching Firestore documents:", error);
     throw error;
@@ -260,7 +258,10 @@ const heroSlides = [
   "https://media.istockphoto.com/id/2177353072/photo/digital-recruitment-process-on-a-tablet-selecting-a-candidate-profile-for-hiring-great-for-hr.jpg?s=612x612&w=0&k=20&c=N1nqxHNbmjvfHxFNWc7Fv7pBhGjLHykgAtPpY2uIruo=",
 ];
 
-function formatIsoToDateString(isoString: string): string {
+function formatIsoToDateString(isoString: Date | null): string {
+  if (isoString === null) {
+    return "Invalid date";
+  }
   const date = new Date(isoString);
 
   const options: Intl.DateTimeFormatOptions = {

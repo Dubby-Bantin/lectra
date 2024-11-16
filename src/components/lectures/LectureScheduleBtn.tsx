@@ -1,8 +1,6 @@
 "use client";
-import { createDocument } from "@/lib/actions/room.actions";
 import { AddDocumentBtnProps } from "@/types";
 import LectureBtn from "./LectureBtn";
-import { revalidatePath } from "next/cache";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,14 +11,14 @@ import {
 } from "@/components/ui/popover";
 import { useState } from "react";
 import { SmartDatetimeInput } from "../ui/extension/smart-datetime-input";
-import { PiChalkboardTeacherLight } from "react-icons/pi";
 import scheduleLecture from "@/lib/actions/lecture.actions";
 import { toast } from "sonner";
 const LectureScheduleBtn = ({ userId, email }: AddDocumentBtnProps) => {
-  const [datetime, setDatetime] = useState<string>("");
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setDatetime(e.target.value);
-
+  const [datetime, setDatetime] = useState<Date | null>(null);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setDatetime(value ? new Date(value) : null); // Convert to Date or null if empty
+  };
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -37,16 +35,14 @@ const LectureScheduleBtn = ({ userId, email }: AddDocumentBtnProps) => {
           <form
             action={async (formData) => {
               try {
-                await scheduleLecture(
-                  formData,
-                  datetime,
-                  email,
-                  userId,
-                  userId
-                );
+                await scheduleLecture(formData, datetime, email, userId);
                 toast.success("Lecture Successfully scheduled");
               } catch (error) {
-                toast.error(error.message);
+                if (error instanceof Error) {
+                  toast.error(error.message);
+                } else {
+                  toast.error("An unexpected error occurred.");
+                }
               }
             }}
             className="space-y-4"
@@ -56,10 +52,10 @@ const LectureScheduleBtn = ({ userId, email }: AddDocumentBtnProps) => {
               <Label htmlFor="date">Date</Label>
               <SmartDatetimeInput
                 name="datetime"
-                value={datetime}
+                value={datetime ? datetime : undefined}
                 onChange={handleChange}
                 placeholder="e.g. tomorrow at 3pm"
-                onValueChange={setDatetime}
+                onValueChange={(date: Date) => setDatetime(date)}
               />
             </div>
             {/* Title Section */}

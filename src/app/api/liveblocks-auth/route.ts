@@ -1,3 +1,4 @@
+"use cache";
 import { liveblocks } from "@/lib/liveblocks";
 import { getFireStoreRefData, getUserColor } from "@/lib/utils";
 import { cookies } from "next/headers";
@@ -33,13 +34,15 @@ export async function POST() {
   if (!userRoleData) {
     return NextResponse.redirect("/signup");
   }
-  const { id, name, email, profileImageUrl } = userRoleData;
+  const { id, firstName, lastName, email, profileImageUrl } = userRoleData;
+  const fullName = `${firstName}  ${lastName}`;
+  console.log(fullName);
 
   const user: UserInfo = {
     id,
     info: {
       id,
-      name,
+      name: fullName,
       email,
       avatar: profileImageUrl,
       color: getUserColor(id),

@@ -35,12 +35,12 @@ const UserDashBoard = async ({
     return;
   }
 
-  const { name, profileImageUrl } = data;
+  const { firstName, lastName, profileImageUrl } = data;
   return (
     <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
       <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2 ">
         <h1 className="text-lg font-bold">
-          Hello {name}
+          Hello {`${firstName} ${lastName}`}
           <p className="text-sm">Here’s an overview of your dashboard.</p>
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 w-full border rounded-lg gap-3 min-h-[160px] place-content-center">

@@ -7,14 +7,14 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { ActiveModifiers } from "react-day-picker";
+// import { ActiveModifiers } from "react-day-picker";
 import { Calendar, CalendarProps } from "@/components/ui/calendar";
 import { Input } from "@/components/ui/input";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Calendar as CalendarIcon, LucideTextCursorInput } from "lucide-react";
+import { Calendar as CalendarIcon } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { format } from "date-fns";
+// import { format } from "date-fns";
 
 /* -------------------------------------------------------------------------- */
 /*                               Inspired By:                                 */
@@ -30,7 +30,9 @@ import { format } from "date-fns";
  * @returns A `Date` object representing the parsed date and time, or `null` if the string could not be parsed.
  */
 export const parseDateTime = (str: Date | string) => {
-  if (str instanceof Date) return str;
+  if (str instanceof Date) {
+    return str;
+  }
   return parseDate(str);
 };
 
@@ -43,7 +45,9 @@ export const parseDateTime = (str: Date | string) => {
  */
 export const getDateTimeLocal = (timestamp?: Date): string => {
   const d = timestamp ? new Date(timestamp) : new Date();
-  if (d.toString() === "Invalid Date") return "";
+  if (d.toString() === "Invalid Date") {
+    return "";
+  }
   return new Date(d.getTime() - d.getTimezoneOffset() * 60000)
     .toISOString()
     .split(":")
@@ -74,8 +78,8 @@ const inputBase =
 
 // @source: https://www.perplexity.ai/search/in-javascript-how-RfI7fMtITxKr5c.V9Lv5KA#1
 // use this pattern to validate the transformed date string for the natural language input
-const naturalInputValidationPattern =
-  "^[A-Z][a-z]{2}sd{1,2},sd{4},sd{1,2}:d{2}s[AP]M$";
+// const naturalInputValidationPattern =
+//   "^[A-Z][a-z]{2}sd{1,2},sd{4},sd{1,2}:d{2}s[AP]M$";
 
 const DEFAULT_SIZE = 96;
 
@@ -165,7 +169,9 @@ const TimePicker = () => {
 
       const newVal = parseDateTime(value ?? new Date());
 
-      if (!newVal) return;
+      if (!newVal) {
+        return;
+      }
 
       newVal.setHours(
         hour,
@@ -176,14 +182,16 @@ const TimePicker = () => {
 
       onValueChange(newVal);
     },
-    [value]
+    [value, onTimeChange, onValueChange]
   );
 
   const handleKeydown = React.useCallback(
     (e: React.KeyboardEvent<HTMLDivElement>) => {
       e.stopPropagation();
 
-      if (!document) return;
+      if (!document) {
+        return;
+      }
 
       const moveNext = () => {
         const nextIndex =
@@ -210,7 +218,9 @@ const TimePicker = () => {
       const setElement = () => {
         const currentElm = document.getElementById(`time-${activeIndex}`);
 
-        if (!currentElm) return;
+        if (!currentElm) {
+          return;
+        }
 
         currentElm.focus();
 
@@ -321,9 +331,13 @@ const TimePicker = () => {
   }, [Time, activeIndex]);
 
   const height = React.useMemo(() => {
-    if (!document) return;
+    if (!document) {
+      return;
+    }
     const calendarElm = document.getElementById("calendar");
-    if (!calendarElm) return;
+    if (!calendarElm) {
+      return;
+    }
     return calendarElm.style.height;
   }, []);
 
@@ -415,7 +429,7 @@ const NaturalLanguageInput = React.forwardRef<
     }:${new Date().getMinutes()} ${hour >= 12 ? "PM" : "AM"}`;
     setInputValue(value ? formatDateTime(value) : "");
     onTimeChange(value ? Time : timeVal);
-  }, [value, Time]);
+  }, [value, Time, onTimeChange]);
 
   const handleParse = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -439,7 +453,7 @@ const NaturalLanguageInput = React.forwardRef<
         onTimeChange(`${hour}:${parsedDateTime.getMinutes()} ${PM_AM}`);
       }
     },
-    [value]
+    [onTimeChange, onValueChange]
   );
 
   const handleKeydown = React.useCallback(
@@ -467,7 +481,7 @@ const NaturalLanguageInput = React.forwardRef<
           break;
       }
     },
-    [value]
+    [onTimeChange, onValueChange]
   );
 
   return (
@@ -498,9 +512,9 @@ const DateTimeLocalInput = ({
   const formateSelectedDate = React.useCallback(
     (
       date: Date | undefined,
-      selectedDate: Date,
-      m: ActiveModifiers,
-      e: React.MouseEvent
+      selectedDate: Date
+      // m: ActiveModifiers,
+      // e: React.MouseEvent
     ) => {
       const parsedDateTime = parseDateTime(selectedDate);
 
@@ -512,7 +526,7 @@ const DateTimeLocalInput = ({
         onValueChange(parsedDateTime);
       }
     },
-    [value, Time]
+    [Time, onValueChange]
   );
 
   return (
