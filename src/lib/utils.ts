@@ -136,10 +136,13 @@ const getFirestoreDocs = async (
   try {
     const collectionRef = collection(db, colRef);
     const collectionDocs = getDocs(collectionRef);
-    return (await collectionDocs).docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
+    return (await collectionDocs).docs.map(
+      (doc) =>
+        ({
+          id: doc.id,
+          ...doc.data(),
+        } as InstructorData)
+    );
   } catch (error) {
     console.error("Error fetching Firestore documents:", error);
     throw error;
