@@ -55,7 +55,7 @@ const InstructorProfilePage = async ({
     },
     {
       title: "Total Lectures",
-      total: roomDocuments?.data?.length,
+      total: roomDocuments.data.length,
       Icon: PiChalkboardTeacherLight,
       border: "F49D49",
     },

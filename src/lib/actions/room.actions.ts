@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import { liveblocks } from "../liveblocks";
 import { parseStringify } from "../utils";
 import { CreateDocumentParams, RoomAccesses } from "@/types";
+import { revalidatePath } from "next/cache";
 
 const createDocument = async ({ userId, email }: CreateDocumentParams) => {
   const roomId = nanoid();
@@ -52,6 +53,7 @@ const getDocument = async ({
 };
 const getDocuments = async (email: string) => {
   try {
+    revalidatePath(`/instructor/dashboard/:path*`);
     const rooms = await liveblocks.getRooms({ userId: email, limit: 100 });
     return parseStringify(rooms);
   } catch (error) {

@@ -21,7 +21,7 @@ export async function POST() {
   const fireStoreUserId = cookieStore.get("userId")?.value;
 
   if (!fireStoreUserId) {
-    return NextResponse.redirect("/sign-in");
+    return NextResponse.redirect("/signup");
   }
 
   const instructorData = await getFireStoreRefData(
@@ -36,7 +36,6 @@ export async function POST() {
   }
   const { id, firstName, lastName, email, profileImageUrl } = userRoleData;
   const fullName = `${firstName}  ${lastName}`;
-  console.log(fullName);
 
   const user: UserInfo = {
     id,

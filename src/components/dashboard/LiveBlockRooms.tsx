@@ -77,8 +77,12 @@ const LiveBlockRooms = async ({
           </ul>
         </div>
       ) : (
-        <div className="text-center text-gray-500 dark:text-gray-400">
-          No hosted lectures available.
+        <div className="text-center text-gray-500 dark:text-gray-400 flex items-center justify-between">
+          <p>No hosted lectures available.</p>
+          <div className="flex items-center gap-5">
+            <AddDocumentBtn userId={userId} email={email} />
+            <LectureScheduleBtn userId={userId} email={email} />
+          </div>
         </div>
       )}
     </section>

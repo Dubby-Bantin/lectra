@@ -49,6 +49,11 @@ const scheduleLecture = async (
     if (!userId) {
       return;
     }
+    if (!datetime) {
+      return {
+        e: "Please You have to input a valid date",
+      };
+    }
 
     sendEmail(
       emails,

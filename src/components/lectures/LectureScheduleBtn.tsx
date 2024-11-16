@@ -36,7 +36,9 @@ const LectureScheduleBtn = ({ userId, email }: AddDocumentBtnProps) => {
             action={async (formData) => {
               try {
                 await scheduleLecture(formData, datetime, email, userId);
-                toast.success("Lecture Successfully scheduled");
+                toast.success(
+                  "Lecture Successfully scheduled, All your students will be emailed."
+                );
               } catch (error) {
                 if (error instanceof Error) {
                   toast.error(error.message);
