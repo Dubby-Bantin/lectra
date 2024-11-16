@@ -3,9 +3,8 @@ import LectureSubscribeBtn from "@/components/lectures/LectureSubscribeBtn";
 import { getFirestoreDocs } from "@/lib/utils";
 import { cookies } from "next/headers";
 import Image from "next/image";
-import { cache } from "react";
 
-const InstructorsPage = cache(async () => {
+const InstructorsPage = async () => {
   const instructors = await getFirestoreDocs("instructors");
   if (!instructors) {
     return;
@@ -126,5 +125,5 @@ const InstructorsPage = cache(async () => {
       <Footer />
     </>
   );
-});
+};
 export default InstructorsPage;
