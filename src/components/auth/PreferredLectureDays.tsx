@@ -1,9 +1,8 @@
 import Select, { MultiValue } from "react-select";
 import { useTheme } from "next-themes";
 import React, { Dispatch, SetStateAction, useEffect } from "react";
-import { Option } from '@/types';
+import { Option } from "@/types";
 
-// Define type for options
 interface PreferredLectureDaysProps {
   selectedDays: string[];
   setSelectedDays: Dispatch<SetStateAction<string[]>>;
@@ -13,18 +12,16 @@ const PreferredLectureDays: React.FC<PreferredLectureDaysProps> = ({
   selectedDays,
   setSelectedDays,
 }) => {
-  const { theme } = useTheme(); // Use theme context to detect light or dark mode
+  const { theme } = useTheme();
 
-  // Handle change when user selects options
   const handleChange = (selectedOptions: MultiValue<Option>) => {
     setSelectedDays(
       selectedOptions ? selectedOptions.map((option) => option.value) : []
     );
   };
 
-  // Log selected days when they change
   useEffect(() => {
-    console.log(selectedDays); // Log the newly selected options
+    console.log(selectedDays);
   }, [selectedDays]);
 
   return (

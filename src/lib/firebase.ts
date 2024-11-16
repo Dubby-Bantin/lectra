@@ -34,7 +34,8 @@ const storage = getStorage(app);
 auth.useDeviceLanguage();
 
 const signUp = async (
-  name: string,
+  firstName: string,
+  lastName: string,
   email: string,
   password: string,
   role: string
@@ -47,7 +48,7 @@ const signUp = async (
       password
     );
 
-    const data = { name, email, role };
+    const data = { firstName, lastName, email, role };
 
     if (role === "instructor") {
       const { id } = await handleAdd("instructors", data);

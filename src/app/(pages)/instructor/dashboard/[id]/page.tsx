@@ -20,7 +20,8 @@ const InstructorProfilePage = async ({
   }
 
   const {
-    name,
+    firstName,
+    lastName,
     email,
     createdAt,
     preferred_language,
@@ -28,19 +29,21 @@ const InstructorProfilePage = async ({
     major,
     phoneNumber,
     university,
-    courses,
     selectedDays,
     employment_history,
     profileImageUrl,
     teachingCertificateUrl,
     idVerificationUrl,
+    subscribedUsers,
+    bio,
+    expertise,
   } = data;
 
   const roomDocuments = await getDocuments(email);
   const instructorsOverview = [
     {
       title: "Total Students",
-      total: 0,
+      total: subscribedUsers?.length,
       Icon: PiStudentFill,
       border: "4AC083",
     },
@@ -62,7 +65,7 @@ const InstructorProfilePage = async ({
     <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
       <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2 ">
         <h1 className="text-lg font-bold">
-          Hello {name}
+          Hello {`${firstName} ${lastName}`}
           <p className="text-sm">Here’s an overview of your dashboard.</p>
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-3 w-full border rounded-lg gap-3 min-h-[160px] place-content-center">
@@ -109,7 +112,8 @@ const InstructorProfilePage = async ({
 
       <div className="sm:overflow-y-auto sm:h-[47.2rem] no-scrollbar">
         <InstructorProfileCard
-          name={name}
+          firstName={firstName}
+          lastName={lastName}
           email={email}
           createdAt={createdAt}
           preferred_language={preferred_language}
@@ -117,12 +121,13 @@ const InstructorProfilePage = async ({
           major={major}
           phoneNumber={phoneNumber}
           university={university}
-          courses={courses}
+          expertise={expertise}
           selectedDays={selectedDays}
           employment_history={employment_history}
           profileImageUrl={profileImageUrl}
           teachingCertificateUrl={teachingCertificateUrl}
           idVerificationUrl={idVerificationUrl}
+          bio={bio}
         />
       </div>
     </main>

@@ -36,22 +36,41 @@ const SignUpForm = () => {
         }
       }}
     >
-      <div className="space-y-2">
-        <label
-          htmlFor="name"
-          className="block text-sm font-medium dark:text-white text-dark"
-        >
-          Name
-        </label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          autoComplete="name"
-          required
-          className="input-box"
-          placeholder="JohnDoe"
-        />
+      <div className="flex gap-5">
+        <div>
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium dark:text-white text-dark mb-2"
+          >
+            FirstName
+          </label>
+          <input
+            id="firstname"
+            name="firstname"
+            type="text"
+            autoComplete="firstname"
+            required
+            className="input-box"
+            placeholder="John"
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="lastname"
+            className="block text-sm font-medium dark:text-white text-dark mb-2"
+          >
+            LastName
+          </label>
+          <input
+            id="lastname"
+            name="lastname"
+            type="text"
+            autoComplete="LastName"
+            required
+            className="input-box"
+            placeholder="Doe"
+          />
+        </div>
       </div>
       <div className="space-y-2">
         <label

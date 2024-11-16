@@ -11,6 +11,7 @@ import {
   FirestoreError,
   getDoc,
   Timestamp,
+  getDocs,
 } from "firebase/firestore";
 import { db, storage } from "./firebase";
 import { InstructorData, UserType } from "@/types";
@@ -87,8 +88,6 @@ const convertTimestampToDate = (timestamp: Timestamp): string => {
   return new Date(timestamp.seconds * 1000).toDateString();
 };
 
-// firebaseUtils.ts
-
 const uploadImages = async (images: File[], id: string): Promise<string[]> => {
   const uploadPromises: Promise<string>[] = [];
 
@@ -129,6 +128,24 @@ const getFireStoreRefData = async (
         ...collectionDocument.data(),
       } as InstructorData)
     : null;
+};
+
+const getFirestoreDocs = async (
+  colRef: string
+): Promise<InstructorData[] | null> => {
+  try {
+    const collectionRef = collection(db, colRef);
+    const collectionDocs = getDocs(collectionRef);
+    const docsData = (await collectionDocs).docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    return docsData;
+  } catch (error) {
+    console.error("Error fetching Firestore documents:", error);
+    throw error;
+  }
 };
 
 const capitalizeFirstLetter = (word: string) =>
@@ -181,7 +198,7 @@ const dateConverter = (timestamp: string): string => {
 
 // Function to generate a random color in hex format, excluding specified colors
 export function getRandomColor() {
-  const avoidColors = ["#000000", "#FFFFFF", "#8B4513"]; // Black, White, Brown in hex format
+  const avoidColors = ["#000000", "#FFFFFF", "#8B4513"];
 
   let randomColor;
   do {
@@ -243,6 +260,22 @@ const heroSlides = [
   "https://media.istockphoto.com/id/2177353072/photo/digital-recruitment-process-on-a-tablet-selecting-a-candidate-profile-for-hiring-great-for-hr.jpg?s=612x612&w=0&k=20&c=N1nqxHNbmjvfHxFNWc7Fv7pBhGjLHykgAtPpY2uIruo=",
 ];
 
+function formatIsoToDateString(isoString: string): string {
+  const date = new Date(isoString);
+
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    timeZoneName: "short",
+  };
+
+  return new Intl.DateTimeFormat("en-US", options).format(date);
+}
+
 export {
   deleteData,
   handleAdd,
@@ -254,4 +287,6 @@ export {
   heroSlides,
   dateConverter,
   uploadImage,
+  getFirestoreDocs,
+  formatIsoToDateString,
 };

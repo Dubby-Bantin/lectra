@@ -10,7 +10,6 @@ const AuthNavLink = () => {
   const [rolePath, setRolePath] = useState<string | null>(null);
 
   useEffect(() => {
-    // Accessing cookies on the client side
     const cookies = document.cookie.split("; ").reduce((acc, cookie) => {
       const [name, value] = cookie.split("=");
       acc[name] = value;

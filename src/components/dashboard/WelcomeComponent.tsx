@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 interface welcomeComponentProps {
   h2: string;
@@ -19,8 +19,6 @@ const WelcomeComponent = ({ h2, p1, p2, image }: welcomeComponentProps) => {
           layout="fill"
           objectFit="cover"
           className="rounded-l-sm"
-          priority
-          quality={100}
         />
       </div>
 

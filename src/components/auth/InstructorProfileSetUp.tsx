@@ -17,18 +17,13 @@ import ImageDropZone from "../common/ImageDropZone";
 import { useRouter } from "next/navigation";
 import { updateInstructorRef } from "@/lib/auth";
 import PreferredLectureDays from "./PreferredLectureDays";
-import CourseInput from "./ReactTags";
 const InstructorProfileSetUp = ({ id }: { id: string }) => {
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>();
   const [open, setOpen] = useState(false);
   const [university, setUniversity] = useState("");
-  const [courses, setCourses] = useState<string[]>([]);
   const formRef = useRef<HTMLFormElement>(null);
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const router = useRouter();
-
-  // don't forget to add expertise and remove subjects
-  // and then add bio as well
 
   return (
     <form
@@ -37,7 +32,6 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
           formData,
           phoneNumber,
           university,
-          courses,
           selectedDays,
           id
         );
@@ -108,6 +102,35 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
                     <SelectItem value="female">Female</SelectItem>
                   </SelectContent>
                 </Select>
+              </div>
+            </div>
+            <div className="w-full flex gap-5">
+              <div className="w-full">
+                <label className="block text-sm font-medium mb-3">Bio</label>
+                <input
+                  id="bio"
+                  name="bio"
+                  className="input-box"
+                  placeholder="Write a brief bio about yourself..."
+                  required
+                  type="text"
+                  autoComplete="bio"
+                />
+              </div>
+              <div className="w-full">
+                <label className="block text-sm font-medium mb-3">
+                  Expertise
+                </label>
+                <input
+                  id="expertise"
+                  name="expertise"
+                  className="input-box "
+                  placeholder="What's your expertise?"
+                  required
+                  type="text"
+                  autoComplete="expertise"
+                  aria-label="Expertise"
+                />
               </div>
             </div>
             <div className="w-full">
@@ -223,7 +246,7 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
             </div>
           </div>
 
-          <CourseInput courses={courses} setCourses={setCourses} />
+          {/* <CourseInput courses={expertise} setCourses={setExpertise} /> */}
         </section>
         {/* Employment History */}
         <section className="mb-10">

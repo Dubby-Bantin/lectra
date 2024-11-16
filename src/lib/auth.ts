@@ -5,13 +5,20 @@ import { logIn, signUp } from "./firebase";
 import { handleUpdate, uploadImage, uploadImages } from "./utils";
 import { InstructorProfileSetUpFireStoreData } from "@/types";
 const createUser = async (formData: FormData) => {
-  const name = formData.get("name") as string;
+  const firstName = formData.get("firstname") as string;
+  const lastName = formData.get("lastname") as string;
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const role = formData.get("role") as string;
 
   try {
-    const { e, user, id } = await signUp(name, email, password, role);
+    const { e, user, id } = await signUp(
+      firstName,
+      lastName,
+      email,
+      password,
+      role
+    );
 
     if (e) {
       return { error: e };
@@ -45,13 +52,10 @@ const loginUser = async (formData: FormData) => {
   }
 };
 
-// In your main file
-
 const updateInstructorRef = async (
   formData: FormData,
   phoneNumber: string | undefined,
   university: string,
-  courses: string[],
   selectedDays: string[],
   id: string
 ) => {
@@ -60,6 +64,8 @@ const updateInstructorRef = async (
   const major = formData.get("major") as string;
   const gender = formData.get("gender") as string;
   const employment_history = formData.get("employment_history");
+  const bio = formData.get("bio") as string;
+  const expertise = formData.get("expertise") as string;
   // Collecting all images into an array
   const images: File[] = [];
   const profileImage = formData.get("profile_photo") as File;
@@ -86,9 +92,10 @@ const updateInstructorRef = async (
     gender,
     phoneNumber,
     university,
-    courses,
+    expertise,
     selectedDays,
     employment_history,
+    bio,
   };
 
   try {

@@ -9,7 +9,6 @@ const Lecture = async ({ params: { slug } }: { params: { slug: string } }) => {
   const cookieStore = cookies();
   const userId = cookieStore.get("userId")?.value;
 
-  // Fetch instructor and student data
   const instructorData = await getFireStoreRefData(userId, "instructors");
   const studentData = await getFireStoreRefData(userId, "students");
 

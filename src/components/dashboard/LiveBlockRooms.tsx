@@ -4,6 +4,7 @@ import { SiGoogleclassroom } from "react-icons/si";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { dateConverter } from "@/lib/utils";
 import { Button } from "../ui/button";
+import LectureScheduleBtn from "../lectures/LectureScheduleBtn";
 
 type RoomDocument = {
   id: string;
@@ -32,7 +33,10 @@ const LiveBlockRooms = async ({
             <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
               {text} Hosted Lectures
             </h3>
-            <AddDocumentBtn userId={userId} email={email} />
+            <div className="flex items-center gap-5">
+              <AddDocumentBtn userId={userId} email={email} />
+              <LectureScheduleBtn userId={userId} email={email} />
+            </div>
           </div>
           <ul className="space-y-4">
             {roomDocuments.data.map(

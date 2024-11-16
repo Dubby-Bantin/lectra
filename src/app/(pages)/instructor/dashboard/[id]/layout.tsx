@@ -53,7 +53,7 @@ const layout = async ({
   if (userId !== id) {
     redirect("/signup");
   }
-  const { name } = data;
+  const { firstName, lastName } = data;
   return (
     <div className="flex min-h-screen w-full flex-col bg-background">
       <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
@@ -124,7 +124,7 @@ const layout = async ({
                   size="icon"
                   className="overflow-hidden rounded-full"
                 >
-                  {name?.charAt(0)}
+                  {firstName?.charAt(0) + lastName?.charAt(0)}
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">

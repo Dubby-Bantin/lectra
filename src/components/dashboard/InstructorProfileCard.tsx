@@ -22,7 +22,8 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { InstructorData } from "@/types";
 const InstructorProfileCard = ({
-  name,
+  firstName,
+  lastName,
   email,
   createdAt,
   preferred_language,
@@ -30,12 +31,13 @@ const InstructorProfileCard = ({
   major,
   phoneNumber,
   university,
-  courses,
+  expertise,
   selectedDays,
   employment_history,
   profileImageUrl,
   teachingCertificateUrl,
   idVerificationUrl,
+  bio,
 }: InstructorData) => {
   return (
     <Card className="overflow-hidden" x-chunk="dashboard-05-chunk-4">
@@ -84,28 +86,28 @@ const InstructorProfileCard = ({
               <Image
                 src={profileImageUrl}
                 alt="profileImage"
-                priority
-                className="rounded-full object-cover"
+                className="rounded-full"
                 width={240}
                 height={240}
                 quality={100}
-                objectFit="cover"
                 layout="responsive"
+                objectFit="cover"
+                priority
               />
             ) : (
               <div className="rounded-full h-full w-full border">
-                {name?.charAt(0)}
+                {firstName?.charAt(0) + lastName?.charAt(0)}
               </div>
             )}
           </div>
           <ul className="grid gap-3">
             <li className="flex items-center justify-between">
               <span className="text-muted-foreground">First name</span>
-              <span>{name}</span>
+              <span>{firstName}</span>
             </li>
             <li className="flex items-center justify-between">
               <span className="text-muted-foreground">Last Name</span>
-              <span>{"Bantin"}</span>
+              <span>{lastName}</span>
             </li>
           </ul>
           <Separator className="my-2" />
@@ -154,14 +156,8 @@ const InstructorProfileCard = ({
             </div>
           </div>
           <div>
-            <div className="font-semibold mb-3">Courses</div>
-            <ul className=" grid grid-cols-2 gap-2 w-full">
-              {courses.map((day, i) => (
-                <li className="text-muted-foreground" key={i}>
-                  {capitalizeFirstLetter(day)}
-                </li>
-              ))}
-            </ul>
+            <div className="font-semibold mb-3">Expertise</div>
+            <p>{expertise}</p>
           </div>
         </div>
 
@@ -169,20 +165,13 @@ const InstructorProfileCard = ({
         <div className="grid gap-3">
           <div className="">
             <div className="font-semibold mb-3">Bio</div>
-            <p className="text-muted-foreground">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam
-              repudiandae...
-            </p>
+            <p className="text-muted-foreground">{bio}</p>
           </div>
           <div className="">
             <div className="font-semibold mb-3">Employment history</div>
             <p className="text-muted-foreground font-lato">
               {employment_history?.slice(0, 100)}...
             </p>
-          </div>
-          <div className="">
-            <div className="font-semibold mb-3">Quote*</div>
-            <p className="text-muted-foreground">Lorem ipsum dolor</p>
           </div>
         </div>
         <Separator className="my-4" />

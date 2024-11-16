@@ -4,8 +4,9 @@ import { StaticImageData } from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 declare type InstructorData = {
+  firstName: string;
+  lastName: string;
   id?: string;
-  name?: string;
   email: string;
   createdAt: Timestamp;
   preferred_language: string;
@@ -14,12 +15,14 @@ declare type InstructorData = {
   gender?: string;
   phoneNumber: string | undefined;
   university: string;
-  courses: string[];
+  expertise: string;
   selectedDays: string[];
   employment_history?: string;
-  profileImageUrl: string | StaticImageData | StaticImport; // Add optional properties for the images
+  profileImageUrl: string | StaticImageData | StaticImport;
   teachingCertificateUrl: string;
   idVerificationUrl: string;
+  subscribedUsers?: string[];
+  bio: string;
 };
 
 declare type InstructorProfileSetUpFireStoreData = {
@@ -29,12 +32,13 @@ declare type InstructorProfileSetUpFireStoreData = {
   gender: string;
   phoneNumber: string | undefined;
   university: string;
-  courses: string[];
   selectedDays: string[];
   employment_history: FormDataEntryValue | null;
-  profileImageUrl?: string | StaticImageData | StaticImport; // Add optional properties for the images
+  profileImageUrl?: string | StaticImageData | StaticImport;
   teachingCertificateUrl?: string;
   idVerificationUrl?: string;
+  expertise: string;
+  bio: string;
 };
 
 declare type RoomMetadata = {
