@@ -57,6 +57,7 @@ declare type RoomDocument = {
 };
 
 declare type LiveBlockRoomsProps = {
+  headerText?: string;
   id?: string;
   email: string;
   userId?: string;

@@ -44,10 +44,6 @@ const getDocument = async ({
 }) => {
   try {
     const room = await liveblocks.getRoom(roomId);
-    const hasAccess = Object.keys(room.usersAccesses).includes(userId);
-    if (!hasAccess) {
-      console.log("Welcome Student");
-    }
     return parseStringify(room);
   } catch (error) {
     console.log(
@@ -91,8 +87,8 @@ const updateDocumentTitle = async ({
 
 const deleteDocument = async (roomId: string) => {
   try {
-    const deletedRoom = await liveblocks.deleteRoom(roomId);
-    return parseStringify(deletedRoom);
+    revalidatePath(`/instructor/dashboard/:path*`);
+    return await liveblocks.deleteRoom(roomId);
   } catch (error) {
     console.error("Error deleting room:", error);
     throw new Error("Failed to delete room.");

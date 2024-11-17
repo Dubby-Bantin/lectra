@@ -12,7 +12,12 @@ const Lectures = async ({ params }: { params: { id: string } }) => {
   const { id, email } = data;
   const roomDocuments = await getDocuments(email, 100);
   return (
-    <LectureBoxComponent roomDocuments={roomDocuments} email={email} id={id} />
+    <LectureBoxComponent
+      headerText="All lectures"
+      roomDocuments={roomDocuments}
+      email={email}
+      id={id}
+    />
   );
 };
 

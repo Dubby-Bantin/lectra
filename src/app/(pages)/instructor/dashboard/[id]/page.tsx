@@ -6,6 +6,7 @@ import { getDocuments } from "@/lib/actions/room.actions";
 import InstructorProfileCard from "@/components/dashboard/InstructorProfileCard";
 import LectureBoxComponent from "@/components/dashboard/LectureBoxComponent";
 import CalendarComponent from "@/components/common/CalendarComponent";
+import { getRoomDocumentsLength } from "@/utils/helper";
 
 const InstructorProfilePage = async ({
   params: { id },
@@ -37,7 +38,8 @@ const InstructorProfilePage = async ({
     expertise,
   } = data;
 
-  const roomDocuments = await getDocuments(email, 5);
+  const roomDocuments = await getDocuments(email, 6);
+  const lectureCount = await getRoomDocumentsLength(email);
   const instructorsOverview = [
     {
       title: "Total Students",
@@ -53,7 +55,7 @@ const InstructorProfilePage = async ({
     },
     {
       title: "Total Lectures",
-      total: roomDocuments.data.length,
+      total: lectureCount,
       Icon: PiChalkboardTeacherLight,
       border: "F49D49",
     },
@@ -102,6 +104,7 @@ const InstructorProfilePage = async ({
         />
 
         <LectureBoxComponent
+          headerText="Few lectures"
           roomDocuments={roomDocuments}
           email={email}
           id={id}

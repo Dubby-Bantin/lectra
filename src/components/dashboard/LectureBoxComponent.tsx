@@ -13,10 +13,11 @@ const LectureBoxComponent = ({
   roomDocuments,
   email,
   id,
+  headerText,
 }: LiveBlockRoomsProps) => {
   return (
     <section className="md:p-6">
-      <p className="text-lg py-5 font-poppins">Lectures</p>
+      <p className="text-lg py-5 font-poppins">{headerText}</p>
       <Card>
         <CardHeader>
           <CardTitle>Host Lecture</CardTitle>
