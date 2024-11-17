@@ -20,7 +20,7 @@ const LectureHeader = ({
   instructorId: string | null;
 }) => {
   return (
-    <div className="flex items-center justify-center text-[#B4C6EE] text-xl font-semibold">
+    <div className="flex items-center justify-center dark:text-[#B4C6EE] text-xl font-semibold">
       {title}
       {instructorId && currentUserType === "editor" && !editing && (
         <Image

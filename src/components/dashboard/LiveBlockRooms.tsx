@@ -7,7 +7,11 @@ import DeleteLectureBtn from "./DeleteLectureBtn";
 const LiveBlockRooms = async ({ roomDocuments }: LiveBlockRoomsProps) => {
   return (
     <section className="py-6 rounded-lg w-full">
-      <ul className={`w-full grid md:${roomDocuments.data.length === 1 ? "grid-cols-1" : "grid-cols-2"} grid-cols-1 items-center justify-center gap-3`}>
+      <ul
+        className={`w-full grid ${
+          roomDocuments.data.length > 1 ? "md:grid-cols-2" : "md:grid-cols-1"
+        } grid-cols-1 items-center justify-center gap-3`}
+      >
         {roomDocuments.data.map(({ id, metadata: { title }, createdAt }) => (
           <li
             key={id}

@@ -15,7 +15,7 @@ const LectureBoxComponent = ({
   id,
 }: LiveBlockRoomsProps) => {
   return (
-    <section className="p-6">
+    <section className="md:p-6">
       <p className="text-lg py-5 font-poppins">Lectures</p>
       <Card>
         <CardHeader>

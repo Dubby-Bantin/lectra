@@ -108,7 +108,7 @@ const InstructorProfilePage = async ({
         />
       </div>
 
-      <div className="flex flex-col items-center w-fit">
+      <div className="flex sm:flex-col flex-col-reverse items-center w-fit">
         <div className="sm:overflow-y-auto sm:h-[47.2rem] no-scrollbar mb-10">
           <InstructorProfileCard
             firstName={firstName}

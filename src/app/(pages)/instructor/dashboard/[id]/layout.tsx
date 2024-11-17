@@ -70,7 +70,7 @@ const layout = cache(
               <SheetContent side="left" className="sm:max-w-xs">
                 <nav className="grid gap-6 text-lg font-medium">
                   <Link
-                    href="#"
+                    href="/"
                     className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
                   >
                     <Home className="h-5 w-5 transition-all group-hover:scale-110" />
@@ -84,19 +84,23 @@ const layout = cache(
                     Dashboard
                   </Link>
                   <Link
-                    href="#"
+                    href={`/instructor/dashboard/${id}/lectures`}
                     className="flex items-center gap-4 px-2.5 text-foreground"
                   >
                     <PiChalkboardTeacherLight className="h-5 w-5" />
                     Lectures
                   </Link>
                   <Link
-                    href="#"
+                    href={`/instructor/dashboard/${id}/students`}
                     className="flex items-center gap-4 px-2.5 text-foreground"
                   >
                     <Users2 className="h-5 w-5" />
                     Students
                   </Link>
+                  <div className="flex items-center gap-4 px-2.5 text-foreground">
+                    <ModeToggle />
+                    Theme
+                  </div>
                 </nav>
               </SheetContent>
             </Sheet>
