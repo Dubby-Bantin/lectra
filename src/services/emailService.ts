@@ -34,7 +34,7 @@ const sendEmail = async (
       subject: `Upcoming Lecture: ${lectureTitle}`,
       replyTo: instructorEmail,
       react: React.createElement(LectureReminderEmail, {
-        studentName: studentName.map((name) => name),
+        studentName: studentName.filter((name) => name),
         lectureTitle: lectureTitle,
         lectureCategory: lectureCategory,
         lectureTime: formatIsoToDateString(lectureTime),

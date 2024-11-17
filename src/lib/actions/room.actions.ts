@@ -6,14 +6,18 @@ import { parseStringify } from "../utils";
 import { CreateDocumentParams, RoomAccesses } from "@/types";
 import { revalidatePath } from "next/cache";
 
-const createDocument = async ({ userId, email }: CreateDocumentParams) => {
+const createDocument = async ({
+  userId,
+  email,
+  title,
+}: CreateDocumentParams) => {
   const roomId = nanoid();
 
   try {
     const metadata = {
       creatorId: userId,
       email,
-      title: "Untitled",
+      title,
     };
     const usersAccesses: RoomAccesses = {
       [email]: ["room:write"],
@@ -51,10 +55,10 @@ const getDocument = async ({
     );
   }
 };
-const getDocuments = async (email: string) => {
+const getDocuments = async (email: string, limit: number) => {
   try {
     revalidatePath(`/instructor/dashboard/:path*`);
-    const rooms = await liveblocks.getRooms({ userId: email, limit: 100 });
+    const rooms = await liveblocks.getRooms({ userId: email, limit: limit });
     return parseStringify(rooms);
   } catch (error) {
     console.log(`An error occurred while trying to get rooms ${error}`);
@@ -78,11 +82,27 @@ const updateDocumentTitle = async ({
         title,
       },
     });
-
+    revalidatePath(`/instructor/dashboard/:path*`);
     return parseStringify(updatedRoom);
   } catch (error) {
     console.log(`Error happened while updating a room ${error}`);
   }
 };
 
-export { createDocument, getDocument, updateDocumentTitle, getDocuments };
+const deleteDocument = async (roomId: string) => {
+  try {
+    const deletedRoom = await liveblocks.deleteRoom(roomId);
+    return parseStringify(deletedRoom);
+  } catch (error) {
+    console.error("Error deleting room:", error);
+    throw new Error("Failed to delete room.");
+  }
+};
+
+export {
+  createDocument,
+  getDocument,
+  updateDocumentTitle,
+  getDocuments,
+  deleteDocument,
+};

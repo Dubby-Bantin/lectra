@@ -41,6 +41,29 @@ declare type InstructorProfileSetUpFireStoreData = {
   bio: string;
 };
 
+declare type LectureReminderEmailProps = {
+  lectureTitle: string;
+  studentName: string[];
+  lectureCategory: string;
+  lectureTime: string;
+  lectureId?: string | undefined;
+  instructorName: string;
+  duration?: string;
+};
+declare type RoomDocument = {
+  id: string;
+  metadata: { title?: string };
+  createdAt: string;
+};
+
+declare type LiveBlockRoomsProps = {
+  id?: string;
+  email: string;
+  userId?: string;
+  text?: string;
+  roomDocuments: { data: RoomDocument[] };
+};
+
 declare type RoomMetadata = {
   creatorId: string;
   email: string;
@@ -54,10 +77,12 @@ declare type AccessType = ["room:write"] | ["room:read", "room:presence:write"];
 declare type RoomAccesses = Record<string, AccessType>;
 
 declare type CreateDocumentParams = {
+  title: string;
   userId: string;
   email: string;
 };
 declare type AddDocumentBtnProps = {
+  title?: string;
   userId?: string;
   email: string;
 };

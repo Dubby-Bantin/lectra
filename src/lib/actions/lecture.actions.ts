@@ -49,9 +49,9 @@ const scheduleLecture = async (
     if (!userId) {
       return;
     }
-    if (!datetime) {
+    if (!datetime || !title || !duration) {
       return {
-        e: "Please You have to input a valid date",
+        e: "All fields are required, One of the input fields might be empty ",
       };
     }
 
@@ -67,10 +67,10 @@ const scheduleLecture = async (
       duration
     );
 
-    await createDocument({ userId, email });
+    await createDocument({ userId, email, title });
     revalidatePath(`/instructor/dashboard/${userId}/:path*`);
   } catch (e) {
-    return { e };
+    console.log(e);
   }
 };
 

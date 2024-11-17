@@ -35,10 +35,19 @@ const LectureScheduleBtn = ({ userId, email }: AddDocumentBtnProps) => {
           <form
             action={async (formData) => {
               try {
-                await scheduleLecture(formData, datetime, email, userId);
-                toast.success(
-                  "Lecture Successfully scheduled, All your students will be emailed."
+                const e = await scheduleLecture(
+                  formData,
+                  datetime,
+                  email,
+                  userId
                 );
+                if (e) {
+                  toast.error(e?.e as string);
+                } else {
+                  toast.success(
+                    "Lecture Successfully scheduled, All your students will be emailed."
+                  );
+                }
               } catch (error) {
                 if (error instanceof Error) {
                   toast.error(error.message);
@@ -66,7 +75,7 @@ const LectureScheduleBtn = ({ userId, email }: AddDocumentBtnProps) => {
               <Input
                 name="title"
                 id="title"
-                defaultValue="Introduction to JavaScript"
+                placeholder="Introduction to JavaScript"
                 className="w-2/3 h-8"
               />
             </div>
@@ -77,7 +86,7 @@ const LectureScheduleBtn = ({ userId, email }: AddDocumentBtnProps) => {
               <Input
                 name="duration"
                 id="duration"
-                defaultValue="1 hour"
+                placeholder="1 hour"
                 className="w-2/3 h-8"
               />
             </div>

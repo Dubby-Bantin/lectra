@@ -1,13 +1,11 @@
 import { getFireStoreRefData } from "@/lib/utils";
-
-import * as React from "react";
-
 import { PiChalkboardTeacherLight, PiStudentFill } from "react-icons/pi";
 import { MdOutlineReviews } from "react-icons/md";
 import WelcomeComponent from "@/components/dashboard/WelcomeComponent";
-import LiveBlockRooms from "@/components/dashboard/LiveBlockRooms";
 import { getDocuments } from "@/lib/actions/room.actions";
 import InstructorProfileCard from "@/components/dashboard/InstructorProfileCard";
+import LectureBoxComponent from "@/components/dashboard/LectureBoxComponent";
+import CalendarComponent from "@/components/common/CalendarComponent";
 
 const InstructorProfilePage = async ({
   params: { id },
@@ -39,7 +37,7 @@ const InstructorProfilePage = async ({
     expertise,
   } = data;
 
-  const roomDocuments = await getDocuments(email);
+  const roomDocuments = await getDocuments(email, 5);
   const instructorsOverview = [
     {
       title: "Total Students",
@@ -102,33 +100,36 @@ const InstructorProfilePage = async ({
             we’ve got you covered."
           image={profileImageUrl}
         />
-        <LiveBlockRooms
-          userId={id}
-          email={email}
-          text="Few"
+
+        <LectureBoxComponent
           roomDocuments={roomDocuments}
+          email={email}
+          id={id}
         />
       </div>
 
-      <div className="sm:overflow-y-auto sm:h-[47.2rem] no-scrollbar">
-        <InstructorProfileCard
-          firstName={firstName}
-          lastName={lastName}
-          email={email}
-          createdAt={createdAt}
-          preferred_language={preferred_language}
-          degree={degree}
-          major={major}
-          phoneNumber={phoneNumber}
-          university={university}
-          expertise={expertise}
-          selectedDays={selectedDays}
-          employment_history={employment_history}
-          profileImageUrl={profileImageUrl}
-          teachingCertificateUrl={teachingCertificateUrl}
-          idVerificationUrl={idVerificationUrl}
-          bio={bio}
-        />
+      <div className="flex flex-col items-center w-fit">
+        <div className="sm:overflow-y-auto sm:h-[47.2rem] no-scrollbar mb-10">
+          <InstructorProfileCard
+            firstName={firstName}
+            lastName={lastName}
+            email={email}
+            createdAt={createdAt}
+            preferred_language={preferred_language}
+            degree={degree}
+            major={major}
+            phoneNumber={phoneNumber}
+            university={university}
+            expertise={expertise}
+            selectedDays={selectedDays}
+            employment_history={employment_history}
+            profileImageUrl={profileImageUrl}
+            teachingCertificateUrl={teachingCertificateUrl}
+            idVerificationUrl={idVerificationUrl}
+            bio={bio}
+          />
+        </div>
+        <CalendarComponent />
       </div>
     </main>
   );

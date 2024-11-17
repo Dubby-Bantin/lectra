@@ -12,7 +12,7 @@ const AddDocumentBtn = ({ userId, email }: AddDocumentBtnProps) => {
       if (!userId) {
         return;
       }
-      const room = await createDocument({ userId, email });
+      const room = await createDocument({ userId, email, title: "Untitled" });
       if (room) {
         router.push(`/lecture/${room.id}`);
         revalidatePath(`/instructor/dashboard/${userId}/lectures`);
