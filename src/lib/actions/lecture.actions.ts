@@ -55,6 +55,8 @@ const scheduleLecture = async (
       };
     }
 
+    const room = await createDocument({ userId, email, title });
+
     sendEmail(
       emails,
       email,
@@ -63,11 +65,10 @@ const scheduleLecture = async (
       title,
       expertise,
       datetime,
-      userId,
+      room?.id,
       duration
     );
 
-    await createDocument({ userId, email, title });
     revalidatePath(`/instructor/dashboard/${userId}/:path*`);
   } catch (e) {
     console.log(e);
