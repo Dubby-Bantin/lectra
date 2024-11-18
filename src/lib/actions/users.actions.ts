@@ -1,5 +1,5 @@
 import { liveblocks } from "../liveblocks";
-import { parseStringify } from "../utils";
+import { parseStringify } from "../utils/helpers";
 
 const getDocumentUsers = async ({
   roomId,

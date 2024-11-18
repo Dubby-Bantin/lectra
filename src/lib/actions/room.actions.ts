@@ -2,7 +2,7 @@
 
 import { nanoid } from "nanoid";
 import { liveblocks } from "../liveblocks";
-import { parseStringify } from "../utils";
+import { parseStringify } from "../utils/helpers";
 import { CreateDocumentParams, RoomAccesses } from "@/types";
 import { revalidatePath } from "next/cache";
 
@@ -43,6 +43,7 @@ const getDocument = async ({
   userId: string;
 }) => {
   try {
+    console.log(userId);
     const room = await liveblocks.getRoom(roomId);
     return parseStringify(room);
   } catch (error) {

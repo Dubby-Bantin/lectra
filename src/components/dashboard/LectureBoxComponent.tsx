@@ -1,5 +1,5 @@
 import LiveBlockRooms from "@/components/dashboard/LiveBlockRooms";
-import AddDocumentBtn from "@/components/lectures/AddDocumentBtn";
+// import AddDocumentBtn from "@/components/lectures/AddDocumentBtn";
 import LectureScheduleBtn from "@/components/lectures/LectureScheduleBtn";
 import {
   Card,
@@ -25,7 +25,7 @@ const LectureBoxComponent = ({
             Host or Schedule lectures in one-click.
           </CardDescription>
           <div className="flex justify-between">
-            <AddDocumentBtn userId={id} email={email} />
+            {/* <AddDocumentBtn userId={id} email={email} /> */}
             <LectureScheduleBtn userId={id} email={email} />
           </div>
         </CardHeader>

@@ -8,6 +8,10 @@ import {
   FiGlobe,
   FiBell,
 } from "react-icons/fi";
+import partner1Image from "@/public/images/1ac4b1_de2f47ad5b2940f3b5b2aaf0597ff6ed~mv2.webp";
+import partner2Image from "@/public/images/pexels-karolina-grabowska-4491461.jpg";
+import partner3Image from "@/public/images/pexels-zen-chung-5538322.jpg";
+import partner4Image from "@/public/images/1ac4b1_de2f47ad5b2940f3b5b2aaf0597ff6ed~mv2.webp";
 
 const navLinks = [
   {
@@ -283,6 +287,46 @@ const featuresData = [
   },
 ];
 
+const teamMembers = [
+  { name: "Jane Doe", role: "CEO & Founder", image: partner1Image },
+  { name: "John Smith", role: "Head of Engineering", image: partner2Image },
+  { name: "Alex Turner", role: "Lead Developer", image: partner3Image },
+  { name: "Sam Wilson", role: "Product Designer", image: partner4Image },
+];
+
+const data = [
+  {
+    title: "Inception of Lectra",
+    content:
+      "Lectra was born from a desire to create an educational platform that adapts to individual learning styles. Our team came together with a vision to revolutionize online learning by making it interactive, personalized, and accessible to everyone.",
+  },
+  {
+    title: "Building the Foundation",
+    content:
+      "After months of planning, we started developing the core of Lectra, focusing on integrating real-time interactive tools and building a user-friendly interface. Our goal was to offer a seamless experience that encourages student participation.",
+  },
+  {
+    title: "Introducing Certified Instructors",
+    content:
+      "To ensure the highest quality education, we partnered with certified instructors across various fields. This partnership allowed us to bring expert guidance to every student, making learning on Lectra an enriching experience.",
+  },
+  {
+    title: "Enhanced Personalization",
+    content:
+      "With feedback from our early users, we introduced personalized learning paths that adapt to each student’s pace and goals. This was a pivotal step in making Lectra a truly unique learning platform tailored to individual needs.",
+  },
+  {
+    title: "Growing Community",
+    content:
+      "Our community grew rapidly as students and educators discovered the benefits of an interactive, adaptive learning environment. Lectra’s user base expanded globally, bringing together learners from diverse backgrounds.",
+  },
+  {
+    title: "Ongoing Innovation",
+    content:
+      "Today, Lectra continues to evolve, integrating the latest in educational technology. We are committed to providing the most advanced tools and resources, ensuring that Lectra remains a leader in online education.",
+  },
+];
+
 const brightColors = [
   "#2E8B57",
   "#FF6EB4",
@@ -305,4 +349,12 @@ const brightColors = [
   "#FF6347",
 ];
 
-export { navLinks, universities, heroSlides, brightColors, featuresData };
+export {
+  navLinks,
+  universities,
+  heroSlides,
+  brightColors,
+  featuresData,
+  teamMembers,
+  data,
+};

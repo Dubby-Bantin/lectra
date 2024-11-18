@@ -30,8 +30,7 @@ const Banner = () => (
       </div>
     </div>
 
-    <div className="dark:block hidden blue__gradient top-28 w-[50%] h-[50%] absolute right-20" />
-    {/* <Spotlight className="-top-40 right-0 md:-top-20" fill="white" /> */}
+    <div className="md:dark:block hidden blue__gradient top-40 w-[40%] h-[40%] rounded-full absolute right-32" />
     {/* Right Section - Grid for large screens */}
     <div className="hidden md:block w-full">
       <BannerGrid />

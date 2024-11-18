@@ -9,43 +9,10 @@ import { FaAward, FaChartLine, FaHandsHelping, FaUsers } from "react-icons/fa";
 import partner1Image from "@/public/images/1ac4b1_de2f47ad5b2940f3b5b2aaf0597ff6ed~mv2.webp";
 import partner2Image from "@/public/images/pexels-karolina-grabowska-4491461.jpg";
 import partner3Image from "@/public/images/pexels-zen-chung-5538322.jpg";
-import partner4Image from "@/public/images/1ac4b1_de2f47ad5b2940f3b5b2aaf0597ff6ed~mv2.webp";
 import Footer from "@/components/landing/Footer";
+import { data, teamMembers } from "@/lib/utils/constants";
 
 const AboutPage = () => {
-  const data = [
-    {
-      title: "Inception of Lectra",
-      content:
-        "Lectra was born from a desire to create an educational platform that adapts to individual learning styles. Our team came together with a vision to revolutionize online learning by making it interactive, personalized, and accessible to everyone.",
-    },
-    {
-      title: "Building the Foundation",
-      content:
-        "After months of planning, we started developing the core of Lectra, focusing on integrating real-time interactive tools and building a user-friendly interface. Our goal was to offer a seamless experience that encourages student participation.",
-    },
-    {
-      title: "Introducing Certified Instructors",
-      content:
-        "To ensure the highest quality education, we partnered with certified instructors across various fields. This partnership allowed us to bring expert guidance to every student, making learning on Lectra an enriching experience.",
-    },
-    {
-      title: "Enhanced Personalization",
-      content:
-        "With feedback from our early users, we introduced personalized learning paths that adapt to each student’s pace and goals. This was a pivotal step in making Lectra a truly unique learning platform tailored to individual needs.",
-    },
-    {
-      title: "Growing Community",
-      content:
-        "Our community grew rapidly as students and educators discovered the benefits of an interactive, adaptive learning environment. Lectra’s user base expanded globally, bringing together learners from diverse backgrounds.",
-    },
-    {
-      title: "Ongoing Innovation",
-      content:
-        "Today, Lectra continues to evolve, integrating the latest in educational technology. We are committed to providing the most advanced tools and resources, ensuring that Lectra remains a leader in online education.",
-    },
-  ];
-
   return (
     <section className="py-8 px-4 lg:px-6 space-y-20 w-full">
       <section className="py-8 space-y-20">
@@ -137,17 +104,15 @@ const AboutPage = () => {
             Meet Our Team
           </h2>
           <div className="flex flex-wrap justify-center gap-10 px-4">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="flex flex-col items-center">
+            {teamMembers.map(({ name, image, role }, i) => (
+              <div key={i} className="flex flex-col items-center">
                 <Image
-                  src={member.image}
-                  alt={member.name}
+                  src={image}
+                  alt={name}
                   className="rounded-full h-32 w-32 md:h-40 md:w-40 object-cover mb-4"
                 />
-                <h3 className="text-lg md:text-xl font-semibold">
-                  {member.name}
-                </h3>
-                <p className="text-gray-600">{member.role}</p>
+                <h3 className="text-lg md:text-xl font-semibold">{name}</h3>
+                <p className="text-gray-600">{role}</p>
               </div>
             ))}
           </div>
@@ -204,12 +169,5 @@ const CoreValueCard = ({
     <p className="text-sm text-gray-600">{description}</p>
   </Card>
 );
-
-const teamMembers = [
-  { name: "Jane Doe", role: "CEO & Founder", image: partner1Image },
-  { name: "John Smith", role: "Head of Engineering", image: partner2Image },
-  { name: "Alex Turner", role: "Lead Developer", image: partner3Image },
-  { name: "Sam Wilson", role: "Product Designer", image: partner4Image },
-];
 
 export default AboutPage;
