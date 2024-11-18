@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SiGoogleclassroom } from "react-icons/si";
-import { dateConverter } from "@/lib/utils";
+import { dateConverter } from "@/lib/utils/helpers";
 import { LiveBlockRoomsProps } from "@/types";
 import DeleteLectureBtn from "./DeleteLectureBtn";
 

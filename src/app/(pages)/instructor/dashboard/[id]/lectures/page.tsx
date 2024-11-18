@@ -1,7 +1,7 @@
 import LectureBoxComponent from "@/components/dashboard/LectureBoxComponent";
 
 import { getDocuments } from "@/lib/actions/room.actions";
-import { getFireStoreRefData } from "@/lib/utils";
+import { getFireStoreRefData } from "@/lib/utils/fireBaseUtils";
 
 const Lectures = async ({ params }: { params: { id: string } }) => {
   const data = await getFireStoreRefData(params.id, "instructors");

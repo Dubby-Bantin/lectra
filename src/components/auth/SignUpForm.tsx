@@ -1,5 +1,5 @@
 "use client";
-import { createUser } from "@/lib/auth";
+import { createUser } from "@/lib/actions/auth.actions";
 import SubmitBtn from "../common/SubmitBtn";
 import {
   Select,

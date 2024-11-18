@@ -9,7 +9,6 @@ import { FaAward, FaChartLine, FaHandsHelping, FaUsers } from "react-icons/fa";
 import partner1Image from "@/public/images/1ac4b1_de2f47ad5b2940f3b5b2aaf0597ff6ed~mv2.webp";
 import partner2Image from "@/public/images/pexels-karolina-grabowska-4491461.jpg";
 import partner3Image from "@/public/images/pexels-zen-chung-5538322.jpg";
-// import partner3Image from "@/public/images/1ac4b1_de2f47ad5b2940f3b5b2aaf0597ff6ed~mv2.webp";
 import partner4Image from "@/public/images/1ac4b1_de2f47ad5b2940f3b5b2aaf0597ff6ed~mv2.webp";
 import Footer from "@/components/landing/Footer";
 

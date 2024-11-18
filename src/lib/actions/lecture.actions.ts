@@ -1,7 +1,7 @@
 "use server";
 import { revalidatePath } from "next/cache";
 import { createDocument } from "./room.actions";
-import { getFireStoreRefData } from "../utils";
+import { getFireStoreRefData } from "../utils/fireBaseUtils";
 import { sendEmail } from "@/services/emailService";
 
 const getSubscribedUsers = async (

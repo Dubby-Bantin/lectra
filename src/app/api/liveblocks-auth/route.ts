@@ -1,9 +1,10 @@
 "use cache";
 import { liveblocks } from "@/lib/liveblocks";
-import { getFireStoreRefData, getUserColor } from "@/lib/utils";
+import { getUserColor } from "@/lib/utils/helpers";
 import { cookies } from "next/headers";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { NextResponse } from "next/server";
+import { getFireStoreRefData } from "@/lib/utils/fireBaseUtils";
 
 type UserInfo = {
   id?: string;

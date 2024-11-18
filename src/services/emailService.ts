@@ -1,6 +1,6 @@
 "use server";
 import LectureReminderEmail from "@/components/EmailTemplate";
-import { formatIsoToDateString } from "@/lib/utils";
+import { formatIsoToDateString } from "@/lib/utils/helpers";
 import React from "react";
 import { Resend } from "resend";
 const resend = new Resend(process.env.RESEND_API_KEY);

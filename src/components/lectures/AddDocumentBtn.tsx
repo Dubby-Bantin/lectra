@@ -15,7 +15,7 @@ const AddDocumentBtn = ({ userId, email }: AddDocumentBtnProps) => {
       const room = await createDocument({ userId, email, title: "Untitled" });
       if (room) {
         router.push(`/lecture/${room.id}`);
-        revalidatePath(`/instructor/dashboard/${userId}/lectures`);
+        revalidatePath(`/instructor/dashboard/:path*`);
       } else {
         redirect(`/instructor/dashboard/${userId}/lectures`);
       }

@@ -1,5 +1,5 @@
 "use client";
-import { getFireStoreRefData, handleUpdate } from "@/lib/utils";
+import { getFireStoreRefData, handleUpdate } from "@/lib/utils/fireBaseUtils";
 import { Button } from "../ui/button";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";

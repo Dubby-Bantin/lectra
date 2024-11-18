@@ -12,10 +12,10 @@ import {
 import "react-phone-number-input/style.css";
 import { Checkbox } from "../ui/checkbox";
 import Combo from "../common/Combo";
-import { universities } from "@/utils/constants";
+import { universities } from "@/lib/utils/constants";
 import ImageDropZone from "../common/ImageDropZone";
 import { useRouter } from "next/navigation";
-import { updateInstructorRef } from "@/lib/auth";
+import { updateInstructorRef } from "@/lib/actions/auth.actions";
 import PreferredLectureDays from "./PreferredLectureDays";
 const InstructorProfileSetUp = ({ id }: { id: string }) => {
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>();

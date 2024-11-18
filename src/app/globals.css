@@ -28,7 +28,7 @@ body::-webkit-scrollbar {
   border-radius: 50px;
 }
 
-body::-webkit-scrollbar-track {
+.dark body::-webkit-scrollbar-track {
   background: #09090a;
 }
 
@@ -37,6 +37,12 @@ body::-webkit-scrollbar-thumb {
   border-radius: 50px;
 }
 
+.dark body::-webkit-scrollbar-thumb {
+  background: #2e3d5b;
+}
+body::-webkit-scrollbar-thumb {
+  background: #7878a3;
+}
 body::-webkit-scrollbar-thumb:hover {
   background: #7878a3;
 }

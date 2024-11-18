@@ -1,4 +1,4 @@
-import { getFireStoreRefData } from "@/lib/utils";
+import { getFireStoreRefData } from "@/lib/utils/fireBaseUtils";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 import { Home } from "lucide-react";

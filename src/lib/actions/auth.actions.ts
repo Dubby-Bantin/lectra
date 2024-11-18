@@ -1,8 +1,12 @@
 "use server";
 
 import { log } from "console";
-import { logIn, signUp } from "./firebase";
-import { handleUpdate, uploadImage, uploadImages } from "./utils";
+import { logIn, signUp } from "../firebaseAuth";
+import {
+  handleUpdate,
+  uploadImage,
+  uploadImages,
+} from "../utils/fireBaseUtils";
 import { InstructorProfileSetUpFireStoreData } from "@/types";
 const createUser = async (formData: FormData) => {
   const firstName = formData.get("firstname") as string;

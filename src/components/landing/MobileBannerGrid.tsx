@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { heroSlides } from "@/lib/utils";
+import { heroSlides } from "@/lib/utils/constants";
 
 const MobileBannerGrid = () => {
   return (

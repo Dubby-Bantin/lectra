@@ -1,7 +1,7 @@
 import React from "react";
 import { PiStudentFill } from "react-icons/pi";
 import { MdOutlineReviews } from "react-icons/md";
-import { getFireStoreRefData } from "@/lib/utils";
+import { getFireStoreRefData } from "@/lib/utils/fireBaseUtils";
 import WelcomeComponent from "@/components/dashboard/WelcomeComponent";
 
 const UserDashBoard = async ({
@@ -22,12 +22,6 @@ const UserDashBoard = async ({
       Icon: MdOutlineReviews,
       border: "926EE2",
     },
-    // {
-    //   title: "Total Lectures",
-    //   total: roomDocuments?.data?.length,
-    //   Icon: PiChalkboardTeacherLight,
-    //   border: "F49D49",
-    // },
   ];
 
   const data = await getFireStoreRefData(id, "students");

@@ -1,6 +1,6 @@
 import Footer from "@/components/landing/Footer";
 import LectureSubscribeBtn from "@/components/lectures/LectureSubscribeBtn";
-import { getFirestoreDocs } from "@/lib/utils";
+import { getFirestoreDocs } from "@/lib/utils/fireBaseUtils";
 import { cookies } from "next/headers";
 import Image from "next/image";
 
@@ -45,72 +45,6 @@ const InstructorsPage = async () => {
                   <div className="mt-4 text-center">
                     <h3 className="text-xl font-semibold text-gray-800">
                       {`${firstName} ${lastName}`}
-                    </h3>
-                    <p className="text-sm text-[#33bbcf] mt-1">{expertise}</p>
-                    <p className="text-gray-600 my-3">{bio}</p>
-                    <LectureSubscribeBtn userId={userId} instructorId={id} />
-                  </div>
-                </div>
-              )
-            )}
-            {instructors.map(
-              ({
-                id,
-                profileImageUrl,
-                firstName,
-                lastName,
-                expertise,
-                bio,
-              }) => (
-                <div
-                  key={id}
-                  className="bg-background border rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-200 sm:w-[25rem]"
-                >
-                  <div className="relative w-full h-60">
-                    <Image
-                      src={profileImageUrl}
-                      alt={firstName || "profileImage"}
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-t-lg"
-                    />
-                  </div>
-                  <div className="mt-4 text-center">
-                    <h3 className="text-xl font-semibold text-gray-800">
-                      {`${firstName} ${lastName}`}
-                    </h3>
-                    <p className="text-sm text-[#33bbcf] mt-1">{expertise}</p>
-                    <p className="text-gray-600 my-3">{bio}</p>
-                    <LectureSubscribeBtn userId={userId} instructorId={id} />
-                  </div>
-                </div>
-              )
-            )}
-            {instructors.map(
-              ({
-                id,
-                profileImageUrl,
-                firstName,
-                lastName,
-                expertise,
-                bio,
-              }) => (
-                <div
-                  key={id}
-                  className="bg-background border rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-200 sm:w-[25rem]"
-                >
-                  <div className="relative w-full h-60">
-                    <Image
-                      src={profileImageUrl}
-                      alt={firstName || "profileImage"}
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-t-lg"
-                    />
-                  </div>
-                  <div className="mt-4 text-center">
-                    <h3 className="text-xl font-semibold text-gray-800">
-                      {firstName + lastName}
                     </h3>
                     <p className="text-sm text-[#33bbcf] mt-1">{expertise}</p>
                     <p className="text-gray-600 my-3">{bio}</p>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import "../../styles/BannerGrid.css";
-import { heroSlides } from "@/lib/utils";
+import { heroSlides } from "@/lib/utils/constants";
 
 const BannerGrid = () => {
   return (

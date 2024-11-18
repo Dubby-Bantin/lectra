@@ -1,5 +1,13 @@
 import { Info, Mail } from "lucide-react"; // Example icons
 import { PiChalkboardTeacherLight } from "react-icons/pi";
+import {
+  FiClock,
+  FiUsers,
+  FiBarChart2,
+  FiShield,
+  FiGlobe,
+  FiBell,
+} from "react-icons/fi";
 
 const navLinks = [
   {
@@ -226,4 +234,75 @@ const universities = [
   },
 ];
 
-export { navLinks, universities };
+const heroSlides = [
+  "https://media.istockphoto.com/id/1868588778/photo/e-learning-technology-concept-online-education-webinar-online-courses-ai-and-machine-learning.jpg?s=612x612&w=0&k=20&c=GtCOhuwN7iRPg9AtXvIHT1-zKyBnAbSciBzs0cJ9CD8=",
+  "https://images.pexels.com/photos/4491461/pexels-photo-4491461.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://media.istockphoto.com/id/1352742022/photo/education-on-internet-technology-e-learning-education-and-internet-lessons-person-who-attends.jpg?s=612x612&w=0&k=20&c=Yp6EuEcHlL9cXJ1-OqJvBJjldL8E_GUm8NnRX4qMyAA=",
+  "https://images.pexels.com/photos/4063590/pexels-photo-4063590.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://media.istockphoto.com/id/1158175009/photo/e-learning-for-student-and-university-concept.jpg?s=612x612&w=0&k=20&c=aZh1LvTCNXCJJ8JONFCatZMsxY0ofLHSp7nIaGhH338=",
+  "https://media.istockphoto.com/id/1360520508/photo/businessman-using-a-computer-to-webinar-online-education-on-internet-online-courses-e.jpg?s=612x612&w=0&k=20&c=aJ1_9F4nJP8NdhI-Qfp6tQuZyaefcttn9_c5ldDZFNo=",
+  "https://images.pexels.com/photos/4827576/pexels-photo-4827576.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://media.istockphoto.com/id/2177353072/photo/digital-recruitment-process-on-a-tablet-selecting-a-candidate-profile-for-hiring-great-for-hr.jpg?s=612x612&w=0&k=20&c=N1nqxHNbmjvfHxFNWc7Fv7pBhGjLHykgAtPpY2uIruo=",
+];
+
+const featuresData = [
+  {
+    Icon: FiClock,
+    title: "Automated Scheduling",
+    description:
+      "Effortlessly schedule and manage lectures, assignments, and automated tests.",
+  },
+  {
+    Icon: FiUsers,
+    title: "User Management",
+    description:
+      "Manage instructors and students with role-based access and customizable permissions.",
+  },
+  {
+    Icon: FiBarChart2,
+    title: "Data Analytics",
+    description:
+      "Access real-time data and performance analytics to track student progress.",
+  },
+  {
+    Icon: FiShield,
+    title: "Security & Compliance",
+    description:
+      "Keep user data secure with encryption, backup, and compliance with global standards.",
+  },
+  {
+    Icon: FiGlobe,
+    title: "Localization",
+    description: "Support for multiple languages to reach a global audience.",
+  },
+  {
+    Icon: FiBell,
+    title: "Notifications",
+    description:
+      "Real-time notifications to keep users updated on lectures and tests.",
+  },
+];
+
+const brightColors = [
+  "#2E8B57",
+  "#FF6EB4",
+  "#00CDCD",
+  "#FF00FF",
+  "#FF007F",
+  "#FFD700",
+  "#00CED1",
+  "#FF1493",
+  "#00CED1",
+  "#FF7F50",
+  "#9ACD32",
+  "#FFA500",
+  "#32CD32",
+  "#ADFF2F",
+  "#DB7093",
+  "#00FF7F",
+  "#FFD700",
+  "#FF007F",
+  "#FF6347",
+];
+
+export { navLinks, universities, heroSlides, brightColors, featuresData };

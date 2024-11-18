@@ -2,7 +2,7 @@
 import React, { useRef, useState } from "react";
 import SubmitBtn from "../common/SubmitBtn";
 import { LuLoader2 } from "react-icons/lu";
-import { loginUser } from "@/lib/auth";
+import { loginUser } from "@/lib/actions/auth.actions";
 import { toast } from "sonner";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { IoEyeOutline } from "react-icons/io5";

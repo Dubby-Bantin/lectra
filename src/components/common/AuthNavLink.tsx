@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { getFireStoreRefData } from "@/lib/utils";
+import { getFireStoreRefData } from "@/lib/utils/fireBaseUtils";
 import { MdOutlineDashboard } from "react-icons/md";
 
 const AuthNavLink = () => {

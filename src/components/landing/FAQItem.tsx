@@ -1,4 +1,4 @@
-"use client"; // This file remains a client component due to the interactive functionality
+"use client";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { AiOutlineMinus } from "react-icons/ai";

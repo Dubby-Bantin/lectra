@@ -30,7 +30,7 @@ import { PiChalkboardTeacherLight } from "react-icons/pi";
 import TipLink from "@/components/common/TipLink";
 import BreadCrumbLink from "@/components/common/BreadCrumbLink";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
-import { getFireStoreRefData } from "@/lib/utils";
+import { getFireStoreRefData } from "@/lib/utils/fireBaseUtils";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { cache } from "react";

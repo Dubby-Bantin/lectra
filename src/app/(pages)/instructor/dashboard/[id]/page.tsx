@@ -1,4 +1,4 @@
-import { getFireStoreRefData } from "@/lib/utils";
+import { getFireStoreRefData } from "@/lib/utils/fireBaseUtils";
 import { PiChalkboardTeacherLight, PiStudentFill } from "react-icons/pi";
 import { MdOutlineReviews } from "react-icons/md";
 import WelcomeComponent from "@/components/dashboard/WelcomeComponent";
@@ -6,7 +6,7 @@ import { getDocuments } from "@/lib/actions/room.actions";
 import InstructorProfileCard from "@/components/dashboard/InstructorProfileCard";
 import LectureBoxComponent from "@/components/dashboard/LectureBoxComponent";
 import CalendarComponent from "@/components/common/CalendarComponent";
-import { getRoomDocumentsLength } from "@/utils/helper";
+import { getRoomDocumentsLength } from "@/lib/utils/helpers";
 
 const InstructorProfilePage = async ({
   params: { id },

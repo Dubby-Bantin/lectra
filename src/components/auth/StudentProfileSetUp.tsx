@@ -5,7 +5,7 @@ import { Checkbox } from "../ui/checkbox";
 import PhoneInput from "react-phone-number-input";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
-import { updateStudentRef } from "@/lib/auth";
+import { updateStudentRef } from "@/lib/actions/auth.actions";
 import { toast } from "sonner";
 const StudentProfileSetup = ({ id }: { id: string }) => {
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>();

@@ -11,7 +11,7 @@ const ImageDropZone = ({ name }: { name: string }) => {
       accept: {
         "image/*": [".png", ".jpg", ".jpeg"],
       },
-      maxSize: 10 * 1024 * 1024, // 10MB limit
+      maxSize: 10 * 1024 * 1024,
       onDrop(acceptedFiles, fileRejections) {
         if (fileRejections.length > 0) {
           toast.error(

@@ -1,6 +1,6 @@
 import CollaborativeRoom from "@/components/lectures/CollaborativeRoom";
 import { getDocument } from "@/lib/actions/room.actions";
-import { getFireStoreRefData } from "@/lib/utils";
+import { getFireStoreRefData } from "@/lib/utils/fireBaseUtils";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 const Lecture = async ({ params: { slug } }: { params: { slug: string } }) => {

@@ -13,7 +13,7 @@ import {
 } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
-import { handleAdd } from "./utils";
+import { handleAdd } from "./utils/fireBaseUtils";
 import { setUserIdCookie } from "./actions/cookies.actions";
 
 // Firebase config

@@ -1,8 +1,6 @@
 import Link from "next/link";
 import BannerGrid from "./BannerGrid";
 import MobileBannerGrid from "./MobileBannerGrid";
-// import { Spotlight } from "../ui/SpotLight";
-
 const Banner = () => (
   <div className="relative w-full font-lato flex flex-col lg:flex-row items-center justify-between px-6 sm:px-10 md:px-20 lg:px-28 xl:px-32  md:gap-10 gap-5   min-h-screen md:pt-0 pt-20">
     {/* Left Section */}

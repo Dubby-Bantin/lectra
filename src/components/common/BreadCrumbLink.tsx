@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { BreadcrumbLink, BreadcrumbPage } from "../ui/breadcrumb";
-import { capitalizeFirstLetter } from "@/lib/utils";
+import { capitalizeFirstLetter } from "@/lib/utils/helpers";
 
 const BreadCrumbLink = ({ id, pathName }: { id: string; pathName: string }) => {
   const path = usePathname();

@@ -1,4 +1,4 @@
-import { capitalizeFirstLetter, convertTimestampToDate } from "@/lib/utils";
+import { capitalizeFirstLetter, convertTimestampToDate } from "@/lib/utils/helpers";
 import { FaCodepen } from "react-icons/fa";
 
 import Image from "next/image";
