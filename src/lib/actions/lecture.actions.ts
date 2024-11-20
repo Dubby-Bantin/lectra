@@ -56,7 +56,6 @@ const scheduleLecture = async (
     }
 
     const room = await createDocument({ userId, email, title });
-
     sendEmail(
       emails,
       email,

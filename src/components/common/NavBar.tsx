@@ -90,6 +90,9 @@ const NavBar = () => {
               </Link>
             ))}
             <AuthNavLink />
+            <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-4">
+              <ModeToggle />
+            </nav>
           </nav>
         </SheetContent>
       </Sheet>
