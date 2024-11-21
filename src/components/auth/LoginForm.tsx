@@ -6,23 +6,32 @@ import { loginUser } from "@/lib/actions/auth.actions";
 import { toast } from "sonner";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { IoEyeOutline } from "react-icons/io5";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { setUserIdCookie } from "@/lib/actions/cookies.actions";
 const LoginForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [showPassword, setShowPassword] = useState<boolean>(true);
   const router = useRouter();
+  const searchParams = useSearchParams();
   return (
     <form
       ref={formRef}
       className="mt-8 space-y-6"
       action={async (formData) => {
         const { error } = await loginUser(formData);
+
         if (error) {
           toast.error(`${error}, please try again`);
         } else {
           formRef.current?.reset();
+          const userId = searchParams?.get("userId");
+          if (!userId) {
+            return;
+          }
+          setUserIdCookie(userId);
+          console.log(userId);
           toast.info("Login successfull!");
-          router.push("/instructor/dashboard?id=1");
+          router.push("/");
         }
       }}
     >

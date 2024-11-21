@@ -72,6 +72,7 @@ const signUp = async (
 const logIn = async (email: string, password: string) => {
   try {
     const response = await signInWithEmailAndPassword(auth, email, password);
+    // const data =  get
     return { response, error: null };
   } catch (e: unknown) {
     const errorMessage =

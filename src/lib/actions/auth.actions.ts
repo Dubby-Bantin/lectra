@@ -8,6 +8,8 @@ import {
   uploadImages,
 } from "../utils/fireBaseUtils";
 import { InstructorProfileSetUpFireStoreData } from "@/types";
+// import { redirect } from "next/navigation";
+// import { setUserIdCookieNull } from "./cookies.actions";
 const createUser = async (formData: FormData) => {
   const firstName = formData.get("firstname") as string;
   const lastName = formData.get("lastname") as string;
@@ -145,4 +147,10 @@ const updateStudentRef = async (
   }
 };
 
-export { createUser, loginUser, updateInstructorRef, updateStudentRef };
+export {
+  createUser,
+  loginUser,
+  updateInstructorRef,
+  updateStudentRef,
+  // logUserOut,
+};

@@ -34,6 +34,7 @@ import { getFireStoreRefData } from "@/lib/utils/fireBaseUtils";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { cache } from "react";
+import LogOutButton from "@/components/auth/LogOutButton";
 const layout = cache(
   async ({
     children,
@@ -140,7 +141,9 @@ const layout = cache(
                   <DropdownMenuItem>Settings</DropdownMenuItem>
                   <DropdownMenuItem>Support</DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>Logout</DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <LogOutButton userId={userId} />
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
