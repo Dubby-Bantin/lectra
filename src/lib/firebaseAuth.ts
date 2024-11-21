@@ -52,6 +52,7 @@ const signUp = async (
 
     if (role === "instructor") {
       const { id } = await handleAdd("instructors", data);
+      await setUserIdCookie(id);
       return { user, error: null, id };
     } else {
       const { id } = await handleAdd("students", data);
