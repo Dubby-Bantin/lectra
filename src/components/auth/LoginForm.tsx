@@ -28,7 +28,7 @@ const LoginForm = () => {
           if (!userId) {
             return;
           }
-          setUserIdCookie(userId);
+          await setUserIdCookie(userId);
           console.log(userId);
           toast.info("Login successfull!");
           router.push("/");
