@@ -86,7 +86,7 @@ const InstructorProfilePage = async ({
               </div>
               <div className="flex flex-col">
                 <p className="text-[16px] font-[500]">{title}</p>
-                <p>{total}</p>
+                <p>{total ?? 0}</p>
               </div>
             </div>
           ))}

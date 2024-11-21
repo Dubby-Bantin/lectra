@@ -67,7 +67,7 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
             </div>
 
             {/* Phone Number & Gender */}
-            <div className="w-full flex gap-5">
+            <div className="w-full flex gap-5 flex-col md:flex-row">
               <div className="w-full">
                 <label
                   htmlFor="phone"
@@ -104,7 +104,7 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
                 </Select>
               </div>
             </div>
-            <div className="w-full flex gap-5">
+            <div className="w-full flex md:flex-row flex-col  gap-5">
               <div className="w-full">
                 <label className="block text-sm font-medium mb-3">Bio</label>
                 <input
@@ -179,7 +179,7 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
             </div>
 
             {/* Major & University */}
-            <div className="w-full flex gap-5">
+            <div className="w-full flex md:flex-row flex-col gap-5">
               <div className="w-full">
                 <label
                   htmlFor="major"
@@ -245,8 +245,6 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
               <ImageDropZone name="id_verification_photo" />
             </div>
           </div>
-
-          {/* <CourseInput courses={expertise} setCourses={setExpertise} /> */}
         </section>
         {/* Employment History */}
         <section className="mb-10">
@@ -258,7 +256,7 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
           />
         </section>
         {/* Agreement & Consent */}
-        <section className="mb-10">
+        <section className="w-full mb-10">
           <h1 className="text-2xl font-bold mb-5">Agreement & Consent</h1>
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-3">
