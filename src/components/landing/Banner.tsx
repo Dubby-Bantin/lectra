@@ -1,12 +1,13 @@
 import Link from "next/link";
 import BannerGrid from "./BannerGrid";
 import MobileBannerGrid from "./MobileBannerGrid";
+import { Cover } from "../ui/cover";
 const Banner = () => (
   <div className="relative w-full font-lato flex flex-col lg:flex-row items-center justify-between px-6 sm:px-10 md:px-20 lg:px-28 xl:px-32  md:gap-10 gap-5   min-h-screen md:pt-0 pt-20">
     {/* Left Section */}
     <div className="flex flex-col justify-center text-center lg:text-left md:max-w-lg lg:max-w-xl xl:max-w-2xl">
       <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-snug tracking-tight text-gray-900 dark:text-gray-200">
-        Elevate Your Lecture Experience
+        Elevate Your <Cover>Lecture</Cover> Experience
       </h1>
 
       <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 dark:text-gray-300 mt-4">
