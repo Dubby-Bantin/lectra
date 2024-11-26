@@ -1,5 +1,15 @@
+import InstructorTabs from "@/components/common/InstructorTabs";
 import Footer from "@/components/landing/Footer";
 import LectureSubscribeBtn from "@/components/lectures/LectureSubscribeBtn";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { getFirestoreDocs } from "@/lib/utils/fireBaseUtils";
 import { cookies } from "next/headers";
 import Image from "next/image";
@@ -28,6 +38,14 @@ const InstructorsPage = async () => {
                 profileImageUrl,
                 expertise,
                 bio,
+                selectedDays,
+                degree,
+                major,
+                preferred_language,
+                email,
+                phoneNumber,
+                university,
+                employment_history,
               }) => (
                 <div
                   key={id}
@@ -35,7 +53,7 @@ const InstructorsPage = async () => {
                 >
                   <div className="relative w-full h-60 overflow-hidden">
                     <Image
-                      src={profileImageUrl} // Fallback image
+                      src={profileImageUrl}
                       alt={`${firstName || "Instructor"}'s Profile Image`}
                       height={240}
                       width={400}
@@ -50,7 +68,39 @@ const InstructorsPage = async () => {
                     <p className="text-gray-600 dark:text-gray-300 my-3">
                       {bio}
                     </p>
-                    <LectureSubscribeBtn userId={userId} instructorId={id} />
+
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button variant={"outline"}>View full details</Button>
+                      </DialogTrigger>
+
+                      <DialogContent className="sm:w-[40rem]">
+                        <DialogHeader>
+                          <DialogTitle>{`${firstName} ${lastName}`}</DialogTitle>
+                        </DialogHeader>
+
+                        <InstructorTabs
+                          firstName={firstName}
+                          selectedDays={selectedDays}
+                          degree={degree}
+                          major={major}
+                          bio={bio}
+                          expertise={expertise}
+                          preferred_language={preferred_language}
+                          email={email}
+                          phoneNumber={phoneNumber}
+                          university={university}
+                          employment_history={employment_history}
+                        />
+
+                        <DialogFooter>
+                          <LectureSubscribeBtn
+                            userId={userId}
+                            instructorId={id}
+                          />
+                        </DialogFooter>
+                      </DialogContent>
+                    </Dialog>
                   </div>
                 </div>
               )
