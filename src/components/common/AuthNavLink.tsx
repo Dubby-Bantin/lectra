@@ -51,15 +51,35 @@ const AuthNavLink = () => {
   }
 
   return (
-    <Link
-      className={
-        "flex items-center gap-4 rounded-sm px-4 py-2 border sm:text-sm"
-      }
-      href={`/${rolePath}/dashboard/${userId}`}
-    >
-      <MdOutlineDashboard className="sm:hidden" />
-      Dashboard
-    </Link>
+    <>
+      {userId === null ? (
+        <div className="flex items-center gap-5">
+          <Link
+            href="/signup"
+            aria-label="Sign up"
+            className="p-2 px-10 rounded-full bg-gradient-to-r from-[#0C0E23] to-[#050112] text-sm flex items-center gap-4 font-poppins transition-colors duration-200"
+          >
+            Sign up
+          </Link>
+          <Link
+            href="/login"
+            aria-label="Login"
+            className="p-2 px-10 rounded-full bg-gradient-to-r from-[#0C0E23] to-[#050112] text-sm flex items-center gap-4 font-poppins transition-colors duration-200"
+          >
+            Login
+          </Link>
+        </div>
+      ) : (
+        <Link
+          href={`/${rolePath}/dashboard/${userId}`}
+          aria-label="Go to Dashboard"
+          className="flex items-center gap-4 rounded-sm px-4 py-2 border sm:text-sm"
+        >
+          <MdOutlineDashboard className="sm:hidden" />
+          Dashboard
+        </Link>
+      )}
+    </>
   );
 };
 

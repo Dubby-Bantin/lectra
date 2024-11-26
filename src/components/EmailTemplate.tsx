@@ -37,7 +37,7 @@ export const LectureReminderEmail = ({
               alt="Lectra Logo"
               className="mx-auto mb-6 rounded-md object-cover w-full"
             />
-            <Text className="text-lg text-gray-800 mb-4">Hi Student 👋,</Text>
+            <Text className="text-lg text-gray-800 mb-4">Hello Student 👋,</Text>
             <Text className="text-gray-700 leading-relaxed mb-6">
               This is a friendly reminder that your lecture under the,{" "}
               <span className="font-semibold text-blue-600">

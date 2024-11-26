@@ -27,7 +27,7 @@ const NavBar = () => {
 
   return (
     <header
-      className={`top-0 z-[999999] sticky px-5 flex justify-between items-center p-2 transition-all duration-300 ${
+      className={`font-poppins top-0 z-50 sticky px-5 flex justify-between items-center p-2 transition-all duration-300 ${
         isScrolled ? "backdrop-blur-lg shadow-md" : "bg-transparent"
       }`}
     >
@@ -90,9 +90,10 @@ const NavBar = () => {
               </Link>
             ))}
             <AuthNavLink />
-            <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-4">
+            <div className="flex items-center gap-4 px-2.5 text-foreground">
               <ModeToggle />
-            </nav>
+              Theme
+            </div>
           </nav>
         </SheetContent>
       </Sheet>

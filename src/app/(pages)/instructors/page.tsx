@@ -31,23 +31,25 @@ const InstructorsPage = async () => {
               }) => (
                 <div
                   key={id}
-                  className="bg-background border rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-200 sm:w-[25rem]"
+                  className="bg-background border rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-200 sm:w-[25rem] w-full max-w-sm"
                 >
-                  <div className="relative w-full h-60">
+                  <div className="relative w-full h-60 overflow-hidden">
                     <Image
-                      src={profileImageUrl}
-                      alt={firstName || "profileImage"}
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-t-lg"
+                      src={profileImageUrl} // Fallback image
+                      alt={`${firstName || "Instructor"}'s Profile Image`}
+                      height={240}
+                      width={400}
+                      className="rounded-t-lg w-full h-full object-cover"
                     />
                   </div>
                   <div className="mt-4 text-center">
-                    <h3 className="text-xl font-semibold text-gray-800">
+                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
                       {`${firstName} ${lastName}`}
                     </h3>
                     <p className="text-sm text-[#33bbcf] mt-1">{expertise}</p>
-                    <p className="text-gray-600 my-3">{bio}</p>
+                    <p className="text-gray-600 dark:text-gray-300 my-3">
+                      {bio}
+                    </p>
                     <LectureSubscribeBtn userId={userId} instructorId={id} />
                   </div>
                 </div>

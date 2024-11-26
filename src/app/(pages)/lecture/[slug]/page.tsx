@@ -21,7 +21,6 @@ const Lecture = async ({ params: { slug } }: { params: { slug: string } }) => {
     redirect("/signup");
   }
 
-  // Retrieve the room document based on the user's email
   const room = await getDocument({ roomId: slug, userId: email });
   if (!room) {
     redirect("/signup");

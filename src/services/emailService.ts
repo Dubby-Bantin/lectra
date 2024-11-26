@@ -48,7 +48,7 @@ const sendEmail = async (
     if (e instanceof Error) {
       return { error: e.message };
     }
-    console.error("Error sending email:");
+    console.error("Error sending email:", e);
   }
 };
 

@@ -2,13 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
-interface welcomeComponentProps {
+interface WelcomeComponentProps {
   h2: string;
   p1: string;
   p2: string;
   image: string | StaticImport;
 }
-const WelcomeComponent = ({ h2, p1, p2, image }: welcomeComponentProps) => {
+const WelcomeComponent = ({ h2, p1, p2, image }: WelcomeComponentProps) => {
   return (
     <div className="flex flex-col md:flex-row h-full w-full border rounded-sm">
       {/* Left Section: Image/Logo */}
