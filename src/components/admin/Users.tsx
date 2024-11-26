@@ -12,15 +12,6 @@ import {
   capitalizeFirstLetter,
   // convertTimestampToDate,
 } from "@/lib/utils/helpers";
-// import {
-//   DropdownMenu,
-//   DropdownMenuContent,
-//   DropdownMenuLabel,
-//   DropdownMenuSeparator,
-//   DropdownMenuTrigger,
-// } from "../ui/dropdown-menu";
-// import { IoIosMore } from "react-icons/io";
-// import Image from "next/image";
 import UserTable from "./UserTable";
 
 const Users = () => {
@@ -31,15 +22,15 @@ const Users = () => {
     params.set("table", value);
     router.push(`?${params.toString()}`);
   };
+
+  const dataList = searchParams?.get("table");
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <h1 className="text-3xl font-bold text-gray-700 mb-5">User Management</h1>
-      <div className="w-40">
+      <div className="w-40 mb-10">
         <Select onValueChange={(value) => handleChange(value)}>
           <SelectTrigger>
-            <SelectValue
-              placeholder={capitalizeFirstLetter(searchParams?.get("table"))}
-            />
+            <SelectValue placeholder={capitalizeFirstLetter(dataList)} />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="instructors">Instructors</SelectItem>
@@ -48,7 +39,7 @@ const Users = () => {
         </Select>
       </div>
 
-      <UserTable />
+      <UserTable dataList={dataList} />
     </div>
   );
 };

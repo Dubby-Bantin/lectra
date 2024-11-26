@@ -87,8 +87,8 @@ const dateConverter = (timestamp: string): string => {
   }
 };
 
-const capitalizeFirstLetter = (word: string) =>
-  word.charAt(0).toUpperCase() + word.slice(1);
+const capitalizeFirstLetter = (word: string | null) =>
+  word !== null ? word?.charAt(0).toUpperCase() + word.slice(1) : "";
 
 const parseStringify = (value: unknown) => JSON.parse(JSON.stringify(value));
 
