@@ -62,7 +62,7 @@ const InstructorsPage = async () => {
                   </div>
                   <div className="mt-4 text-center">
                     <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
-                      {`${firstName} ${lastName}`}
+                      {`${firstName.toUpperCase()} ${lastName.toUpperCase()}`}
                     </h3>
                     <p className="text-sm text-[#33bbcf] mt-1">{expertise}</p>
                     <p className="text-gray-600 dark:text-gray-300 my-3">
@@ -76,7 +76,10 @@ const InstructorsPage = async () => {
 
                       <DialogContent className="sm:w-[40rem]">
                         <DialogHeader>
-                          <DialogTitle>{`${firstName} ${lastName}`}</DialogTitle>
+                          <DialogTitle>
+                            {" "}
+                            {`${firstName.toUpperCase()} ${lastName.toUpperCase()}`}
+                          </DialogTitle>
                         </DialogHeader>
 
                         <InstructorTabs

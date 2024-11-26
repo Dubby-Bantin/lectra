@@ -1,4 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { capitalizeFirstLetter } from "@/lib/utils/helpers";
 
 const InstructorTabs = ({
   firstName,
@@ -34,24 +35,24 @@ const InstructorTabs = ({
       </TabsList>
 
       {/* Tab Content: Bio */}
-      <TabsContent value="bio" className="mt-4">
+      <TabsContent value="bio" className="py-4">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
           About {firstName}
         </h3>
-        <p className="text-gray-600 dark:text-gray-300 mt-2">{bio}</p>
-        <div className="mt-4">
+        <p className="text-gray-600 dark:text-gray-300 py-2">{bio}</p>
+        <div className="py-4">
           <h4 className="text-md font-medium text-gray-800 dark:text-white">
             Expertise:
           </h4>
           <p className="text-gray-700 dark:text-gray-300">{expertise}</p>
         </div>
-        <div className="mt-4">
+        <div className="py-4">
           <h4 className="text-md font-medium text-gray-800 dark:text-white">
             Degree:
           </h4>
           <p className="text-gray-700 dark:text-gray-300">{degree}</p>
         </div>
-        <div className="mt-4">
+        <div className="pt-4">
           <h4 className="text-md font-medium text-gray-800 dark:text-white">
             Major:
           </h4>
@@ -60,14 +61,21 @@ const InstructorTabs = ({
       </TabsContent>
 
       {/* Tab Content: Schedule */}
-      <TabsContent value="schedule" className="mt-4">
+      <TabsContent value="schedule" className="py-4">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
           Availability
         </h3>
-        <p className="text-gray-600 dark:text-gray-300 mt-2">
-          Preferred Days: {selectedDays.join(", ")}
+        <p className="text-gray-600 dark:text-gray-300 py-2">
+          Preferred Lecture Days:
+          <ul className="grid grid-cols-2 ">
+            {selectedDays.map((day: string) => (
+              <li key={day} className="text-lg">
+                {capitalizeFirstLetter(day)}
+              </li>
+            ))}
+          </ul>
         </p>
-        <div className="mt-4">
+        <div className="pt-4">
           <h4 className="text-md font-medium text-gray-800 dark:text-white">
             Teaching Language:
           </h4>
@@ -78,22 +86,22 @@ const InstructorTabs = ({
       </TabsContent>
 
       {/* Tab Content: Contact */}
-      <TabsContent value="contact" className="mt-4">
+      <TabsContent value="contact" className="py-4">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
           Contact Information
         </h3>
-        <p className="text-gray-600 dark:text-gray-300 mt-2">
+        <p className="text-gray-600 dark:text-gray-300 py-2">
           Email:{" "}
           <a href={`mailto:${email}`} className="text-blue-500 hover:underline">
             {email}
           </a>
         </p>
-        <div className="mt-4">
+        <div className="py-4">
           <p className="text-gray-600 dark:text-gray-300">
             Phone: {phoneNumber || "Not provided"}
           </p>
         </div>
-        <div className="mt-4">
+        <div className="pt-4">
           <h4 className="text-md font-medium text-gray-800 dark:text-white">
             University:
           </h4>
