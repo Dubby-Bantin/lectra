@@ -62,13 +62,13 @@ const InstructorProfilePage = async ({
   ];
 
   return (
-    <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
-      <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2 ">
-        <h1 className="text-lg font-bold">
+    <main className="flex-1 items-start gap-4 md:gap-8 grid lg:grid-cols-3 xl:grid-cols-3 sm:px-6 sm:py-0 p-4">
+      <div className="items-start gap-4 md:gap-8 grid lg:col-span-2 auto-rows-max">
+        <h1 className="font-bold text-lg">
           Hello {`${firstName} ${lastName}`}
           <p className="text-sm">Here’s an overview of your dashboard.</p>
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-3 w-full border rounded-lg gap-3 min-h-[160px] place-content-center">
+        <div className="place-content-center gap-3 grid grid-cols-1 sm:grid-cols-3 border rounded-lg w-full min-h-[160px]">
           {instructorsOverview.map(({ border, title, total, Icon }, i) => (
             <div
               key={i}
@@ -80,12 +80,12 @@ const InstructorProfilePage = async ({
                 style={{
                   border: `2px solid #${border}`, // Ensure full border value is passed
                 }}
-                className="p-3 w-fit rounded-full"
+                className="p-3 rounded-full w-fit"
               >
                 <Icon className="text-[20px]" />
               </div>
               <div className="flex flex-col">
-                <p className="text-[16px] font-[500]">{title}</p>
+                <p className="font-[500] text-[16px]">{title}</p>
                 <p>{total ?? 0}</p>
               </div>
             </div>
@@ -108,11 +108,12 @@ const InstructorProfilePage = async ({
           roomDocuments={roomDocuments}
           email={email}
           id={id}
+          subscribedUsers={subscribedUsers}
         />
       </div>
 
       <div className="flex sm:flex-col flex-col-reverse items-center w-fit">
-        <div className="sm:overflow-y-auto sm:h-[47.2rem] no-scrollbar mb-10">
+        <div className="mb-10 sm:h-[47.2rem] sm:overflow-y-auto no-scrollbar">
           <InstructorProfileCard
             firstName={firstName}
             lastName={lastName}

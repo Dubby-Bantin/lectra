@@ -13,10 +13,11 @@ const LectureBoxComponent = ({
   email,
   id,
   headerText,
+  subscribedUsers,
 }: LiveBlockRoomsProps) => {
   return (
     <section className="md:p-6">
-      <p className="text-lg py-5 font-poppins">{headerText}</p>
+      <p className="py-5 font-poppins text-lg">{headerText}</p>
       <Card>
         <CardHeader>
           <CardTitle>Host Lecture</CardTitle>
@@ -24,23 +25,34 @@ const LectureBoxComponent = ({
             Host or Schedule lectures in one-click.
           </CardDescription>
           <div className="flex justify-between">
-            <LectureScheduleBtn userId={id} email={email} />
+            {subscribedUsers && subscribedUsers?.length > 0 && (
+              <LectureScheduleBtn userId={id} email={email} />
+            )}
           </div>
         </CardHeader>
         <CardContent>
-          <div className="w-full flex flex-col items-center justify-center h-full ">
-            {roomDocuments.data && roomDocuments.data.length > 0 ? (
-              <LiveBlockRooms roomDocuments={roomDocuments} email="" />
+          <div className="flex flex-col justify-center items-center w-full h-full">
+            {subscribedUsers && subscribedUsers?.length > 0 ? (
+              roomDocuments?.data?.length > 0 ? (
+                <LiveBlockRooms roomDocuments={roomDocuments} email="" />
+              ) : (
+                <div className="text-center">
+                  <h1 className="mb-2 font-bold text-xl">
+                    You haven&apos;t hosted any lectures yet, but students are
+                    subscribed to your lectures.
+                  </h1>
+                  <p className="mb-4 text-gray-600 dark:text-gray-400">
+                    Get started by clicking the &#34;Schedule Lecture&#34;
+                    button to host your first lecture.
+                  </p>
+                </div>
+              )
             ) : (
-              <div className="text-center">
-                <h1 className="text-xl font-bold mb-2">
-                  You haven&apos;t hosted any lectures yet
-                </h1>
-                <p className="text-gray-600 dark:text-gray-400 mb-4 ">
-                  Seems like you haven&apos;t hosted any lectures start by
-                  clicking one of the buttons
-                </p>
-              </div>
+              <p className="text-center text-gray-600 dark:text-gray-400">
+                It seems there are no students subscribed to your lectures at
+                the moment. Students need to subscribe to your lectures before
+                you can schedule or host them.
+              </p>
             )}
           </div>
         </CardContent>

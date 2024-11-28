@@ -62,6 +62,7 @@ declare type LiveBlockRoomsProps = {
   email: string;
   userId?: string;
   text?: string;
+  subscribedUsers?: string[];
   roomDocuments: { data: RoomDocument[] };
 };
 

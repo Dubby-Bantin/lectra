@@ -13,6 +13,7 @@ import Loader from "@/lib/utils/Loader";
 import { Editor } from "@/components/editor/Editor";
 import Image from "next/image";
 import logo from "@/public/images/logo (2).png";
+import GiveClassWork from "./GiveClassWork";
 
 const CollaborativeRoom = ({
   roomId,
@@ -78,26 +79,24 @@ const CollaborativeRoom = ({
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Auto-focus title input when editing is enabled
-  useEffect(() => {
-    if (editing && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [editing]);
+  // // Auto-focus title input when editing is enabled
+  // useEffect(() => {
+  //   if (editing && inputRef.current) {
+  //     inputRef.current.focus();
+  //   }
+  // }, [editing]);
 
   return (
     <RoomProvider id={roomId}>
       <ClientSideSuspense fallback={<Loader />}>
-        <div className="collaborative-room w-full p-5">
+        <div className="p-5 w-full collaborative-room">
           <div className="relative w-full">
             <div
               ref={containerRef}
-              className="flex flex-wrap items-center justify-between w-full px-4 py-5"
+              className="flex flex-wrap justify-between items-center px-4 py-5 w-full"
             >
               <Image
                 src={logo}
@@ -107,8 +106,7 @@ const CollaborativeRoom = ({
                 className="bg-dark rounded-sm"
               />
 
-              {/* Title/Input Centered */}
-              <div className="flex-grow flex justify-center max-w-80">
+              <div className="flex flex-grow justify-center max-w-80">
                 {editing && !loading ? (
                   <Input
                     type="text"
@@ -132,10 +130,14 @@ const CollaborativeRoom = ({
                 )}
               </div>
 
-              {/* Right Section */}
-              <div className="flex-shrink-0 flex gap-5 items-center">
+              <div className="flex flex-shrink-0 items-center gap-5">
                 <ActiveCollaborators />
-                {instructorId && <EndLectureBtn userId={instructorId} />}
+                {instructorId && (
+                  <div>
+                    <GiveClassWork />
+                    <EndLectureBtn userId={instructorId} />
+                  </div>
+                )}
               </div>
             </div>
 
