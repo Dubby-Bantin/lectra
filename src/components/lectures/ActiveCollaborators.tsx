@@ -19,27 +19,27 @@ const ActiveCollaborators = () => {
       <DialogTrigger asChild>
         <Button variant={"outline"}>See everyone</Button>
       </DialogTrigger>
-      <DialogContent className="sm:w-[80rem] w-[20rem]">
+      <DialogContent className="max-w-3xl overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Active students</DialogTitle>
         </DialogHeader>
 
-        <ul className="flex flex-wrap items-center justify-center gap-4">
+        <ul className="flex flex-wrap justify-center items-center gap-4 overflow-y-auto">
           {collaborators.length ? (
             collaborators.map(({ id, name, avatar, color }) => (
               <li
                 key={id}
-                className="flex flex-col items-center justify-center dark:bg-slate-900 p-2 rounded-sm shadow-md w-48 h-48"
+                className="flex flex-col justify-center items-center dark:bg-slate-900 shadow-md p-2 rounded-sm w-48 h-48"
               >
                 <Image
                   src={avatar}
                   alt={name}
                   width={80}
                   height={80}
-                  className="rounded-full ring-2 object-cover w-20 h-20"
+                  className="rounded-full ring-2 w-20 h-20 object-cover"
                   style={{ border: `3px solid ${color}` }}
                 />
-                <p className="py-5 text-center text-sm font-semibold text-gray-800 dark:text-gray-200">
+                <p className="py-5 font-semibold text-center text-gray-800 text-sm dark:text-gray-200">
                   {name}
                 </p>
               </li>

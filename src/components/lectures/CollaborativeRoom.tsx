@@ -133,7 +133,7 @@ const CollaborativeRoom = ({
               <div className="flex flex-shrink-0 items-center gap-5">
                 <ActiveCollaborators />
                 {instructorId && (
-                  <div>
+                  <div className="flex gap-5">
                     <GiveClassWork />
                     <EndLectureBtn userId={instructorId} />
                   </div>

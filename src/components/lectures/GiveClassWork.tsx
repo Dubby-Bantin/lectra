@@ -1,17 +1,15 @@
 import { Button } from "../ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 
 const GiveClassWork = () => {
   return (
-    <Popover>
-      <PopoverTrigger asChild>
+    <Dialog>
+      <DialogTrigger asChild>
         <Button variant={"outline"}>Give Exercise</Button>
-      </PopoverTrigger>
+      </DialogTrigger>
 
-      <PopoverContent>
-        
-      </PopoverContent>
-    </Popover>
+      <DialogContent className="max-w-lg"></DialogContent>
+    </Dialog>
   );
 };
 
