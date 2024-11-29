@@ -23,6 +23,7 @@ declare type InstructorData = {
   idVerificationUrl: string;
   subscribedUsers?: string[];
   bio: string;
+  role: string;
 };
 
 declare type InstructorProfileSetUpFireStoreData = {

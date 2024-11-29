@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Cookies from "js-cookie";
 import { getFireStoreRefData } from "@/lib/utils/fireBaseUtils";
 import { MdOutlineDashboard } from "react-icons/md";
-import  Cookies  from "js-cookie";
+
 const AuthNavLink = () => {
   const [userId, setUserId] = useState<string | null>(null);
   const [rolePath, setRolePath] = useState<string | null>(null);
@@ -22,18 +23,9 @@ const AuthNavLink = () => {
       setUserId(userIdFromCookie);
 
       try {
-        const instructorData = await getFireStoreRefData(
-          userIdFromCookie,
-          "instructors"
-        );
-        const studentData = await getFireStoreRefData(
-          userIdFromCookie,
-          "students"
-        );
-        if (instructorData) {
-          setRolePath("instructor");
-        } else if (studentData) {
-          setRolePath("student");
+        const userData = await getFireStoreRefData(userIdFromCookie, "users");
+        if (userData?.role) {
+          setRolePath(userData.role);
         } else {
           setRolePath(null);
         }
@@ -49,11 +41,7 @@ const AuthNavLink = () => {
   }, []);
 
   if (loading) {
-    return (
-      <div className="flex items-center gap-5">
-        <span className="text-xs">loading...</span>
-      </div>
-    );
+    return <span className="text-xs">loading...</span>;
   }
 
   return (
