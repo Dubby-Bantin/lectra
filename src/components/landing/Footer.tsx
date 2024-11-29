@@ -63,13 +63,13 @@ const Footer = () => (
           </Link>
         </p>
         <div className="flex space-x-4">
-          <Link href="#" aria-label="WhatsApp" className="bg-gradient-to-r from-[#0C0E23] to-[#050112] -mr-2 p-2 rounded-full hover:text-gray-400">
+          <Link href="#" aria-label="WhatsApp" className="bg-gradient-to-r from-neutral-200 dark:from-[#0C0E23] to-neutral-600 dark:to-[#050112] -mr-2 p-2 rounded-full hover:text-gray-400">
             <FaWhatsapp size={15} />
-          </Link>
-          <Link href="#" aria-label="Twitter" className="bg-gradient-to-r from-[#0C0E23] to-[#050112] -mr-2 p-2 rounded-full hover:text-gray-400">
+          </Link>s
+          <Link href="#" aria-label="Twitter" className="bg-gradient-to-r from-neutral-200 dark:from-[#0C0E23] to-neutral-600 dark:to-[#050112] -mr-2 p-2 rounded-full hover:text-gray-400">
             <FaXTwitter size={15} />
           </Link>
-          <Link href="#" aria-label="Instagram" className="bg-gradient-to-r from-[#0C0E23] to-[#050112] -mr-2 p-2 rounded-full hover:text-gray-400">
+          <Link href="#" aria-label="Instagram" className="bg-gradient-to-r from-neutral-200 dark:from-[#0C0E23] to-neutral-600 dark:to-[#050112] -mr-2 p-2 rounded-full hover:text-gray-400">
             <IoLogoInstagram size={15} />
           </Link>
         </div>

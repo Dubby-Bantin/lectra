@@ -4,7 +4,7 @@ import { benefits } from "@/lib/utils/constants";
 import { IoDiamondOutline } from "react-icons/io5";
 
 const Skeleton = ({ title }: { title: string }) => (
-  <div className="flex flex-1 bg-gradient-to-r from-[#0C0E23] to-[#050112] p-4 rounded-xl w-full h-full min-h-[6rem] font-poppins text-lg">
+  <div className="flex flex-1 bg-gradient-to-r from-neutral-200 dark:from-[#0C0E23] to-neutral-600 dark:to-[#050112] -mr-2 p-2 rounded-xl w-full h-full min-h-[6rem] font-poppins text-lg hover:text-gray-400">
     {title}
   </div>
 );
