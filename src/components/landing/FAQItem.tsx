@@ -10,8 +10,11 @@ const FAQItem = ({ question, answer, Icon }: FAQItemProps) => {
   return (
     <div
       onClick={toggleFAQ}
-      className={`rounded-lg border w-full px-4 cursor-pointer transition-all duration-200 `}
+      className={`relative rounded-lg border w-full px-4 cursor-pointer transition-all duration-200 `}
     >
+      {isOpen && (
+        <div className="-top-px absolute inset-x-0 bg-gradient-to-r from-transparent via-blue-500 to-transparent shadow-2xl mx-auto w-1/2 h-px" />
+      )}
       <div className="flex justify-between items-center py-4">
         <div className="flex items-center gap-4">
           <Icon className="text-xl" />
