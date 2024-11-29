@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Bell, CircleUser, Home, Menu } from "lucide-react";
+import { CircleUser, Home, Menu } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 

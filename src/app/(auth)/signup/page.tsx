@@ -3,7 +3,6 @@ import Link from "next/link";
 // import OAuthProvider from "@/components/auth/OAuthProvider";
 import logo from "@/public/images/logo (2).png";
 import SignUpForm from "@/components/auth/SignUpForm";
-import { BsBack } from "react-icons/bs";
 import { IoReturnDownBack } from "react-icons/io5";
 
 const AuthForm = () => {
