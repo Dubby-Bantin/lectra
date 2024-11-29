@@ -6,15 +6,15 @@ import SignUpForm from "@/components/auth/SignUpForm";
 
 const AuthForm = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="w-full max-w-md p-8 py-10 space-y-6 text-white rounded-lg dark:shadow-lg sm:border relative">
-        <div className="flex flex-col items-center justify-center w-full">
+    <div className="flex justify-center items-center min-h-screen">
+      <div className="relative space-y-6 dark:shadow-lg py-10 p-8 sm:border rounded-lg w-full max-w-md text-white">
+        <div className="flex flex-col justify-center items-center w-full">
           <Image
             src={logo}
             alt="logo"
             width={50}
             height={50}
-            className="bg-dark rounded-sm p-1 mb-4"
+            className="bg-dark mb-4 p-1 rounded-sm"
             priority
           />
           <p className="text-center text-gray-400">Welcome</p>
@@ -25,7 +25,7 @@ const AuthForm = () => {
           Already have an account?{" "}
           <Link
             href={"/login"}
-            className="hover:underline text-black dark:text-accent dark:hover:text-blue-500"
+            className="text-black dark:hover:text-blue-500 dark:text-accent hover:underline"
           >
             Login
           </Link>

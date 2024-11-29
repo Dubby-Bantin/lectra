@@ -349,6 +349,31 @@ const brightColors = [
   "#FF6347",
 ];
 
+const benefits = [
+  {
+    title: "Personalized Learning Paths",
+    desc: "Lectra adapts to each student’s unique pace and goals, ensuring that every lecture and resource fits your learning style",
+  },
+
+  {
+    title: "Interactive and Engaging Classes",
+    desc: "Our platform supports real-time interactions, so you can actively participate, ask questions, and collaborate with peers for a more enriching experience.",
+  },
+
+  {
+    title: "Easy Access to Expert Instructors",
+    desc: "With certified and experienced instructors, Lectra provides top-notch guidance to help you succeed in every subject.",
+  },
+  {
+    title: "Reliable Scheduling and Email Notifications",
+    desc: "Never miss a class or deadline! Lectra’s scheduling and email notification system keeps you informed and organized, making it easier to focus on learning.",
+  },
+  {
+    title: "Reliable Scheduling and Email Notifications",
+    desc: "Never miss a class or deadline! Lectra’s scheduling and email notification system keeps you informed and organized, making it easier to focus on learning.",
+  },
+];
+
 export {
   navLinks,
   universities,
@@ -357,4 +382,5 @@ export {
   featuresData,
   teamMembers,
   data,
+  benefits,
 };

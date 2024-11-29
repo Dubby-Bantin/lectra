@@ -9,7 +9,7 @@ const Lectures = async ({ params }: { params: { id: string } }) => {
   if (!data) {
     return <p className="text-center text-red-500">Instructor not found.</p>;
   }
-  const { id, email } = data;
+  const { id, email, subscribedUsers } = data;
   const roomDocuments = await getDocuments(email, 100);
   return (
     <LectureBoxComponent
@@ -17,6 +17,7 @@ const Lectures = async ({ params }: { params: { id: string } }) => {
       roomDocuments={roomDocuments}
       email={email}
       id={id}
+      subscribedUsers={subscribedUsers}
     />
   );
 };

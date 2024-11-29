@@ -27,8 +27,8 @@ const NavBar = () => {
 
   return (
     <header
-      className={`font-poppins top-0 z-50 sticky px-5 flex justify-between items-center p-2 transition-all duration-300 ${
-        isScrolled ? "backdrop-blur-lg shadow-md" : "bg-transparent"
+      className={`font-poppins border-b top-0 z-[999] sticky px-5 flex justify-between items-center p-1 transition-all duration-300 ${
+        isScrolled ? "backdrop-blur-lg" : "bg-transparent"
       }`}
     >
       <Link href="/" className="flex items-center">
@@ -36,18 +36,18 @@ const NavBar = () => {
           src={logo}
           alt="Lectra Logo"
           height={50}
-          className="bg-dark rounded-sm mx-2"
+          className="bg-dark mx-2 rounded-sm"
         />
-        <span className="text-lg font-bold">Lectra</span>
+        <span className="font-bold text-lg">Lectra</span>
       </Link>
 
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex items-center gap-5 relative dark:text-white">
+      <nav className="relative md:flex items-center gap-5 hidden dark:text-white">
         {navLinks.map(({ id, title }) => (
           <Link
             key={id}
             href={`/${id}`}
-            className="text-sm flex items-center gap-4 rounded-xl px-3 py-2 transition-colors duration-200"
+            className="flex items-center gap-4 px-3 py-2 rounded-xl text-sm transition-colors duration-200"
           >
             {title}
           </Link>
@@ -59,16 +59,16 @@ const NavBar = () => {
       {/* Mobile Navigation */}
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="outline" size="icon" className="shrink-0 md:hidden">
-            <Menu className="h-5 w-5" />
+          <Button variant="outline" size="icon" className="md:hidden shrink-0">
+            <Menu className="w-5 h-5" />
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="flex flex-col z-[9999]">
-          <nav className="grid gap-2 text-lg font-medium z-50">
+        <SheetContent side="left" className="z-[9999] flex flex-col">
+          <nav className="z-50 gap-2 grid font-medium text-lg">
             <Link
               href="#"
-              className="flex items-center gap-2 text-lg font-semibold w-[3rem] h-[3rem] bg-dark rounded-md"
+              className="flex items-center gap-2 bg-dark rounded-md w-[3rem] h-[3rem] font-semibold text-lg"
             >
               <Image
                 alt="Lectra Logo"
@@ -83,9 +83,9 @@ const NavBar = () => {
               <Link
                 key={id}
                 href={`/${id}`}
-                className="flex items-center gap-4 rounded-xl px-3 py-2 transition-colors duration-200 hover:bg-gray-200 dark:hover:bg-gray-700"
+                className="flex items-center gap-4 hover:bg-gray-200 dark:hover:bg-gray-700 px-3 py-2 rounded-xl transition-colors duration-200"
               >
-                {Icon && <Icon className="h-5 w-5" />}
+                {Icon && <Icon className="w-5 h-5" />}
                 {title}
               </Link>
             ))}
