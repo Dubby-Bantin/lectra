@@ -20,7 +20,7 @@ const SignUpForm = () => {
   return (
     <form
       ref={formRef}
-      className="mt-8 space-y-6"
+      className="space-y-6 mt-8"
       action={async (formData) => {
         const { error, id } = await createUser(formData);
         if (error) {
@@ -40,7 +40,7 @@ const SignUpForm = () => {
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium dark:text-white text-dark mb-2"
+            className="block mb-2 font-medium text-dark text-sm dark:text-white"
           >
             FirstName
           </label>
@@ -57,7 +57,7 @@ const SignUpForm = () => {
         <div>
           <label
             htmlFor="lastname"
-            className="block text-sm font-medium dark:text-white text-dark mb-2"
+            className="block mb-2 font-medium text-dark text-sm dark:text-white"
           >
             LastName
           </label>
@@ -75,7 +75,7 @@ const SignUpForm = () => {
       <div className="space-y-2">
         <label
           htmlFor="email"
-          className="block text-sm font-medium dark:text-white text-dark"
+          className="block font-medium text-dark text-sm dark:text-white"
         >
           Email
         </label>
@@ -90,11 +90,11 @@ const SignUpForm = () => {
         />
       </div>
 
-      <div className="flex items-center gap-5">
-        <div className="space-y-2 relative">
+      <div className="flex flex-wrap md:flex-nowrap items-center gap-5">
+        <div className="relative space-y-2 w-full">
           <label
             htmlFor="password"
-            className="block text-sm font-medium dark:text-white text-dark"
+            className="block font-medium text-dark text-sm dark:text-white"
           >
             Password
           </label>
@@ -109,21 +109,21 @@ const SignUpForm = () => {
           />
           <div
             onClick={() => setShowPassword(!showPassword)}
-            className="dark:text-white text-black absolute top-1/2 right-2"
+            className="top-1/2 right-2 absolute text-black dark:text-white"
           >
             {showPassword ? <FaRegEyeSlash /> : <IoEyeOutline />}
           </div>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 w-full">
           <label
             htmlFor="role"
-            className="block text-sm font-medium dark:text-white text-dark"
+            className="block font-medium text-dark text-sm dark:text-white"
           >
             Role
           </label>
           <Select name="role" required>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-full md:w-[180px]">
               <SelectValue placeholder="Role" />
             </SelectTrigger>
             <SelectContent>
@@ -135,10 +135,10 @@ const SignUpForm = () => {
       </div>
 
       <SubmitBtn text="Sign up" loader="Creating account..." />
-      {/* <div className="flex items-center justify-center mt-4 text-gray-500">
-        <span className="w-1/5 border-b border-gray-600"></span>
+      {/* <div className="flex justify-center items-center mt-4 text-gray-500">
+        <span className="border-gray-600 border-b w-1/5"></span>
         <span className="px-2 text-sm">OR CONTINUE WITH</span>
-        <span className="w-1/5 border-b border-gray-600"></span>
+        <span className="border-gray-600 border-b w-1/5"></span>
       </div> */}
     </form>
   );

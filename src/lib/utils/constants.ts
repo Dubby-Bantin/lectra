@@ -1,17 +1,13 @@
 import { Info, Mail } from "lucide-react"; // Example icons
 import { PiChalkboardTeacherLight } from "react-icons/pi";
-import {
-  FiClock,
-  FiUsers,
-  FiBarChart2,
-  FiShield,
-  FiGlobe,
-  FiBell,
-} from "react-icons/fi";
+import { FiClock, FiUsers, FiShield, FiGlobe, FiBell } from "react-icons/fi";
 import partner1Image from "@/public/images/1ac4b1_de2f47ad5b2940f3b5b2aaf0597ff6ed~mv2.webp";
 import partner2Image from "@/public/images/pexels-karolina-grabowska-4491461.jpg";
 import partner3Image from "@/public/images/pexels-zen-chung-5538322.jpg";
 import partner4Image from "@/public/images/1ac4b1_de2f47ad5b2940f3b5b2aaf0597ff6ed~mv2.webp";
+import { FAQ } from "@/types";
+import { BsFillQuestionCircleFill, BsFillPersonFill } from "react-icons/bs"; // Different icons for each question
+import { AiOutlineMobile } from "react-icons/ai";
 
 const navLinks = [
   {
@@ -263,12 +259,6 @@ const featuresData = [
       "Manage instructors and students with role-based access and customizable permissions.",
   },
   {
-    Icon: FiBarChart2,
-    title: "Data Analytics",
-    description:
-      "Access real-time data and performance analytics to track student progress.",
-  },
-  {
     Icon: FiShield,
     title: "Security & Compliance",
     description:
@@ -283,7 +273,13 @@ const featuresData = [
     Icon: FiBell,
     title: "Notifications",
     description:
-      "Real-time notifications to keep users updated on lectures and tests.",
+      "Real-time email notifications to keep users updated on lectures and tests.",
+  },
+  {
+    Icon: FiBell,
+    title: "Notifications",
+    description:
+      "Real-time email notifications to keep users updated on lectures and tests.",
   },
 ];
 
@@ -374,6 +370,27 @@ const benefits = [
   },
 ];
 
+const faqs: FAQ[] = [
+  {
+    Icon: BsFillQuestionCircleFill,
+    question: "What is Lectra?",
+    answer:
+      "Lectra is a platform for scheduling lectures and managing educational resources effectively.",
+  },
+  {
+    Icon: BsFillPersonFill,
+    question: "How do I register?",
+    answer:
+      'You can register by clicking on the "Sign Up" button on the homepage and filling out the required details.',
+  },
+  {
+    Icon: AiOutlineMobile,
+    question: "Is there a mobile app?",
+    answer:
+      "Currently, Lectra is a web-based application. A mobile app is in development.",
+  },
+];
+
 export {
   navLinks,
   universities,
@@ -383,4 +400,5 @@ export {
   teamMembers,
   data,
   benefits,
+  faqs,
 };

@@ -1,41 +1,25 @@
-"use client";
-
 import { motion, AnimatePresence } from "framer-motion";
-import { AiOutlineMinus } from "react-icons/ai";
-import { GoPlus } from "react-icons/go";
 import { useState } from "react";
-import { Button } from "../ui/button";
-
-interface FAQItemProps {
-  question: string;
-  answer: string;
-  Icon: React.ElementType;
-  isOpen: boolean;
-  onClick: () => void;
-}
+import { LiaAngleRightSolid } from "react-icons/lia";
+import { FAQItemProps } from "@/types";
 
 const FAQItem = ({ question, answer, Icon }: FAQItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const toggleFAQ = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleFAQ = () => setIsOpen(!isOpen);
 
   return (
     <div
       onClick={toggleFAQ}
-      className={`rounded-md border-2 w-full px-4 cursor-pointer transition-all duration-200 ${
-        isOpen && "bg-gray-700 text-white"
-      }`}
+      className={`rounded-lg border w-full px-4 cursor-pointer transition-all duration-200 `}
     >
       <div className="flex justify-between items-center py-4">
         <div className="flex items-center gap-4">
           <Icon className="text-xl" />
           <span>{question}</span>
         </div>
-        <Button variant={"outline"}>
-          {isOpen ? <AiOutlineMinus /> : <GoPlus />}
-        </Button>
+        <LiaAngleRightSolid
+          className={`${isOpen && "rotate-90"} transtion-all duration-500`}
+        />
       </div>
       <AnimatePresence>
         {isOpen && (

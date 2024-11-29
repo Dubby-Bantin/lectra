@@ -4,50 +4,56 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getFireStoreRefData } from "@/lib/utils/fireBaseUtils";
 import { MdOutlineDashboard } from "react-icons/md";
-
+import  Cookies  from "js-cookie";
 const AuthNavLink = () => {
   const [userId, setUserId] = useState<string | null>(null);
   const [rolePath, setRolePath] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const cookies = document.cookie.split("; ").reduce((acc, cookie) => {
-      const [name, value] = cookie.split("=");
-      acc[name] = value;
-      return acc;
-    }, {} as Record<string, string>);
-
-    const userIdFromCookie = cookies["userId"];
-    if (!userIdFromCookie) {
-      setUserId(null);
-      return;
-    }
-
-    setUserId(userIdFromCookie);
-
     const fetchRole = async () => {
-      const instructorData = await getFireStoreRefData(
-        userIdFromCookie,
-        "instructors"
-      );
-      const studentData = await getFireStoreRefData(
-        userIdFromCookie,
-        "students"
-      );
+      const userIdFromCookie = Cookies.get("userId");
+      if (!userIdFromCookie) {
+        setUserId(null);
+        setLoading(false);
+        return;
+      }
 
-      if (instructorData) {
-        setRolePath("instructor");
-      } else if (studentData) {
-        setRolePath("student");
-      } else {
+      setUserId(userIdFromCookie);
+
+      try {
+        const instructorData = await getFireStoreRefData(
+          userIdFromCookie,
+          "instructors"
+        );
+        const studentData = await getFireStoreRefData(
+          userIdFromCookie,
+          "students"
+        );
+        if (instructorData) {
+          setRolePath("instructor");
+        } else if (studentData) {
+          setRolePath("student");
+        } else {
+          setRolePath(null);
+        }
+      } catch (error) {
+        console.error("Error fetching role:", error);
         setRolePath(null);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchRole();
   }, []);
 
-  if (!rolePath) {
-    return null;
+  if (loading) {
+    return (
+      <div className="flex items-center gap-5">
+        <span className="text-xs">loading...</span>
+      </div>
+    );
   }
 
   return (
@@ -56,14 +62,14 @@ const AuthNavLink = () => {
         <div className="flex items-center gap-5">
           <Link
             href="/signup"
-            aria-label="Sign up"
+            aria-label="Sign up for a new account"
             className="flex items-center gap-4 bg-gradient-to-r from-[#0C0E23] to-[#050112] px-10 p-2 rounded-full font-poppins text-sm transition-colors duration-200"
           >
             Sign up
           </Link>
           <Link
             href="/login"
-            aria-label="Login"
+            aria-label="Log in to your account"
             className="flex items-center gap-4 bg-gradient-to-r from-[#0C0E23] to-[#050112] px-10 p-2 rounded-full font-poppins text-sm transition-colors duration-200"
           >
             Login

@@ -4,11 +4,7 @@ import LectureBtn from "./LectureBtn";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
 import { SmartDatetimeInput } from "../ui/extension/smart-datetime-input";
 import scheduleLecture from "@/lib/actions/lecture.actions";
@@ -20,15 +16,15 @@ const LectureScheduleBtn = ({ userId, email }: AddDocumentBtnProps) => {
     setDatetime(value ? new Date(value) : null); // Convert to Date or null if empty
   };
   return (
-    <Popover>
-      <PopoverTrigger asChild>
+    <Dialog>
+      <DialogTrigger asChild>
         <Button variant="outline">Schedule a lecture </Button>
-      </PopoverTrigger>
-      <PopoverContent className="sm:w-[30rem] w-[20rem]">
+      </DialogTrigger>
+      <DialogContent className="max-w-lg">
         <div className="space-y-4">
           <div className="space-y-2">
             <h4 className="font-medium leading-none">Lecture Schedule</h4>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               Set the details for your lecture schedule.
             </p>
           </div>
@@ -95,8 +91,8 @@ const LectureScheduleBtn = ({ userId, email }: AddDocumentBtnProps) => {
             </div>
           </form>
         </div>
-      </PopoverContent>
-    </Popover>
+      </DialogContent>
+    </Dialog>
   );
 };
 

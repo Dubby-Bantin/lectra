@@ -64,8 +64,8 @@ const NavBar = () => {
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="z-[9999] flex flex-col">
-          <nav className="z-50 gap-2 grid font-medium text-lg">
+        <SheetContent side="right" className="z-[9999] flex flex-col">
+          <nav className="gap-2 grid font-medium text-lg">
             <Link
               href="#"
               className="flex items-center gap-2 bg-dark rounded-md w-[3rem] h-[3rem] font-semibold text-lg"
@@ -90,7 +90,7 @@ const NavBar = () => {
               </Link>
             ))}
             <AuthNavLink />
-            <div className="flex items-center gap-4 px-2.5 text-foreground">
+            <div className="flex items-center gap-2">
               <ModeToggle />
               Theme
             </div>

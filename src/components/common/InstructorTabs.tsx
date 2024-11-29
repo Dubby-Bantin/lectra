@@ -28,7 +28,7 @@ const InstructorTabs = ({
 }) => {
   return (
     <Tabs defaultValue="bio">
-      <TabsList className="grid w-full grid-cols-3">
+      <TabsList className="grid grid-cols-3 w-full">
         <TabsTrigger value="bio">Biography</TabsTrigger>
         <TabsTrigger value="schedule">Schedule</TabsTrigger>
         <TabsTrigger value="contact">Contact</TabsTrigger>
@@ -36,24 +36,24 @@ const InstructorTabs = ({
 
       {/* Tab Content: Bio */}
       <TabsContent value="bio" className="py-4">
-        <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
+        <h3 className="font-semibold text-gray-800 text-lg dark:text-white">
           About {firstName}
         </h3>
-        <p className="text-gray-600 dark:text-gray-300 py-2">{bio}</p>
+        <p className="py-2 text-gray-600 dark:text-gray-300">{bio}</p>
         <div className="py-4">
-          <h4 className="text-md font-medium text-gray-800 dark:text-white">
+          <h4 className="font-medium text-gray-800 text-md dark:text-white">
             Expertise:
           </h4>
           <p className="text-gray-700 dark:text-gray-300">{expertise}</p>
         </div>
         <div className="py-4">
-          <h4 className="text-md font-medium text-gray-800 dark:text-white">
+          <h4 className="font-medium text-gray-800 text-md dark:text-white">
             Degree:
           </h4>
           <p className="text-gray-700 dark:text-gray-300">{degree}</p>
         </div>
         <div className="pt-4">
-          <h4 className="text-md font-medium text-gray-800 dark:text-white">
+          <h4 className="font-medium text-gray-800 text-md dark:text-white">
             Major:
           </h4>
           <p className="text-gray-700 dark:text-gray-300">{major}</p>
@@ -62,12 +62,12 @@ const InstructorTabs = ({
 
       {/* Tab Content: Schedule */}
       <TabsContent value="schedule" className="py-4">
-        <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
+        <h3 className="font-semibold text-gray-800 text-lg dark:text-white">
           Availability
         </h3>
-        <p className="text-gray-600 dark:text-gray-300 py-2">
+        <p className="py-2 text-gray-600 dark:text-gray-300">
           Preferred Lecture Days:
-          <ul className="grid grid-cols-2 ">
+          <ul className="grid grid-cols-2">
             {selectedDays.map((day: string) => (
               <li key={day} className="text-lg">
                 {capitalizeFirstLetter(day)}
@@ -76,7 +76,7 @@ const InstructorTabs = ({
           </ul>
         </p>
         <div className="pt-4">
-          <h4 className="text-md font-medium text-gray-800 dark:text-white">
+          <h4 className="font-medium text-gray-800 text-md dark:text-white">
             Teaching Language:
           </h4>
           <p className="text-gray-700 dark:text-gray-300">
@@ -87,10 +87,10 @@ const InstructorTabs = ({
 
       {/* Tab Content: Contact */}
       <TabsContent value="contact" className="py-4">
-        <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
+        <h3 className="font-semibold text-gray-800 text-lg dark:text-white">
           Contact Information
         </h3>
-        <p className="text-gray-600 dark:text-gray-300 py-2">
+        <p className="py-2 text-gray-600 dark:text-gray-300">
           Email:{" "}
           <a href={`mailto:${email}`} className="text-blue-500 hover:underline">
             {email}
@@ -102,7 +102,7 @@ const InstructorTabs = ({
           </p>
         </div>
         <div className="pt-4">
-          <h4 className="text-md font-medium text-gray-800 dark:text-white">
+          <h4 className="font-medium text-gray-800 text-md dark:text-white">
             University:
           </h4>
           <p className="text-gray-700 dark:text-gray-300">{university}</p>

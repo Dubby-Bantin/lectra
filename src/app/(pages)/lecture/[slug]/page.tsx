@@ -10,18 +10,17 @@ const Lecture = async ({ params: { slug } }: { params: { slug: string } }) => {
   const studentData = await getFireStoreRefData(userId, "students");
 
   let id;
-  let email;
 
   // Checking if the user is an instructor or student
   if (instructorData) {
-    ({ id, email } = instructorData);
+    ({ id } = instructorData);
   } else if (studentData) {
-    ({ id, email } = studentData);
+    ({ id } = studentData);
   } else {
     redirect("/signup");
   }
 
-  const room = await getDocument({ roomId: slug, userId: email });
+  const room = await getDocument({ roomId: slug });
   if (!room) {
     redirect("/signup");
   }

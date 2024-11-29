@@ -97,4 +97,18 @@ declare type CollaborativeRoomProps = {
   currentUserType?: UserType;
 };
 
+declare type FAQ = {
+  Icon: React.ElementType; // Icon type
+  question: string;
+  answer: string;
+};
+
+declare type FAQItemProps = {
+  question: string;
+  answer: string;
+  Icon: React.ElementType;
+  isOpen: boolean;
+  onClick: () => void;
+};
+
 declare type ThreadWrapperProps = { thread: ThreadData<BaseMetadata> };

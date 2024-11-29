@@ -37,13 +37,10 @@ const createDocument = async ({
 
 const getDocument = async ({
   roomId,
-  userId,
 }: {
   roomId: string;
-  userId: string;
 }) => {
   try {
-    console.log(userId);
     const room = await liveblocks.getRoom(roomId);
     return parseStringify(room);
   } catch (error) {

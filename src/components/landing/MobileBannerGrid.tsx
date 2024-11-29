@@ -3,21 +3,20 @@ import { heroSlides } from "@/lib/utils/constants";
 
 const MobileBannerGrid = () => {
   return (
-    <div className="relative grid grid-cols-2 gap-2 md:gap-4 flex-1 md:max-w-lg justify-center items-center">
-      {heroSlides.slice(3, 6).map((slide, i) => (
+    <div className="gap-2 grid grid-cols-3 mx-auto md:max-w-4xl">
+      {heroSlides.slice(0, 4).map((slide, index) => (
         <div
-          key={i}
-          className={`relative overflow-hidden rounded-lg shadow-lg hover:scale-105 transform transition duration-300 ${
-            i === 2 && "col-span-2"
+          key={index}
+          className={`relative shadow-lg rounded-md h-32 overflow-hidden ${
+            (index === 0 || index === 3) && "col-span-2"
           }`}
         >
           <Image
             src={slide}
-            className="object-cover w-full h-full"
-            alt="banner image"
-            layout="responsive"
+            alt={`Image ${index + 1}`}
+            className="w-full h-full object-cover"
             width={500}
-            height={500}
+            height={300}
           />
         </div>
       ))}
