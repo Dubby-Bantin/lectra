@@ -23,7 +23,27 @@ const AuthNavLink = () => {
       setUserId(userIdFromCookie);
 
       try {
-        const userData = await getFireStoreRefData(userIdFromCookie, "users");
+        // const results = await Promise.allSettled([
+        //   getFireStoreRefData(userIdFromCookie, "students"),
+        //   getFireStoreRefData(userIdFromCookie, "instructors"),
+        // ]);
+
+        // const userData = results.find(
+        //   (result) => result.status === "fulfilled" && result.value !== null
+        // )?.value;const studentData = await getFireStoreRefData(userIdFromCookie, "students");
+
+        const studentData = await getFireStoreRefData(
+          userIdFromCookie,
+          "students"
+        );
+
+        const instructorData = await getFireStoreRefData(
+          userIdFromCookie,
+          "instructors"
+        );
+
+        const userData = studentData || instructorData;
+
         if (userData?.role) {
           setRolePath(userData.role);
         } else {
