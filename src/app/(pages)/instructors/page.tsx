@@ -11,8 +11,21 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { getFirestoreDocs } from "@/lib/utils/fireBaseUtils";
+import { Metadata } from "next";
 import { cookies } from "next/headers";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Meet Our Instructors - Lectra",
+  description:
+    "Discover the expert instructors at Lectra who are transforming education. Explore their profiles and learn from the best.",
+  openGraph: {
+    url: "https://lectra.vercel.app/instructors",
+    title: "Meet Our Instructors - Lectra",
+    description:
+      "Meet the top-notch educators at Lectra. Explore instructor profiles, their expertise, and join their transformative classes.",
+  },
+};
 
 const InstructorsPage = async () => {
   const instructors = await getFirestoreDocs("instructors");
@@ -24,12 +37,12 @@ const InstructorsPage = async () => {
   const userId = cookieStore?.get("userId")?.value;
   return (
     <>
-      <div className="w-full min-h-screen py-12 px-6">
+      <div className="px-6 py-12 w-full min-h-screen">
         <div className="w-full">
-          <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">
+          <h1 className="mb-8 font-bold text-4xl text-center text-gray-800">
             Meet Our Instructors
           </h1>
-          <div className="flex flex-wrap w-full items-center justify-center gap-10">
+          <div className="flex flex-wrap justify-center items-center gap-10 w-full">
             {instructors.map(
               ({
                 id,
@@ -49,7 +62,7 @@ const InstructorsPage = async () => {
               }) => (
                 <div
                   key={id}
-                  className="bg-background border rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-200 sm:w-[25rem] w-full max-w-sm"
+                  className="bg-background shadow-lg hover:shadow-xl p-6 border rounded-lg w-full sm:w-[25rem] max-w-sm transition-shadow duration-200"
                 >
                   <div className="relative w-full h-60 overflow-hidden">
                     <Image
@@ -61,11 +74,11 @@ const InstructorsPage = async () => {
                     />
                   </div>
                   <div className="mt-4 text-center">
-                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
+                    <h3 className="font-semibold text-gray-800 text-xl dark:text-white">
                       {`${firstName.toUpperCase()} ${lastName.toUpperCase()}`}
                     </h3>
-                    <p className="text-sm text-[#33bbcf] mt-1">{expertise}</p>
-                    <p className="text-gray-600 dark:text-gray-300 my-3">
+                    <p className="mt-1 text-[#33bbcf] text-sm">{expertise}</p>
+                    <p className="my-3 text-gray-600 dark:text-gray-300">
                       {bio}
                     </p>
 

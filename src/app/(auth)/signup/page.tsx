@@ -4,7 +4,18 @@ import Link from "next/link";
 import logo from "@/public/images/logo (2).png";
 import SignUpForm from "@/components/auth/SignUpForm";
 import { IoReturnDownBack } from "react-icons/io5";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Sign Up - Join Lectra",
+  description:
+    "Create your Lectra account today and start your journey towards personalized, transformative learning experiences.",
+  openGraph: {
+    url: "https://lectra.vercel.app/signup",
+    title: "Sign Up - Join Lectra",
+    description:
+      "Join Lectra to access top-notch lectures, expert instructors, and a world of personalized learning. Sign up and transform your education.",
+  },
+};
 const AuthForm = () => {
   return (
     <div className="min-h-screen">

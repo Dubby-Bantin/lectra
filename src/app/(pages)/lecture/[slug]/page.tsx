@@ -3,6 +3,39 @@ import { getDocument } from "@/lib/actions/room.actions";
 import { getFireStoreRefData } from "@/lib/utils/fireBaseUtils";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params: { slug },
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const room = await getDocument({ roomId: slug });
+  const cookieStore = cookies();
+  const userId = cookieStore.get("userId")?.value;
+  const instructorData = await getFireStoreRefData(userId, "instructors");
+  return {
+    title: `${room.metadata.title} lecture room`,
+    description: `Join the lecture on ${room.metadata.title}. Enroll now on Lectra.`,
+    openGraph: {
+      title: `${room.metadata.title}`,
+      description: `Explore the detailed lecture on ${room.metadata.title} by ${
+        instructorData?.firstName || "Your Instructor"
+      } ${instructorData?.lastName || ""}. Don't miss out!`,
+      url: `https://lectra.vercel.app/lecture/${slug}`,
+      type: "article",
+      images: [
+        {
+          url: "/images/lecture.png",
+          alt: `${room.metadata.title} banner image`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+  };
+}
 const Lecture = async ({ params: { slug } }: { params: { slug: string } }) => {
   const cookieStore = cookies();
   const userId = cookieStore.get("userId")?.value;

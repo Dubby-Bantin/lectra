@@ -11,7 +11,24 @@ import partner2Image from "@/public/images/pexels-karolina-grabowska-4491461.jpg
 import partner3Image from "@/public/images/pexels-zen-chung-5538322.jpg";
 import Footer from "@/components/landing/Footer";
 import { data, teamMembers } from "@/lib/utils/constants";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Get in touch with Lectra. Contact us for support, inquiries, or feedback about our platform.",
+  openGraph: {
+    url: "https://lectra.vercel.app/about",
+    images: [
+      {
+        url: "/images/about.png",
+        width: 1200,
+        height: 630,
+        alt: "Lectra - Transform Your Learning Experience",
+      },
+    ],
+  },
+};
 const AboutPage = () => {
   return (
     <section className="space-y-20 px-4 lg:px-6 py-8 w-full">

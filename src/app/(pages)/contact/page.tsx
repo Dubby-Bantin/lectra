@@ -1,28 +1,44 @@
 import Footer from "@/components/landing/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Metadata } from "next";
 import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoLogoInstagram } from "react-icons/io";
-
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description:
+    "Learn more about Lectra, our mission, our journey, and how we are transforming the future of education.",
+  openGraph: {
+    url: "https://lectra.vercel.app/contact",
+    images: [
+      {
+        url: "/images/contact.png",
+        width: 1200,
+        height: 630,
+        alt: "Lectra - Transform Your Learning Experience",
+      },
+    ],
+  },
+};
 const ContactPage = () => {
   return (
     <section className="">
-      <section className="flex flex-col items-center justify-center w-full px-4 py-16 lg:px-8 lg:py-24">
+      <section className="flex flex-col justify-center items-center px-4 lg:px-8 py-16 lg:py-24 w-full">
         {/* Heading and Intro */}
-        <div className="max-w-2xl text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
-          <p className="text-lg text-gray-600">
+        <div className="mb-12 max-w-2xl text-center">
+          <h1 className="mb-4 font-bold text-4xl">Contact Us</h1>
+          <p className="text-gray-600 text-lg">
             We&apos;d love to hear from you! Please reach out with any
             questions, suggestions, or feedback.
           </p>
         </div>
 
         {/* Contact Form and Info Grid */}
-        <div className="w-full max-w-3xl flex flex-col lg:flex-row gap-12 lg:gap-16 items-start justify-center">
+        <div className="flex lg:flex-row flex-col justify-center items-start gap-12 lg:gap-16 w-full max-w-3xl">
           {/* Contact Form */}
-          <div className="flex-1 space-y-6 sm:w-fit w-full">
+          <div className="flex-1 space-y-6 w-full sm:w-fit">
             <form className="space-y-4">
               <Input
                 type="text"
@@ -47,7 +63,7 @@ const ContactPage = () => {
                 name=""
                 id=""
                 placeholder="Message"
-                className="w-full h-40 resize-none bg-transparent p-3 border rounded-lg focus:outline-4"
+                className="bg-transparent p-3 border rounded-lg w-full h-40 resize-none focus:outline-4"
               />
               <Button
                 type="submit"
@@ -61,7 +77,7 @@ const ContactPage = () => {
 
           {/* Contact Info */}
           <div className="flex-1 space-y-6 text-center lg:text-left">
-            <h2 className="text-2xl font-semibold">Get in Touch</h2>
+            <h2 className="font-semibold text-2xl">Get in Touch</h2>
             <p className="text-gray-600">
               Feel free to reach out to us through any of the channels below.
             </p>
@@ -78,7 +94,7 @@ const ContactPage = () => {
             </div>
 
             {/* Social Media Links */}
-            <div className="flex space-x-4 justify-center lg:justify-start mt-4">
+            <div className="flex justify-center lg:justify-start space-x-4 mt-4">
               <Link
                 href="#"
                 aria-label="WhatsApp"

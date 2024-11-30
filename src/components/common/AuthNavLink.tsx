@@ -67,18 +67,18 @@ const AuthNavLink = () => {
   return (
     <>
       {userId === null ? (
-        <div className="flex items-center gap-5">
+        <div className="md:flex items-center gap-5 grid">
           <Link
             href="/signup"
             aria-label="Sign up for a new account"
-            className="flex items-center gap-4 bg-gradient-to-r from-[#0C0E23] to-[#050112] px-10 p-2 rounded-full font-poppins text-sm transition-colors duration-200"
+            className="flex items-center gap-4 md:bg-gradient-to-r from-[#0C0E23] to-[#050112] px-10 p-2 rounded-full font-poppins text-sm transition-colors duration-200"
           >
             Sign up
           </Link>
           <Link
             href="/login"
             aria-label="Log in to your account"
-            className="flex items-center gap-4 bg-gradient-to-r from-[#0C0E23] to-[#050112] px-10 p-2 rounded-full font-poppins text-sm transition-colors duration-200"
+            className="flex items-center gap-4 md:bg-gradient-to-r from-[#0C0E23] to-[#050112] px-10 p-2 rounded-full font-poppins text-sm transition-colors duration-200"
           >
             Login
           </Link>
