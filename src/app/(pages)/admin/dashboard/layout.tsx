@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import logo from "@/public/images/logo (2).png";
+import logo from "@/public/images/logo.png";
 import React from "react";
 import { ModeToggle } from "@/context/ThemeSwitcher";
 import { MdOutlineDashboardCustomize } from "react-icons/md";

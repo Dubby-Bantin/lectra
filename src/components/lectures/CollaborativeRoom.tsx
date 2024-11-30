@@ -12,7 +12,7 @@ import EndLectureBtn from "./EndLectureBtn";
 import Loader from "@/lib/utils/Loader";
 import { Editor } from "@/components/editor/Editor";
 import Image from "next/image";
-import logo from "@/public/images/logo (2).png";
+import logo from "@/public/images/logo.png";
 import GiveClassWork from "./GiveClassWork";
 import LeaveLectureBtn from "./LeaveLectureBtn";
 
