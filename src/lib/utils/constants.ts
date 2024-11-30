@@ -348,26 +348,25 @@ const brightColors = [
 
 const benefits = [
   {
+    title: "Interactive and Engaging Classes",
+    desc: "Our platform supports real-time interactions, so you can actively participate, ask questions, and collaborate with peers for a more enriching experience.",
+    img: "https://media.istockphoto.com/id/1500285927/photo/young-woman-a-university-student-studying-online.jpg?s=612x612&w=0&k=20&c=yvFDnYMNEJ6WEDYrAaOOLXv-Jhtv6ViBRXSzJhL9S_k=",
+  },
+  {
     title: "Personalized Learning Paths",
     desc: "Lectra adapts to each student’s unique pace and goals, ensuring that every lecture and resource fits your learning style",
     img: "https://images.pexels.com/photos/68761/pexels-photo-68761.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
 
   {
-    title: "Interactive and Engaging Classes",
-    desc: "Our platform supports real-time interactions, so you can actively participate, ask questions, and collaborate with peers for a more enriching experience.",
-    img: "https://media.istockphoto.com/id/1446806057/photo/young-happy-woman-student-using-laptop-watching-webinar-writing-at-home.jpg?b=1&s=612x612&w=0&k=20&c=xrSBe4eiZ9LHEC1_ZqleGLOBaeRmIi74VZVS9Kl4VLk=",
+    title: "Reliable Scheduling and Email Notifications",
+    desc: "Never miss a class or deadline! Lectra’s scheduling and email notification system keeps you informed and organized, making it easier to focus on learning.",
+    img: "https://images.pexels.com/photos/1591062/pexels-photo-1591062.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
-
   {
     title: "Easy Access to Expert Instructors",
     desc: "With certified and experienced instructors, Lectra provides top-notch guidance to help you succeed in every subject.",
     img: liveSession,
-  },
-  {
-    title: "Reliable Scheduling and Email Notifications",
-    desc: "Never miss a class or deadline! Lectra’s scheduling and email notification system keeps you informed and organized, making it easier to focus on learning.",
-    img: "https://media.istockphoto.com/id/2175629112/photo/4k-new-message-icon-neon-lighting-background.jpg?s=612x612&w=0&k=20&c=bbeOtIHQrtPoXX92SMtyXUO2SvF4qbDskJ6-aJyGBJ0=",
   },
 ];
 

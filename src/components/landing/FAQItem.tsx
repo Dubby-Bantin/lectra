@@ -2,7 +2,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { LiaAngleRightSolid } from "react-icons/lia";
 import { FAQItemProps } from "@/types";
-
 const FAQItem = ({ question, answer, Icon }: FAQItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleFAQ = () => setIsOpen(!isOpen);
@@ -13,7 +12,12 @@ const FAQItem = ({ question, answer, Icon }: FAQItemProps) => {
       className={`relative rounded-lg border w-full px-4 cursor-pointer transition-all duration-200 `}
     >
       {isOpen && (
-        <div className="-top-px absolute inset-x-0 bg-gradient-to-r from-transparent via-blue-500 to-transparent shadow-2xl mx-auto w-1/2 h-px" />
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: "100%" }}
+          transition={{ delay: 0.2 }}
+          className={`-top-px absolute transition-all duration-1000 inset-x-0 bg-gradient-to-r from-transparent via-blue-500 to-transparent shadow-2xl mx-auto w-1/2 h-px`}
+        />
       )}
       <div className="flex justify-between items-center py-4">
         <div className="flex items-center gap-4">

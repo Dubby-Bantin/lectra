@@ -33,7 +33,7 @@ const Banner = () => (
 
     {/* Right Section - Grid for large screens */}
     <div className="md:block relative hidden w-full">
-      <div className="md:dark:block left-2 -z-10 absolute hidden rounded-full w-full h-full blue__gradient" />
+      <div className="md:dark:block left-2 -z-10 absolute hidden rounded-full w-full h-full blue__gradient" ></div>
       <BannerGrid />
     </div>
 

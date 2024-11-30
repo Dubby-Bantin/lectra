@@ -11,13 +11,16 @@ const Skeleton = ({
   title: string;
   img: string | StaticImageData;
 }) => (
-  <div className="relative bg-gradient-to-r from-neutral-200 dark:from-[#0C0E23] to-neutral-100 dark:to-[#050112] -mr-2 p-2 rounded-xl w-full h-full min-h-[6rem] font-poppins text-lg text-white hover:text-gray-400">
+  <div className="relative bg-gradient-to-r from-neutral-200 dark:from-[#0C0E23] to-neutral-100 dark:to-[#050112] -mr-2 p-2 rounded-xl w-full h-full min-h-[6rem] font-poppins text-lg text-white hover:text-gray-400 overflow-clip">
     <Image
       src={img}
       alt={title}
-      height={600}
+      layout="responsive"
       width={600}
+      height={800}
       className="rounded-xl w-full h-full object-cover"
+      quality={100}
+      priority
     />
   </div>
 );
