@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: "Lectra",
     images: [
       {
-        url: "https://private-user-images.githubusercontent.com/157697665/391287369-4b37a6bc-5191-47e4-8d2a-8f3958eddeb4.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzMwMDA5OTEsIm5iZiI6MTczMzAwMDY5MSwicGF0aCI6Ii8xNTc2OTc2NjUvMzkxMjg3MzY5LTRiMzdhNmJjLTUxOTEtNDdlNC04ZDJhLThmMzk1OGVkZGViNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMTMwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTEzMFQyMTA0NTFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1mODJmZjhiZjI3MDk5Yjc2MGU2YWJiMTUxZjQ2NjhjNDJlMDM3MTZkYTc3ZjY2NGIwODdmNDQ3MDFiNGQ0ZGUwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.D20zFSNYG91WvtT1ftoY-_DAQfF9t8vpOH7HZ33E7Mk",
+        url: "https://res.cloudinary.com/dy3xwbk5e/image/upload/v1733008366/Screenshot_2024-11-30_215736_m14uij.png",
         width: 1200,
         height: 630,
         alt: "Lectra - Transform Your Learning Experience",

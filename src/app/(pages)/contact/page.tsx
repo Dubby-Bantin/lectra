@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     url: "https://lectra.vercel.app/contact",
     images: [
       {
-        url: "https://private-user-images.githubusercontent.com/157697665/391287476-e9a544af-988c-4388-83ff-c9bf4350e907.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzMwMDA5OTEsIm5iZiI6MTczMzAwMDY5MSwicGF0aCI6Ii8xNTc2OTc2NjUvMzkxMjg3NDc2LWU5YTU0NGFmLTk4OGMtNDM4OC04M2ZmLWM5YmY0MzUwZTkwNy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMTMwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTEzMFQyMTA0NTFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jNjNmNzg2Y2FhODFkZTBhNjgxZGQ5ODM2NzczM2Q1OGUzZjFlODI2YTZlN2U2ZGJmMWQ1N2E3MjE5N2JkMmY4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.ay9fIhuORP-6Ue4-R1nDpR0-Fgo0Fjp389Baee5neHk",
+        url: "https://res.cloudinary.com/dy3xwbk5e/image/upload/v1733008406/Screenshot_2024-11-30_220021_yatjit.png",
         width: 1200,
         height: 630,
         alt: "Lectra - Transform Your Learning Experience",
