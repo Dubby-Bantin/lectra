@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
-import logo from "@/public/images/logo (2).png"; // Ensure this path is correct
+import logo from "@/public/images/logo.png"; // Ensure this path is correct
 import { navLinks } from "@/lib/utils/constants";
 import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
