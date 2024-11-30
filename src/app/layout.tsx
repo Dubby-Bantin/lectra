@@ -23,14 +23,6 @@ export const metadata: Metadata = {
     url: "https://lectra.vercel.app/",
     type: "website",
     siteName: "Lectra",
-    images: [
-      {
-        url: "https://res.cloudinary.com/dy3xwbk5e/image/upload/v1733008366/Screenshot_2024-11-30_215736_m14uij.png",
-        width: 1200,
-        height: 630,
-        alt: "Lectra - Transform Your Learning Experience",
-      },
-    ],
   },
 };
 

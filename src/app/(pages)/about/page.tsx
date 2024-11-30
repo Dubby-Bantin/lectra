@@ -19,14 +19,6 @@ export const metadata: Metadata = {
     "Get in touch with Lectra. Contact us for support, inquiries, or feedback about our platform.",
   openGraph: {
     url: "https://lectra.vercel.app/about",
-    images: [
-      {
-        url: "https://res.cloudinary.com/dy3xwbk5e/image/upload/v1733008426/Screenshot_2024-11-30_220039_zwxp9z.png",
-        width: 1200,
-        height: 630,
-        alt: "Lectra - Transform Your Learning Experience",
-      },
-    ],
   },
 };
 const AboutPage = () => {

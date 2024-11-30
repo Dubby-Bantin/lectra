@@ -12,14 +12,6 @@ export const metadata: Metadata = {
     "Learn more about Lectra, our mission, our journey, and how we are transforming the future of education.",
   openGraph: {
     url: "https://lectra.vercel.app/contact",
-    images: [
-      {
-        url: "https://res.cloudinary.com/dy3xwbk5e/image/upload/v1733008406/Screenshot_2024-11-30_220021_yatjit.png",
-        width: 1200,
-        height: 630,
-        alt: "Lectra - Transform Your Learning Experience",
-      },
-    ],
   },
 };
 const ContactPage = () => {
