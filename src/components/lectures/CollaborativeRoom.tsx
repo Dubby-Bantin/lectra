@@ -14,6 +14,7 @@ import { Editor } from "@/components/editor/Editor";
 import Image from "next/image";
 import logo from "@/public/images/logo (2).png";
 import GiveClassWork from "./GiveClassWork";
+import LeaveLectureBtn from "./LeaveLectureBtn";
 
 const CollaborativeRoom = ({
   roomId,
@@ -138,6 +139,7 @@ const CollaborativeRoom = ({
                     <EndLectureBtn userId={instructorId} />
                   </div>
                 )}
+                {!instructorId && <LeaveLectureBtn userId={userId} />}
               </div>
             </div>
 
