@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 // import OAuthProvider from "@/components/auth/OAuthProvider";
-import logo from "@/public/images/logo (2).png";
+import logo from "@/public/images/logo.png";
 import SignUpForm from "@/components/auth/SignUpForm";
 import { IoReturnDownBack } from "react-icons/io5";
 import { Metadata } from "next";
