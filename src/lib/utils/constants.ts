@@ -8,6 +8,7 @@ import partner4Image from "@/public/images/1ac4b1_de2f47ad5b2940f3b5b2aaf0597ff6
 import { FAQ } from "@/types";
 import { BsFillQuestionCircleFill, BsFillPersonFill } from "react-icons/bs"; // Different icons for each question
 import { AiOutlineMobile } from "react-icons/ai";
+import liveSession from "@/public/images/pexels-karolina-grabowska-4491461.jpg";
 
 const navLinks = [
   {
@@ -349,24 +350,24 @@ const benefits = [
   {
     title: "Personalized Learning Paths",
     desc: "Lectra adapts to each student’s unique pace and goals, ensuring that every lecture and resource fits your learning style",
+    img: "https://images.pexels.com/photos/68761/pexels-photo-68761.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
 
   {
     title: "Interactive and Engaging Classes",
     desc: "Our platform supports real-time interactions, so you can actively participate, ask questions, and collaborate with peers for a more enriching experience.",
+    img: "https://media.istockphoto.com/id/1446806057/photo/young-happy-woman-student-using-laptop-watching-webinar-writing-at-home.jpg?b=1&s=612x612&w=0&k=20&c=xrSBe4eiZ9LHEC1_ZqleGLOBaeRmIi74VZVS9Kl4VLk=",
   },
 
   {
     title: "Easy Access to Expert Instructors",
     desc: "With certified and experienced instructors, Lectra provides top-notch guidance to help you succeed in every subject.",
+    img: liveSession,
   },
   {
     title: "Reliable Scheduling and Email Notifications",
     desc: "Never miss a class or deadline! Lectra’s scheduling and email notification system keeps you informed and organized, making it easier to focus on learning.",
-  },
-  {
-    title: "Reliable Scheduling and Email Notifications",
-    desc: "Never miss a class or deadline! Lectra’s scheduling and email notification system keeps you informed and organized, making it easier to focus on learning.",
+    img: "https://media.istockphoto.com/id/2175629112/photo/4k-new-message-icon-neon-lighting-background.jpg?s=612x612&w=0&k=20&c=bbeOtIHQrtPoXX92SMtyXUO2SvF4qbDskJ6-aJyGBJ0=",
   },
 ];
 
