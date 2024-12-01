@@ -30,15 +30,17 @@ export const LectureReminderEmail = ({
       <Preview>Your lecture is starting soon—don’t miss it!</Preview>
       <Tailwind>
         <Body className="bg-white font-poppins">
-          <Container className="max-w-lg mx-auto px-6 py-12 bg-white rounded-lg shadow-md">
+          <Container className="bg-white shadow-md mx-auto px-6 py-12 rounded-lg max-w-lg">
             <Img
-              src="https://github.com/user-attachments/assets/8e9d96b1-05e1-4397-9060-25e64ea9a5b4"
+              src="https://res.cloudinary.com/dy3xwbk5e/image/upload/v1733009040/logo_tzlyri.jpg"
               height="250"
               alt="Lectra Logo"
-              className="mx-auto mb-6 rounded-md object-cover w-full"
+              className="mx-auto mb-6 rounded-md w-full object-cover"
             />
-            <Text className="text-lg text-gray-800 mb-4">Hello Student 👋,</Text>
-            <Text className="text-gray-700 leading-relaxed mb-6">
+            <Text className="mb-4 text-gray-800 text-lg">
+              Hello Student 👋,
+            </Text>
+            <Text className="mb-6 text-gray-700 leading-relaxed">
               This is a friendly reminder that your lecture under the,{" "}
               <span className="font-semibold text-blue-600">
                 `{lectureCategory}`
@@ -46,26 +48,26 @@ export const LectureReminderEmail = ({
               category hosted by {instructorName} is starting soon. make sure to
               join the lecture on time to make the most of the session.
             </Text>
-            <Text className="text-gray-700 leading-relaxed mb-6">
+            <Text className="mb-6 text-gray-700 leading-relaxed">
               <span className="font-semibold">Lecture Date:</span> {lectureTime}
             </Text>
-            <Text className="text-gray-700 leading-relaxed mb-6">
+            <Text className="mb-6 text-gray-700 leading-relaxed">
               <span className="font-semibold">Lecture Duration:</span>{" "}
               {duration}
             </Text>
-            <Text className="text-gray-700 leading-relaxed mb-6">
+            <Text className="mb-6 text-gray-700 leading-relaxed">
               <span className="font-semibold">Lecture Title:</span>{" "}
               {lectureTitle}
             </Text>
             <Section className="text-center">
               <Button
-                className="bg-blue-600 text-white px-4 py-2 rounded"
+                className="bg-blue-600 px-4 py-2 rounded text-white"
                 href={`https://lectra.vercel.app/lecture/${lectureId}`}
               >
                 Join Lecture
               </Button>
             </Section>
-            <Text className="text-gray-700 leading-relaxed mt-6">
+            <Text className="mt-6 text-gray-700 leading-relaxed">
               Best regards,
               <br />
               The Lectra Team
