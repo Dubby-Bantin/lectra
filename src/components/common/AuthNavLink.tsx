@@ -66,7 +66,7 @@ const AuthNavLink = () => {
 
   return (
     <>
-      {userId === null ? (
+      {rolePath === null ? (
         <div className="md:flex items-center gap-5 grid text-white">
           <Link
             href="/signup"
