@@ -4,6 +4,19 @@ import logo from "@/public/images/logo.png";
 import Link from "next/link";
 import LoginForm from "@/components/auth/LoginForm";
 import { IoReturnDownBack } from "react-icons/io5";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Login - Join Lectra",
+  description:
+    "Log in to your Lectra account to access personalized, transformative learning experiences and top-tier lectures from expert instructors.",
+  openGraph: {
+    url: "https://lectra.vercel.app/login",
+    title: "Log into your Lectra Account",
+    description:
+      "Log in to Lectra to access world-class lectures, expert instructors, and a personalized learning experience tailored just for you.",
+  },
+};
+
 const AuthForm: FC = () => {
   return (
     <div className="min-h-screen">
