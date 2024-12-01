@@ -25,14 +25,6 @@ export async function generateMetadata({
       } ${instructorData?.lastName || ""}. Don't miss out!`,
       url: `https://lectra.vercel.app/lecture/${slug}`,
       type: "article",
-      images: [
-        {
-          url: "https://res.cloudinary.com/dy3xwbk5e/image/upload/v1733008426/Screenshot_2024-11-30_225057_m1mupd.png",
-          alt: `${room.metadata.title} banner image`,
-          width: 1200,
-          height: 630,
-        },
-      ],
     },
   };
 }
