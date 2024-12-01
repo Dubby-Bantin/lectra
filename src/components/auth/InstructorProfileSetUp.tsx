@@ -126,7 +126,7 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
                 <textarea
                   name="expertise"
                   className="input-box"
-                  placeholder="Write a brief bio about yourself..."
+                  placeholder="What's your expertise..."
                 />
               </div>
             </div>
