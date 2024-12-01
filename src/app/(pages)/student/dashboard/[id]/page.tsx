@@ -77,8 +77,8 @@ const UserDashBoard = async ({
         />
       </div>
 
-      <div className="flex sm:flex-col flex-col-reverse items-center w-fit">
-        <div className="mb-10 sm:h-[47.2rem] sm:overflow-y-auto no-scrollbar">
+      <div className="flex sm:flex-col flex-col-reverse items-center w-full">
+        <div className="mb-10 w-full sm:h-[47.2rem] sm:overflow-y-auto no-scrollbar">
           <StudentProfileCard
             firstName={firstName}
             lastName={lastName}

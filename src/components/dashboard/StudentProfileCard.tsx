@@ -36,7 +36,7 @@ const StudentProfileCard = ({
   email: string;
 }) => {
   return (
-    <Card className="overflow-hidden" x-chunk="dashboard-05-chunk-4">
+    <Card className="w-full overflow-hidden" x-chunk="dashboard-05-chunk-4">
       <CardHeader className="flex flex-row items-start bg-muted/50">
         <div className="gap-0.5 grid">
           <CardTitle className="flex items-center gap-2 text-lg group">
