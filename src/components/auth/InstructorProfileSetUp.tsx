@@ -26,7 +26,7 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const router = useRouter();
 
-  // TODO: add major degree and expertise in a text editor
+  // TODO: add major degree and expertise in a text editor instead of inputs
   return (
     <form
       action={async (formData) => {
@@ -39,7 +39,7 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
         );
 
         formRef.current?.reset();
-        toast.success("your profile setup was successful!!!");
+        toast.success("Your Profile setup was successfull!");
         router.push(`/instructor/dashboard/${id}`);
       }}
       ref={formRef}
