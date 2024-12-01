@@ -67,7 +67,7 @@ const AuthNavLink = () => {
   return (
     <>
       {rolePath === null ? (
-        <div className="md:flex items-center gap-5 grid text-white">
+        <div className="md:flex items-center gap-3 grid dark:text-white">
           <Link
             href="/signup"
             aria-label="Sign up for a new account"

@@ -3,7 +3,7 @@ import BannerGrid from "./BannerGrid";
 import MobileBannerGrid from "./MobileBannerGrid";
 import { Cover } from "../ui/cover";
 const Banner = () => (
-  <div className="relative flex lg:flex-row flex-col justify-between items-center gap-5 md:gap-10 px-6 sm:px-10 md:px-20 lg:px-28 xl:px-32 pt-20 md:pt-0 w-full min-h-screen font-lato">
+  <div className="relative flex lg:flex-row flex-col justify-between items-center gap-2 md:gap-10 px-6 sm:px-10 md:px-20 lg:px-28 xl:px-32 pt-20 md:pt-0 w-full min-h-screen font-lato">
     {/* Left Section */}
     <div className="flex flex-col justify-center md:max-w-lg lg:max-w-xl xl:max-w-2xl text-center lg:text-left">
       <h1 className="font-extrabold text-3xl text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl dark:text-gray-200 leading-snug tracking-tight">
