@@ -33,9 +33,9 @@ export const LectureReminderEmail = ({
           <Container className="bg-white shadow-md mx-auto px-6 py-12 rounded-lg max-w-lg">
             <Img
               src="https://res.cloudinary.com/dy3xwbk5e/image/upload/v1733009040/logo_tzlyri.jpg"
-              height="250"
+              height="100"
               alt="Lectra Logo"
-              className="mx-auto mb-6 rounded-md w-full object-cover"
+              className="mx-auto mb-6 rounded-full w-1/2 object-cover"
             />
             <Text className="mb-4 text-gray-800 text-lg">
               Hello Student 👋,
