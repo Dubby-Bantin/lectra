@@ -3,6 +3,7 @@ import { PiStudentFill } from "react-icons/pi";
 import { MdOutlineReviews } from "react-icons/md";
 import { getFireStoreRefData } from "@/lib/utils/fireBaseUtils";
 import WelcomeComponent from "@/components/dashboard/WelcomeComponent";
+import StudentProfileCard from "@/components/dashboard/StudentProfileCard";
 
 const UserDashBoard = async ({
   params: { id },
@@ -29,7 +30,14 @@ const UserDashBoard = async ({
     return;
   }
 
-  const { firstName, lastName, profileImageUrl } = data;
+  const {
+    firstName,
+    lastName,
+    profileImageUrl,
+    createdAt,
+    phoneNumber,
+    email,
+  } = data;
   return (
     <main className="flex-1 items-start gap-4 md:gap-8 grid lg:grid-cols-3 xl:grid-cols-3 sm:px-6 sm:py-0 p-4">
       <div className="items-start gap-4 md:gap-8 grid lg:col-span-2 auto-rows-max">
@@ -67,6 +75,19 @@ const UserDashBoard = async ({
           p2="Our goal is to provide you with the resources and support to help you succeed in your studies. Whether you’re accessing lecture materials, connecting with instructors, or checking your progress, we’re here to help you on your educational journey."
           image={profileImageUrl}
         />
+      </div>
+
+      <div className="flex sm:flex-col flex-col-reverse items-center w-fit">
+        <div className="mb-10 sm:h-[47.2rem] sm:overflow-y-auto no-scrollbar">
+          <StudentProfileCard
+            firstName={firstName}
+            lastName={lastName}
+            profileImageUrl={profileImageUrl}
+            createdAt={createdAt}
+            phoneNumber={phoneNumber}
+            email={email}
+          />
+        </div>
       </div>
     </main>
   );
