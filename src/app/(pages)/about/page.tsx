@@ -16,7 +16,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Get in touch with Lectra. Contact us for support, inquiries, or feedback about our platform.",
+    "Learn more about Lectra, our mission, our journey, and how we are transforming the future of education.",
   openGraph: {
     url: "https://lectra.vercel.app/about",
   },

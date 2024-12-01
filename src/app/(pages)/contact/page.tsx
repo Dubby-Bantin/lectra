@@ -9,7 +9,7 @@ import { IoLogoInstagram } from "react-icons/io";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Learn more about Lectra, our mission, our journey, and how we are transforming the future of education.",
+    "Get in touch with Lectra. Contact us for support, inquiries, or feedback about our platform.",
   openGraph: {
     url: "https://lectra.vercel.app/contact",
   },
