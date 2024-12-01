@@ -17,6 +17,7 @@ import ImageDropZone from "../common/ImageDropZone";
 import { useRouter } from "next/navigation";
 import { updateInstructorRef } from "@/lib/actions/auth.actions";
 import PreferredLectureDays from "./PreferredLectureDays";
+import { toast } from "sonner";
 const InstructorProfileSetUp = ({ id }: { id: string }) => {
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>();
   const [open, setOpen] = useState(false);
@@ -25,6 +26,7 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const router = useRouter();
 
+  // TODO: add major degree and expertise in a text editor
   return (
     <form
       action={async (formData) => {
@@ -37,21 +39,22 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
         );
 
         formRef.current?.reset();
+        toast.success("your profile setup was successful!!!");
         router.push(`/instructor/dashboard/${id}`);
       }}
       ref={formRef}
-      className="p-6 w-full flex flex-col items-center gap-5"
+      className="flex flex-col items-center gap-5 p-6 w-full"
     >
-      <div className="w-full text-gray-700 dark:text-white mb-5">
+      <div className="mb-5 w-full text-gray-700 dark:text-white">
         {/* Personal Information */}
         <section className="mb-10">
-          <h1 className="text-2xl font-bold mb-5">Personal Information</h1>
+          <h1 className="mb-5 font-bold text-2xl">Personal Information</h1>
           <div className="flex flex-wrap gap-5">
             {/* Address */}
             <div className="w-full">
               <label
                 htmlFor="Preferred Language"
-                className="block text-sm font-medium mb-3"
+                className="block mb-3 font-medium text-sm"
               >
                 Preferred Language
               </label>
@@ -67,11 +70,11 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
             </div>
 
             {/* Phone Number & Gender */}
-            <div className="w-full flex gap-5 flex-col md:flex-row">
+            <div className="flex md:flex-row flex-col gap-5 w-full">
               <div className="w-full">
                 <label
                   htmlFor="phone"
-                  className="block text-sm font-medium mb-3"
+                  className="block mb-3 font-medium text-sm"
                 >
                   Phone Number
                 </label>
@@ -82,14 +85,14 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
                   onChange={setPhoneNumber}
                   defaultCountry="US"
                   international
-                  className="phone-input input-box"
+                  className="input-box phone-input"
                 />
               </div>
 
               <div className="w-full">
                 <label
                   htmlFor="gender"
-                  className="block text-sm font-medium mb-3"
+                  className="block mb-3 font-medium text-sm"
                 >
                   Gender
                 </label>
@@ -104,37 +107,31 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
                 </Select>
               </div>
             </div>
-            <div className="w-full flex md:flex-row flex-col  gap-5">
+            <div className="flex md:flex-row flex-col gap-5 w-full">
               <div className="w-full">
-                <label className="block text-sm font-medium mb-3">Bio</label>
-                <input
-                  id="bio"
+                <label className="block mb-3 font-medium text-sm">Bio</label>
+                <textarea
                   name="bio"
                   className="input-box"
                   placeholder="Write a brief bio about yourself..."
-                  required
-                  type="text"
-                  autoComplete="bio"
                 />
               </div>
               <div className="w-full">
-                <label className="block text-sm font-medium mb-3">
+                <label
+                  htmlFor="expertise"
+                  className="block mb-3 font-medium text-sm"
+                >
                   Expertise
                 </label>
-                <input
-                  id="expertise"
+                <textarea
                   name="expertise"
-                  className="input-box "
-                  placeholder="What's your expertise?"
-                  required
-                  type="text"
-                  autoComplete="expertise"
-                  aria-label="Expertise"
+                  className="input-box"
+                  placeholder="Write a brief bio about yourself..."
                 />
               </div>
             </div>
             <div className="w-full">
-              <label className="block text-sm font-medium mb-3">
+              <label className="block mb-3 font-medium text-sm">
                 Preferred Lecture Days
               </label>
               <PreferredLectureDays
@@ -143,10 +140,10 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
               />
             </div>
 
-            <div className="flex justify-center flex-col items-end w-full">
+            <div className="flex flex-col justify-center items-end w-full">
               <label
                 htmlFor="profile_photo"
-                className="block text-sm font-medium mb-3"
+                className="block mb-3 font-medium text-sm"
               >
                 Profile Photo
               </label>
@@ -157,13 +154,13 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
         </section>
         {/* Professional Information */}
         <section className="mb-10">
-          <h1 className="text-2xl font-bold mb-5">Professional Information</h1>
+          <h1 className="mb-5 font-bold text-2xl">Professional Information</h1>
           <div className="flex flex-wrap gap-5">
             {/* Degree */}
             <div className="w-full">
               <label
                 htmlFor="degree"
-                className="block text-sm font-medium mb-3"
+                className="block mb-3 font-medium text-sm"
               >
                 Degree
               </label>
@@ -179,11 +176,11 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
             </div>
 
             {/* Major & University */}
-            <div className="w-full flex md:flex-row flex-col gap-5">
+            <div className="flex md:flex-row flex-col gap-5 w-full">
               <div className="w-full">
                 <label
                   htmlFor="major"
-                  className="block text-sm font-medium mb-3"
+                  className="block mb-3 font-medium text-sm"
                 >
                   Major
                 </label>
@@ -201,7 +198,7 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
               <div className="w-full">
                 <label
                   htmlFor="university"
-                  className="block text-sm font-medium mb-3"
+                  className="block mb-3 font-medium text-sm"
                 >
                   University
                 </label>
@@ -219,16 +216,16 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
         </section>
         {/* Verification & Documentation */}
         <section className="mb-10 w-full">
-          <h1 className="text-2xl font-bold mb-5">
+          <h1 className="mb-5 font-bold text-2xl">
             Verification & Documentation
           </h1>
-          <div className="flex flex-wrap gap-10 w-full justify-center mb-5">
+          <div className="flex flex-wrap justify-center gap-10 mb-5 w-full">
             {/* ID Verification Upload */}
 
             <div className="w-full">
               <label
                 htmlFor="teaching_certificate_photo"
-                className="block text-sm font-medium mb-3"
+                className="block mb-3 font-medium text-sm"
               >
                 Teaching Certificate
               </label>
@@ -238,7 +235,7 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
             <div className="w-full">
               <label
                 htmlFor="id_verification_photo"
-                className="block text-sm font-medium mb-3"
+                className="block mb-3 font-medium text-sm"
               >
                 ID Verification
               </label>
@@ -248,7 +245,7 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
         </section>
         {/* Employment History */}
         <section className="mb-10">
-          <h1 className="text-2xl font-bold mb-5">Employment History</h1>
+          <h1 className="mb-5 font-bold text-2xl">Employment History</h1>
           <textarea
             name="employment_history"
             className="input-box"
@@ -256,26 +253,26 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
           />
         </section>
         {/* Agreement & Consent */}
-        <section className="w-full mb-10">
-          <h1 className="text-2xl font-bold mb-5">Agreement & Consent</h1>
+        <section className="mb-10 w-full">
+          <h1 className="mb-5 font-bold text-2xl">Agreement & Consent</h1>
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-3">
               <Checkbox id="terms" required />
-              <label htmlFor="terms" className="text-sm font-medium">
+              <label htmlFor="terms" className="font-medium text-sm">
                 I agree to the Terms of Service and understand the guidelines
                 for using this platform.
               </label>
             </div>
             <div className="flex items-center gap-3">
               <Checkbox id="privacy" required />
-              <label htmlFor="privacy" className="text-sm font-medium">
+              <label htmlFor="privacy" className="font-medium text-sm">
                 I consent to the collection and processing of my personal data
                 as outlined in the Privacy Policy.
               </label>
             </div>
             <div className="flex items-center gap-3">
               <Checkbox id="compliance" required />
-              <label htmlFor="compliance" className="text-sm font-medium">
+              <label htmlFor="compliance" className="font-medium text-sm">
                 I confirm that I comply with all applicable educational
                 regulations, including FERPA.
               </label>

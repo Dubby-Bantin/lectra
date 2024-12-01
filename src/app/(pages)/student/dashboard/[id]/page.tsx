@@ -17,7 +17,7 @@ const UserDashBoard = async ({
       border: "F49D49",
     },
     {
-      title: "Total Student Reviews",
+      title: "Total Subscribed Lectures",
       total: 0,
       Icon: MdOutlineReviews,
       border: "926EE2",

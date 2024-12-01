@@ -77,9 +77,11 @@ const InstructorsPage = async () => {
                     <h3 className="font-semibold text-gray-800 text-xl dark:text-white">
                       {`${firstName.toUpperCase()} ${lastName.toUpperCase()}`}
                     </h3>
-                    <p className="mt-1 text-[#33bbcf] text-sm">{expertise}</p>
+                    <p className="mt-1 text-[#33bbcf] text-sm">
+                      {expertise.slice(0, 40)}
+                    </p>
                     <p className="my-3 text-gray-600 dark:text-gray-300">
-                      {bio}
+                      {bio.slice(0, 80)}
                     </p>
 
                     <Dialog>
