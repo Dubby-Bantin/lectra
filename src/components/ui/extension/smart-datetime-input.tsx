@@ -133,7 +133,7 @@ export const SmartDatetimeInput = React.forwardRef<
     <SmartDatetimeInputContext.Provider
       value={{ value, onValueChange, Time, onTimeChange }}
     >
-      <div className="flex items-center justify-center">
+      <div className="flex justify-center items-center">
         <div
           className={cn(
             "flex gap-1 w-full p-1 items-center justify-between rounded-md border transition-all",
@@ -342,11 +342,11 @@ const TimePicker = () => {
   }, []);
 
   return (
-    <div className="space-y-2 pr-3 py-3 relative ">
-      <h3 className="text-sm font-medium ">Time</h3>
+    <div className="relative space-y-2 py-3 pr-3">
+      <h3 className="font-medium text-sm">Time</h3>
       <ScrollArea
         onKeyDown={handleKeydown}
-        className="h-[90%] w-full focus-visible:outline-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-0 py-0.5"
+        className="focus-visible:border-0 py-0.5 focus-visible:ring-0 focus-visible:ring-offset-0 w-full h-[90%] focus-visible:outline-0"
         style={{
           height,
         }}
@@ -544,7 +544,7 @@ const DateTimeLocalInput = ({
           <span className="sr-only">calender</span>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0" sideOffset={8}>
+      <PopoverContent className="p-0 w-auto" sideOffset={8}>
         <div className="flex gap-1">
           <Calendar
             {...props}
