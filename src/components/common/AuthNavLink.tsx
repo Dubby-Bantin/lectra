@@ -67,7 +67,7 @@ const AuthNavLink = () => {
   return (
     <>
       {userId === null ? (
-        <div className="md:flex items-center gap-5 grid">
+        <div className="md:flex items-center gap-5 grid text-white">
           <Link
             href="/signup"
             aria-label="Sign up for a new account"
