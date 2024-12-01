@@ -1,6 +1,5 @@
 import Select, { MultiValue } from "react-select";
 
-import { useTheme } from "next-themes";
 import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { Option } from "@/types";
 
@@ -13,8 +12,6 @@ const PreferredLectureDays: React.FC<PreferredLectureDaysProps> = ({
   selectedDays,
   setSelectedDays,
 }) => {
-  const { theme } = useTheme();
-
   const handleChange = (selectedOptions: MultiValue<Option>) => {
     setSelectedDays(
       selectedOptions ? selectedOptions.map((option) => option.value) : []
@@ -26,7 +23,7 @@ const PreferredLectureDays: React.FC<PreferredLectureDaysProps> = ({
   }, [selectedDays]);
 
   return (
-    <div className={theme === "dark" ? "darkTheme" : "lightTheme"}>
+    <div className={"text-black"}>
       <Select
         isMulti
         options={[

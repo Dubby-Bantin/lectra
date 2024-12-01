@@ -16,10 +16,15 @@ const StudentProfileSetup = ({ id }: { id: string }) => {
     <form
       action={async (formData) => {
         try {
-          await updateStudentRef(formData, phoneNumber, id);
-          formRef.current?.reset();
-          router.push(`/student/dashboard/${id}`);
-          toast.success("Your Profile setup was successfull!");
+          const { error } = await updateStudentRef(formData, phoneNumber, id);
+
+          if (error) {
+            toast.error(error)
+          } else {
+            formRef.current?.reset();
+            router.push(`/student/dashboard/${id}`);
+            toast.success("Your Profile setup was successfull!");
+          }
         } catch (error: unknown) {
           if (error instanceof Error) {
             toast.error(error.message);
@@ -28,10 +33,10 @@ const StudentProfileSetup = ({ id }: { id: string }) => {
           }
         }
       }}
-      className="p-6 w-full flex flex-col items-center gap-5"
+      className="flex flex-col items-center gap-5 p-6 w-full"
     >
       <div className="w-full">
-        <label htmlFor="phone" className="block text-sm font-medium mb-3">
+        <label htmlFor="phone" className="block mb-3 font-medium text-sm">
           Phone Number
         </label>
         <PhoneInput
@@ -41,35 +46,35 @@ const StudentProfileSetup = ({ id }: { id: string }) => {
           onChange={setPhoneNumber}
           defaultCountry="US"
           international
-          className="phone-input input-box"
+          className="input-box phone-input"
         />
       </div>
       <div className="w-full">
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label className="block font-medium text-gray-700 text-sm dark:text-gray-300">
           Profile Picture
         </label>
         <ImageDropZone name="student_profile_photo" />
       </div>
-      <section className="w-full mb-10">
-        <h1 className="text-2xl font-bold mb-5">Agreement & Consent</h1>
+      <section className="mb-10 w-full">
+        <h1 className="mb-5 font-bold text-2xl">Agreement & Consent</h1>
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-3">
             <Checkbox id="terms" required />
-            <label htmlFor="terms" className="text-sm font-medium">
+            <label htmlFor="terms" className="font-medium text-sm">
               I agree to the Terms of Service and understand the guidelines for
               using this platform.
             </label>
           </div>
           <div className="flex items-center gap-3">
             <Checkbox id="privacy" required />
-            <label htmlFor="privacy" className="text-sm font-medium">
+            <label htmlFor="privacy" className="font-medium text-sm">
               I consent to the collection and processing of my personal data as
               outlined in the Privacy Policy.
             </label>
           </div>
           <div className="flex items-center gap-3">
             <Checkbox id="compliance" required />
-            <label htmlFor="compliance" className="text-sm font-medium">
+            <label htmlFor="compliance" className="font-medium text-sm">
               I confirm that I comply with all applicable educational
               regulations, including FERPA.
             </label>

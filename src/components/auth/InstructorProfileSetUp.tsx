@@ -30,17 +30,20 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
   return (
     <form
       action={async (formData) => {
-        await updateInstructorRef(
+        const { error } = await updateInstructorRef(
           formData,
           phoneNumber,
           university,
           selectedDays,
           id
         );
-
-        formRef.current?.reset();
-        toast.success("Your Profile setup was successfull!");
-        router.push(`/instructor/dashboard/${id}`);
+        if (error) {
+          toast.error(error);
+        } else {
+          formRef.current?.reset();
+          toast.success("Your Profile setup was successfull!");
+          router.push(`/instructor/dashboard/${id}`);
+        }
       }}
       ref={formRef}
       className="flex flex-col items-center gap-5 p-6 w-full"

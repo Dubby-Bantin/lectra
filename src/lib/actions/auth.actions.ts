@@ -1,6 +1,5 @@
 "use server";
 
-import { log } from "console";
 import { logIn, signUp } from "../firebaseAuth";
 import {
   handleUpdate,
@@ -62,7 +61,7 @@ const updateInstructorRef = async (
   university: string,
   selectedDays: string[],
   id: string
-) => {
+): Promise<{ error?: string }> => {
   const preferred_language = formData.get("preferred_language") as string;
   const degree = formData.get("degree") as string;
   const major = formData.get("major") as string;
@@ -70,13 +69,33 @@ const updateInstructorRef = async (
   const employment_history = formData.get("employment_history");
   const bio = formData.get("bio") as string;
   const expertise = formData.get("expertise") as string;
-  // Collecting all images into an array
+
   const images: File[] = [];
   const profileImage = formData.get("profile_photo") as File;
   const teachingCertificatePhoto = formData.get(
     "teaching_certificate_photo"
   ) as File;
   const idVerificationPhoto = formData.get("id_verification_photo") as File;
+
+  if (
+    !preferred_language ||
+    !degree ||
+    !major ||
+    !gender ||
+    !employment_history ||
+    !bio ||
+    !expertise ||
+    !profileImage ||
+    !teachingCertificatePhoto ||
+    !idVerificationPhoto ||
+    !university ||
+    !phoneNumber ||
+    !selectedDays.length
+  ) {
+    return {
+      error: "Seems like some field values are empty.Please fill in all values",
+    };
+  }
 
   if (profileImage) {
     images.push(profileImage);
@@ -88,7 +107,6 @@ const updateInstructorRef = async (
     images.push(idVerificationPhoto);
   }
 
-  // Preparing the data object to store in Firestore
   const instructorData: InstructorProfileSetUpFireStoreData = {
     preferred_language,
     degree,
@@ -103,21 +121,39 @@ const updateInstructorRef = async (
   };
 
   try {
-    const imageUrls = await uploadImages(images, id); // Use the utility function
+    if (images.length > 0) {
+      const imageUrls = await uploadImages(images, id);
 
-    if (imageUrls[0]) {
-      instructorData.profileImageUrl = imageUrls[0];
+      if (imageUrls.length === 3) {
+        if (imageUrls[0]) {
+          instructorData.profileImageUrl = imageUrls[0];
+        }
+        if (imageUrls[1]) {
+          instructorData.teachingCertificateUrl = imageUrls[1];
+        }
+        if (imageUrls[2]) {
+          instructorData.idVerificationUrl = imageUrls[2];
+        }
+      } else {
+        return { error: "Not all images uploaded successfully." };
+      }
     }
-    if (imageUrls[1]) {
-      instructorData.teachingCertificateUrl = imageUrls[1];
-    }
-    if (imageUrls[2]) {
-      instructorData.idVerificationUrl = imageUrls[2];
-    }
-    log(instructorData);
+
     await handleUpdate("instructors", id, instructorData);
+    return {};
   } catch (error) {
-    console.error("Error uploading images:", error);
+    if (error instanceof TypeError) {
+      return {
+        error:
+          "A TypeError occurred. This might be related to unexpected form data or file handling.",
+      };
+    } else if (error instanceof Error) {
+      return {
+        error: `Error occurred during the instructor update process: ${error.message}`,
+      };
+    } else {
+      return { error: `An unexpected error occurred: ${String(error)}` };
+    }
   }
 };
 
@@ -125,30 +161,43 @@ const updateStudentRef = async (
   formData: FormData,
   phoneNumber: string | undefined,
   id: string
-) => {
+): Promise<{ error?: string }> => {
   try {
     const student_profile_photo = formData.get("student_profile_photo") as File;
 
+    if (!student_profile_photo || phoneNumber) {
+      return {
+        error:
+          "Seems like some field values are empty.Please fill in all values",
+      };
+    }
     const profileImageUrl = await uploadImage(
       "students",
       student_profile_photo,
       id
     );
+
     const studentData = {
       phoneNumber,
       profileImageUrl,
     };
 
     await handleUpdate("students", id, studentData);
+    return {};
   } catch (e: unknown) {
-    console.error("Error uploading images:", e);
+    if (e instanceof TypeError) {
+      return {
+        error:
+          "A TypeError occurred. This might be related to unexpected form data or file handling.",
+      };
+    } else if (e instanceof Error) {
+      return {
+        error: `Error occurred during the instructor update process: ${e.message}`,
+      };
+    } else {
+      return { error: `An unexpected error occurred: ${String(e)}` };
+    }
   }
 };
 
-export {
-  createUser,
-  loginUser,
-  updateInstructorRef,
-  updateStudentRef,
-  // logUserOut,
-};
+export { createUser, loginUser, updateInstructorRef, updateStudentRef };
