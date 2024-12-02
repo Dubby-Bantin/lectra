@@ -8,29 +8,35 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import {
-  capitalizeFirstLetter,
-  // convertTimestampToDate,
-} from "@/lib/utils/helpers";
+import { capitalizeFirstLetter } from "@/lib/utils/helpers";
 import UserTable from "./UserTable";
+import { useEffect, useState } from "react";
 
 const Users = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const [dataList, setDataList] = useState<string | null>("instructors");
+
+  useEffect(() => {
+    const table = searchParams?.get("table");
+    setDataList(table || "instructors");
+  }, [searchParams]);
+
   const handleChange = (value: string) => {
     const params = new URLSearchParams(searchParams?.toString());
     params.set("table", value);
     router.push(`?${params.toString()}`);
   };
 
-  const dataList = searchParams?.get("table");
   return (
-    <div className="w-full ">
-      <h1 className="text-3xl font-bold text-gray-700 mb-5">User Management</h1>
-      <div className="w-40 mb-10">
-        <Select onValueChange={(value) => handleChange(value)}>
+    <div className="w-full">
+      <h1 className="mb-5 font-bold text-3xl text-gray-700">User Management</h1>
+      <div className="mb-10 w-40">
+        <Select onValueChange={handleChange} value={dataList || "instructors"}>
           <SelectTrigger>
-            <SelectValue placeholder={capitalizeFirstLetter(dataList)} />
+            <SelectValue
+              placeholder={capitalizeFirstLetter(dataList || "instructors")}
+            />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="instructors">Instructors</SelectItem>
