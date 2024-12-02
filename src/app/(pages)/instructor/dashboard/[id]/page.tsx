@@ -71,8 +71,8 @@ const InstructorProfilePage = async ({
           variant={"outline"}
           className="flex justify-center items-center w-fit"
         >
-          Seems like your profile setup was not complete,complete your profile
-          setup to start hosting lectures
+          Seems like your profile setup is incomplete. Complete it to start
+          hosting lectures.
         </Button>
       </Link>
     );
