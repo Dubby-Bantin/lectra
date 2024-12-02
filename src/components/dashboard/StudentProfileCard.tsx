@@ -82,13 +82,10 @@ const StudentProfileCard = ({
               <Image
                 src={profileImageUrl}
                 alt="profileImage"
-                className="rounded-full"
-                width={240}
-                height={240}
+                className="rounded-full w-[20rem] h-[20rem] object-cover"
+                width={500}
+                height={500}
                 quality={100}
-                layout="responsive"
-                objectFit="cover"
-                priority
               />
             ) : (
               <div className="border rounded-full w-full h-full">

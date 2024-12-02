@@ -10,9 +10,8 @@ interface WelcomeComponentProps {
 }
 const WelcomeComponent = ({ h2, p1, p2, image }: WelcomeComponentProps) => {
   return (
-    <div className="flex flex-col md:flex-row h-full w-full border rounded-sm">
-      {/* Left Section: Image/Logo */}
-      <div className="md:w-1/3 relative h-[30rem]">
+    <div className="flex md:flex-row flex-col border rounded-sm w-full h-full">
+      <div className="relative md:w-1/3 h-[30rem]">
         <Image
           src={image}
           alt="e-learning image"
@@ -23,14 +22,14 @@ const WelcomeComponent = ({ h2, p1, p2, image }: WelcomeComponentProps) => {
       </div>
 
       {/* Right Section: Welcome Message */}
-      <div className="md:w-[70%] p-8 bg-background text-gray-300">
+      <div className="bg-background p-8 md:w-[70%] text-gray-300">
         <div className="text-left">
-          <h2 className="text-3xl font-bold mb-4 text-white">
+          <h2 className="mb-4 font-bold text-3xl text-white">
             Welcome to Your {h2} Dashboard!
           </h2>
-          <p className="text-gray-400 mb-4">{p1}</p>
-          <p className="text-gray-400 mb-4">{p2}</p>
-          <p className="text-gray-400 mb-6">
+          <p className="mb-4 text-gray-400">{p1}</p>
+          <p className="mb-4 text-gray-400">{p2}</p>
+          <p className="mb-6 text-gray-400">
             If you encounter any issues or have feedback, feel free to reach out
             to our support team. We’re here to help!
           </p>

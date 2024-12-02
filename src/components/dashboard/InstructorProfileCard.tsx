@@ -184,12 +184,10 @@ const InstructorProfileCard = ({
             src={teachingCertificateUrl}
             alt="profileImage"
             priority
-            className="object-cover"
-            width={240}
-            height={240}
+            className="w-[20rem] h-[20rem] object-cover"
+            width={500}
+            height={500}
             quality={100}
-            objectFit="cover"
-            layout="responsive"
           />
         </div>
         <Separator className="my-4" />
