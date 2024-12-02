@@ -1,4 +1,7 @@
-import { capitalizeFirstLetter, convertTimestampToDate } from "@/lib/utils/helpers";
+import {
+  capitalizeFirstLetter,
+  convertTimestampToDate,
+} from "@/lib/utils/helpers";
 import { FaCodepen } from "react-icons/fa";
 
 import Image from "next/image";
@@ -42,15 +45,15 @@ const InstructorProfileCard = ({
   return (
     <Card className="overflow-hidden" x-chunk="dashboard-05-chunk-4">
       <CardHeader className="flex flex-row items-start bg-muted/50">
-        <div className="grid gap-0.5">
-          <CardTitle className="group flex items-center gap-2 text-lg">
+        <div className="gap-0.5 grid">
+          <CardTitle className="flex items-center gap-2 text-lg group">
             Your Profile overview
             <Button
               size="icon"
               variant="outline"
-              className="h-6 w-6 opacity-0 transition-opacity group-hover:opacity-100"
+              className="opacity-0 group-hover:opacity-100 w-6 h-6 transition-opacity"
             >
-              <Copy className="h-3 w-3" />
+              <Copy className="w-3 h-3" />
               <span className="sr-only">Copy User ID</span>
             </Button>
           </CardTitle>
@@ -58,17 +61,17 @@ const InstructorProfileCard = ({
             Date Created: {convertTimestampToDate(createdAt)}
           </CardDescription>
         </div>
-        <div className="ml-auto flex items-center gap-1">
-          <Button size="sm" variant="outline" className="h-8 gap-1">
-            <Truck className="h-3.5 w-3.5" />
+        <div className="flex items-center gap-1 ml-auto">
+          <Button size="sm" variant="outline" className="gap-1 h-8">
+            <Truck className="w-3.5 h-3.5" />
             <span className="lg:sr-only xl:not-sr-only xl:whitespace-nowrap">
               Copy userId
             </span>
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button size="icon" variant="outline" className="h-8 w-8">
-                <MoreVertical className="h-3.5 w-3.5" />
+              <Button size="icon" variant="outline" className="w-8 h-8">
+                <MoreVertical className="w-3.5 h-3.5" />
                 <span className="sr-only">More</span>
               </Button>
             </DropdownMenuTrigger>
@@ -78,10 +81,10 @@ const InstructorProfileCard = ({
           </DropdownMenu>
         </div>
       </CardHeader>
-      <CardContent className="p-6 text-sm bg-background">
-        <div className="grid gap-3">
+      <CardContent className="bg-background p-6 text-sm">
+        <div className="gap-3 grid">
           <div className="font-semibold">Profile Details</div>
-          <div className="flex items-center justify-center rounded-full h-[15rem] w-[15rem] relative overflow-clip justify-self-center">
+          <div className="relative flex justify-center justify-self-center items-center rounded-full w-[15rem] h-[15rem] overflow-clip">
             {profileImageUrl ? (
               <Image
                 src={profileImageUrl}
@@ -95,59 +98,59 @@ const InstructorProfileCard = ({
                 priority
               />
             ) : (
-              <div className="rounded-full h-full w-full border">
+              <div className="border rounded-full w-full h-full">
                 {firstName?.charAt(0) + lastName?.charAt(0)}
               </div>
             )}
           </div>
-          <ul className="grid gap-3">
-            <li className="flex items-center justify-between">
+          <ul className="gap-3 grid">
+            <li className="flex justify-between items-center">
               <span className="text-muted-foreground">First name</span>
               <span>{firstName}</span>
             </li>
-            <li className="flex items-center justify-between">
+            <li className="flex justify-between items-center">
               <span className="text-muted-foreground">Last Name</span>
               <span>{lastName}</span>
             </li>
           </ul>
           <Separator className="my-2" />
-          <ul className="grid gap-3">
-            <li className="flex items-center justify-between">
+          <ul className="gap-3 grid">
+            <li className="flex justify-between items-center">
               <span className="text-muted-foreground">Email</span>
               <span>{email}</span>
             </li>
-            <li className="flex items-center justify-between">
+            <li className="flex justify-between items-center">
               <span className="text-muted-foreground">Phone</span>
               <span>{phoneNumber}</span>
             </li>
           </ul>
           <Separator className="my-4" />
-          <ul className="grid gap-3">
-            <li className="flex items-center justify-between">
+          <ul className="gap-3 grid">
+            <li className="flex justify-between items-center">
               <span className="text-muted-foreground">University of Study</span>
               <span>{university}</span>
             </li>
-            <li className="flex items-center justify-between font-semibold">
+            <li className="flex justify-between items-center font-semibold">
               <span className="text-muted-foreground">
                 Preferred Teaching Language
               </span>
               <span>{capitalizeFirstLetter(preferred_language)}</span>
             </li>
-            <li className="flex items-center justify-between font-semibold">
+            <li className="flex justify-between items-center font-semibold">
               <span className="text-muted-foreground">Major</span>
               <span>{capitalizeFirstLetter(major)}</span>
             </li>
-            <li className="flex items-center justify-between font-semibold">
+            <li className="flex justify-between items-center font-semibold">
               <span className="text-muted-foreground">Degree</span>
               <span>{capitalizeFirstLetter(degree)}</span>
             </li>
           </ul>
         </div>
         <Separator className="my-4" />
-        <div className="grid gap-3">
+        <div className="gap-3 grid">
           <div>
-            <div className="font-semibold mb-3">Free Lecture Period</div>
-            <div className=" flex justify-between">
+            <div className="mb-3 font-semibold">Free Lecture Period</div>
+            <div className="flex justify-between">
               {selectedDays.map((day, i) => (
                 <p className="text-muted-foreground" key={i}>
                   {day.toUpperCase()}
@@ -156,27 +159,27 @@ const InstructorProfileCard = ({
             </div>
           </div>
           <div>
-            <div className="font-semibold mb-3">Expertise</div>
+            <div className="mb-3 font-semibold">Expertise</div>
             <p>{expertise}</p>
           </div>
         </div>
 
         <Separator className="my-4" />
-        <div className="grid gap-3">
+        <div className="gap-3 grid">
           <div className="">
-            <div className="font-semibold mb-3">Bio</div>
+            <div className="mb-3 font-semibold">Bio</div>
             <p className="text-muted-foreground">{bio}</p>
           </div>
           <div className="">
-            <div className="font-semibold mb-3">Employment history</div>
-            <p className="text-muted-foreground font-lato">
+            <div className="mb-3 font-semibold">Employment history</div>
+            <p className="font-lato text-muted-foreground">
               {employment_history?.slice(0, 100)}...
             </p>
           </div>
         </div>
         <Separator className="my-4" />
         <div className="w-full">
-          <div className="font-semibold mb-3">Teaching Certifcate</div>
+          <div className="mb-3 font-semibold">Teaching Certifcate</div>
           <Image
             src={teachingCertificateUrl}
             alt="profileImage"
@@ -190,13 +193,13 @@ const InstructorProfileCard = ({
           />
         </div>
         <Separator className="my-4" />
-        <div className="grid gap-3">
+        <div className="gap-3 grid">
           <div className="font-semibold">Id verification url</div>
           <Image
             src={idVerificationUrl}
             alt="profileImage"
             priority
-            className="object-cover w-full"
+            className="w-full object-cover"
             width={240}
             height={240}
             quality={100}
@@ -204,12 +207,12 @@ const InstructorProfileCard = ({
           />
         </div>
       </CardContent>
-      <CardFooter className="flex flex-row items-center justify-between border-t bg-muted/50 px-6 py-3">
-        <div className="text-xs text-muted-foreground">
+      <CardFooter className="flex flex-row justify-between items-center bg-muted/50 px-6 py-3 border-t">
+        <div className="text-muted-foreground text-xs">
           Updated <time dateTime="2023-11-23">November 23, 2023</time>
         </div>
-        <Button size="icon" variant="outline" className="h-6 w-6">
-          <FaCodepen className="h-3.5 w-3.5" />
+        <Button size="icon" variant="outline" className="w-6 h-6">
+          <FaCodepen className="w-3.5 h-3.5" />
         </Button>
       </CardFooter>
     </Card>

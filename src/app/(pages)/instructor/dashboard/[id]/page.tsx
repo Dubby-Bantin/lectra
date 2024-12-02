@@ -7,6 +7,8 @@ import InstructorProfileCard from "@/components/dashboard/InstructorProfileCard"
 import LectureBoxComponent from "@/components/dashboard/LectureBoxComponent";
 import CalendarComponent from "@/components/common/CalendarComponent";
 import { getRoomDocumentsLength } from "@/lib/utils/helpers";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const InstructorProfilePage = async ({
   params: { id },
@@ -37,6 +39,40 @@ const InstructorProfilePage = async ({
     bio,
     expertise,
   } = data;
+
+  if (
+    !firstName ||
+    !lastName ||
+    !email ||
+    !createdAt ||
+    !preferred_language ||
+    !degree ||
+    !major ||
+    !phoneNumber ||
+    !university ||
+    !selectedDays.length ||
+    !employment_history ||
+    !profileImageUrl ||
+    !teachingCertificateUrl ||
+    !idVerificationUrl ||
+    !bio ||
+    !expertise
+  ) {
+    return (
+      <Link
+        className="flex justify-center items-center"
+        href={`/instructor_profile_setup/${id}`}
+      >
+        <Button
+          variant={"outline"}
+          className="flex justify-center items-center w-fit"
+        >
+          Seems like your profile setup was not complete,complete your profile
+          setup to start hosting lectures
+        </Button>
+      </Link>
+    );
+  }
 
   const roomDocuments = await getDocuments(email, 6);
   const lectureCount = await getRoomDocumentsLength(email);

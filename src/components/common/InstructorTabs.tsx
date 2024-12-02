@@ -14,16 +14,16 @@ const InstructorTabs = ({
   university,
   employment_history,
 }: {
-  firstName: string;
-  bio: string;
-  expertise: string;
-  selectedDays: string[];
-  degree: string;
-  major: string;
-  preferred_language: string;
+  firstName?: string;
+  bio?: string;
+  expertise?: string;
+  selectedDays?: string[];
+  degree?: string;
+  major?: string;
+  preferred_language?: string;
   email: string;
   phoneNumber?: string;
-  university: string;
+  university?: string;
   employment_history?: string;
 }) => {
   return (
@@ -68,7 +68,7 @@ const InstructorTabs = ({
         <p className="py-2 text-gray-600 dark:text-gray-300">
           Preferred Lecture Days:
           <ul className="grid grid-cols-2">
-            {selectedDays.map((day: string) => (
+            {selectedDays?.map((day: string) => (
               <li key={day} className="text-lg">
                 {capitalizeFirstLetter(day)}
               </li>
