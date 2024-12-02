@@ -30,7 +30,7 @@ const Students = async ({ params: { id } }: { params: { id: string } }) => {
 
   const { subscribedUsers } = instructorData;
   return (
-    <section className="w-full">
+    <section className="flex flex-col justify-center items-center w-full">
       <h2 className="mb-8 font-semibold text-2xl text-center lg:text-3xl">
         All Your Students
       </h2>
@@ -41,7 +41,7 @@ const Students = async ({ params: { id } }: { params: { id: string } }) => {
           }
           if (subscribedUsers?.includes(studentData.id)) {
             return (
-              <div key={id} className="flex flex-col items-center">
+              <div key={studentData.id} className="flex flex-col items-center">
                 <Image
                   src={studentData.profileImageUrl}
                   alt={`${studentData.firstName} ${studentData.lastName}`}
