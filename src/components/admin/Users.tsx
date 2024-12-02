@@ -19,7 +19,7 @@ const Users = () => {
 
   useEffect(() => {
     const table = searchParams?.get("table");
-    setDataList(table || "instructors");
+    setDataList(table ?? "instructors");
   }, [searchParams]);
 
   const handleChange = (value: string) => {
@@ -32,10 +32,10 @@ const Users = () => {
     <div className="w-full">
       <h1 className="mb-5 font-bold text-3xl text-gray-700">User Management</h1>
       <div className="mb-10 w-40">
-        <Select onValueChange={handleChange} value={dataList || "instructors"}>
+        <Select onValueChange={handleChange} value={dataList ?? "instructors"}>
           <SelectTrigger>
             <SelectValue
-              placeholder={capitalizeFirstLetter(dataList || "instructors")}
+              placeholder={capitalizeFirstLetter(dataList ?? "instructors")}
             />
           </SelectTrigger>
           <SelectContent>
