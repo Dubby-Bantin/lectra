@@ -36,7 +36,7 @@ const NavBar = () => {
           src={logo}
           alt="Lectra Logo"
           height={50}
-          className="bg-dark mx-2 rounded-sm"
+          className="bg-dark mx-2 rounded-full"
         />
         <span className="font-bold text-lg">Lectra</span>
       </Link>
