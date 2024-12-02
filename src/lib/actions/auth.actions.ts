@@ -165,7 +165,7 @@ const updateStudentRef = async (
   try {
     const student_profile_photo = formData.get("student_profile_photo") as File;
 
-    if (!student_profile_photo || phoneNumber) {
+    if (!student_profile_photo || !phoneNumber) {
       return {
         error:
           "Seems like some field values are empty.Please fill in all values",
