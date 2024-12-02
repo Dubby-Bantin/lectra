@@ -9,6 +9,10 @@ import CalendarComponent from "@/components/common/CalendarComponent";
 import { getRoomDocumentsLength } from "@/lib/utils/helpers";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Dashboard",
+};
 
 const InstructorProfilePage = async ({
   params: { id },
