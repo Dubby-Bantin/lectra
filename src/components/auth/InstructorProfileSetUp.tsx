@@ -46,7 +46,7 @@ const InstructorProfileSetUp = ({ id }: { id: string }) => {
         }
       }}
       ref={formRef}
-      className="flex flex-col items-center gap-5 p-6 w-full"
+      className="flex flex-col items-center gap-5 md:p-6 w-full"
     >
       <div className="mb-5 w-full text-gray-700 dark:text-white">
         {/* Personal Information */}

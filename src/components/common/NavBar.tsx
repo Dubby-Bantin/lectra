@@ -8,8 +8,9 @@ import { navLinks } from "@/lib/utils/constants";
 import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
-import { ModeToggle } from "@/context/ThemeSwitcher";
+import { ModeToggle } from "@/contexts/ThemeSwitcher";
 import AuthNavLink from "./AuthNavLink";
+// import Notifications from "../notifications";
 
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);

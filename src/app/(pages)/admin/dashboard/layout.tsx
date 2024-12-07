@@ -14,7 +14,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logo from "@/public/images/logo.png";
 import React from "react";
-import { ModeToggle } from "@/context/ThemeSwitcher";
+import { ModeToggle } from "@/contexts/ThemeSwitcher";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (

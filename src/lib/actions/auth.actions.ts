@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { logIn, signUp } from "../firebaseAuth";
 import {
   handleUpdate,
@@ -140,6 +141,7 @@ const updateInstructorRef = async (
     }
 
     await handleUpdate("instructors", id, instructorData);
+    revalidatePath("/instructors");
     return {};
   } catch (error) {
     if (error instanceof TypeError) {

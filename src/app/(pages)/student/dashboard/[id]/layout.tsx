@@ -27,7 +27,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ModeToggle } from "@/context/ThemeSwitcher";
+import { ModeToggle } from "@/contexts/ThemeSwitcher";
 import { Button } from "@/components/ui/button";
 // import { PiChalkboardTeacherLight } from "react-icons/pi";
 // import TipLink from "@/components/common/TipLink";

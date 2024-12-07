@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { LiveBlockRoomsProps } from "@/types";
+import ZegoLectureBtn from "../lectures/calls/ZegoLectureBtn";
 const LectureBoxComponent = ({
   roomDocuments,
   email,
@@ -26,7 +27,10 @@ const LectureBoxComponent = ({
           </CardDescription>
           <div className="flex justify-between">
             {subscribedUsers && subscribedUsers?.length > 0 && (
-              <LectureScheduleBtn userId={id} email={email} />
+              <div className="flex justify-between items-center w-full">
+                <LectureScheduleBtn userId={id} email={email} />
+                <ZegoLectureBtn id={id} />
+              </div>
             )}
           </div>
         </CardHeader>

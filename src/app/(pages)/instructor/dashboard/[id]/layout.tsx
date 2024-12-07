@@ -24,7 +24,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ModeToggle } from "@/context/ThemeSwitcher";
+import { ModeToggle } from "@/contexts/ThemeSwitcher";
 import { Button } from "@/components/ui/button";
 import { PiChalkboardTeacherLight } from "react-icons/pi";
 import TipLink from "@/components/common/TipLink";
@@ -35,6 +35,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import LogOutButton from "@/components/auth/LogOutButton";
 import { Metadata } from "next";
+import Notifications from "@/components/notifications";
 
 export async function generateMetadata({
   params: { id },
@@ -43,7 +44,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const instructorData = await getFireStoreRefData(id, "instructors");
   return {
-    title: { default: "Dashboard", template: `%s | ${instructorData?.firstName}` },
+    title: {
+      default: "Dashboard",
+      template: `%s | ${instructorData?.firstName}`,
+    },
   };
 }
 const layout = async ({
@@ -142,7 +146,8 @@ const layout = async ({
                   size="icon"
                   className="rounded-full overflow-hidden"
                 >
-                  {firstName?.charAt(0) + lastName?.charAt(0)}
+                  {firstName?.charAt(0).toUpperCase() +
+                    lastName?.charAt(0).toUpperCase()}
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
@@ -156,6 +161,7 @@ const layout = async ({
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+            <Notifications />
           </div>
         </header>
         <aside className="left-0 z-10 fixed inset-y-0 sm:flex flex-col hidden bg-background border-r w-14">

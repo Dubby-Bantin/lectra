@@ -58,7 +58,7 @@ const getUserColor = (userId?: string) => {
   const colorIndex = sum % brightColors.length;
   return brightColors[colorIndex];
 };
-const dateConverter = (timestamp: string): string => {
+const dateConverter = (timestamp: string | number): string => {
   const timestampNum = Math.round(new Date(timestamp).getTime() / 1000);
   const date: Date = new Date(timestampNum * 1000);
   const now: Date = new Date();
@@ -87,6 +87,29 @@ const dateConverter = (timestamp: string): string => {
   }
 };
 
+export function timeAgo(milliseconds: number) {
+  const now = Date.now();
+  const diffInSeconds = Math.floor((now - milliseconds) / 1000);
+
+  const units = [
+    { name: "year", seconds: 31536000 },
+    { name: "month", seconds: 2592000 },
+    { name: "day", seconds: 86400 },
+    { name: "hour", seconds: 3600 },
+    { name: "minute", seconds: 60 },
+    { name: "second", seconds: 1 },
+  ];
+
+  for (const unit of units) {
+    const count = Math.floor(diffInSeconds / unit.seconds);
+    if (count >= 1) {
+      return `${count} ${unit.name}${count > 1 ? "s" : ""} ago`;
+    }
+  }
+
+  return "just now";
+}
+
 const capitalizeFirstLetter = (word: string | null) =>
   word !== null ? word?.charAt(0).toUpperCase() + word.slice(1) : "";
 
@@ -101,6 +124,18 @@ const getRoomDocumentsLength = async (email: string): Promise<number> => {
     return 0;
   }
 };
+
+function randomID(len: number) {
+  let result = "";
+  const chars =
+    "12345qwertyuiopasdfgh67890jklmnbvcxzMNBVCZXASDQWERTYHGFUIOLKJP";
+  const maxPos = chars.length;
+  len = len || 5;
+  for (let i = 0; i < len; i++) {
+    result += chars.charAt(Math.floor(Math.random() * maxPos));
+  }
+  return result;
+}
 export {
   getRoomDocumentsLength,
   convertTimestampToDate,
@@ -110,4 +145,5 @@ export {
   dateConverter,
   capitalizeFirstLetter,
   parseStringify,
+  randomID,
 };

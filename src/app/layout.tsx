@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/context/ThemeProvider";
+import { ThemeProvider } from "@/contexts/ThemeProvider";
 import NavbarWrapper from "@/components/common/NavBarWrapper";
 import { Toaster } from "sonner";
 import GTranslate from "@/components/common/GTranslate";
 import Provider from "@/providers/Provider";
+import { ConvexClientProvider } from "../contexts/ConvexClientProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://lectra.vercel.app/"),
@@ -43,7 +44,9 @@ export default function RootLayout({
           <NavbarWrapper />
           <GTranslate />
           <Toaster position="top-center" richColors />
-          <Provider>{children}</Provider>
+          <Provider>
+            <ConvexClientProvider>{children}</ConvexClientProvider>
+          </Provider>
         </ThemeProvider>
       </body>
     </html>

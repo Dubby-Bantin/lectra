@@ -5,7 +5,7 @@ import logo from "@/public/images/logo.png";
 const ProfileSetUp = async ({ params: { id } }: { params: { id: string } }) => {
   return (
     <div className="relative p-5 w-full h-screen font-lato overflow-x-hidden">
-      <div className="flex flex-col flex-wrap justify-center items-center space-y-4 bg-white dark:bg-background shadow-lg mx-auto p-6 border rounded-lg max-w-4xl">
+      <div className="flex flex-col flex-wrap justify-center items-center space-y-4 bg-white dark:bg-background shadow-lg md:mx-auto p-6 md:border rounded-lg w-full md:max-w-4xl">
         <Image
           src={logo}
           alt="logo"

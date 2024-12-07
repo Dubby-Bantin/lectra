@@ -6,9 +6,11 @@ import DemoSection from "@/components/landing/DemoSection";
 import FAQSection from "@/components/landing/Faqs";
 import FeaturesSection from "@/components/landing/FeaturesSection";
 import Footer from "@/components/landing/Footer";
+import Notifications from "@/components/notifications";
 
 const Home = () => (
   <>
+    <Notifications />
     <Banner />
     <FeaturesSection />
     <AboutSection />
