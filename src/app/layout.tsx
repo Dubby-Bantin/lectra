@@ -34,6 +34,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
+      <meta
+        name="google-site-verification"
+        content="b7tyjY1SYdjQ5RxivEeaxxs6BjTt7O9dgyISPMjeWeA"
+      />
       <body className={`antialiased font-lato relative`}>
         <ThemeProvider
           attribute="class"
