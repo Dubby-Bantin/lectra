@@ -48,7 +48,7 @@ const Notifications = () => {
   return (
     studentId && (
       <div className="flex justify-end p-5">
-        <Popover >
+        <Popover>
           <PopoverTrigger asChild className="relative right-0">
             <Button variant="outline" size="icon" className="relative p-2">
               <Bell width={16} />
